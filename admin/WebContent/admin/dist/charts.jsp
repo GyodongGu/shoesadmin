@@ -25,7 +25,7 @@
 		<!-- Navbar Search-->
 		<form
 			class="d-none d-md-inline-block form-inline ml-auto mr-0 mr-md-3 my-2 my-md-0">
-			<!-- <div class="input-group">
+			 <div class="input-group" style="visibility: hidden;">
 				<input class="form-control" type="text" placeholder="Search for..."
 					aria-label="Search" aria-describedby="basic-addon2" />
 				<div class="input-group-append">
@@ -33,7 +33,7 @@
 						<i class="fas fa-search"></i>S
 					</button>
 				</div>
-			</div> -->
+			</div> 
 		</form>
 		<!-- Navbar-->
 		<ul class="navbar-nav ml-auto ml-md-0">

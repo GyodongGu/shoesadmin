@@ -1,5 +1,5 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
-    pageEncoding="UTF-8"%>
+	pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -26,9 +26,9 @@
 			<i class="fas fa-bars"></i>
 		</button>
 		<!-- Navbar Search-->
-		 <form
+		<form
 			class="d-none d-md-inline-block form-inline ml-auto mr-0 mr-md-3 my-2 my-md-0">
-			<!-- <div class="input-group">
+			<div class="input-group" style="visibility: hidden;">
 				<input class="form-control" type="text" placeholder="Search for..."
 					aria-label="Search" aria-describedby="basic-addon2" />
 				<div class="input-group-append">
@@ -36,7 +36,7 @@
 						<i class="fas fa-search"></i>
 					</button>
 				</div>
-			</div> -->
+			</div>
 		</form>
 		<!-- Navbar-->
 		<ul class="navbar-nav ml-auto ml-md-0">
@@ -63,8 +63,7 @@
 						<a class="nav-link" href="index.jsp"><div
 								class="sb-nav-link-icon">
 								<i class="fas fa-tachometer-alt"></i>
-							</div> 홈</a>
-							<a class="nav-link" href="eventManage.jsp"><div
+							</div> 홈</a> <a class="nav-link" href="eventManage.jsp"><div
 								class="sb-nav-link-icon">
 								<i class="fas fa-chart-area"></i>
 							</div> 공지사항 및 이벤트 </a>
@@ -95,8 +94,7 @@
 							aria-labelledby="headingTwo" data-parent="#sidenavAccordion">
 							<nav class="sb-sidenav-menu-nested nav accordion"
 								id="sidenavAccordionPages">
-								<a class="nav-link" href="backup.jsp">구매 회원 탈퇴 후 거래내역
-								</a>
+								<a class="nav-link" href="backup.jsp">구매 회원 탈퇴 후 거래내역 </a>
 								<!-- error page -->
 								<!-- <a class="nav-link collapsed" href="#" data-toggle="collapse"
 									data-target="#pagesCollapseError" aria-expanded="false"
@@ -113,7 +111,7 @@
 											class="nav-link" href="404.html">404 Page</a><a
 											class="nav-link" href="500.html">500 Page</a>
 									</nav>
-								</div> --> 
+								</div> -->
 							</nav>
 						</div>
 						<a class="nav-link" href="codeManage.jsp">
@@ -124,7 +122,7 @@
 								class="sb-nav-link-icon">
 								<i class="fas fa-chart-area"></i>
 							</div> 매출</a>
-							<!-- <a class="nav-link" href="table.jsp"><div
+						<!-- <a class="nav-link" href="table.jsp"><div
 								class="sb-nav-link-icon">
 								<i class="fas fa-table"></i>
 							</div> 테이블</a> -->
@@ -657,6 +655,9 @@
 				</div>
 			</footer>
 		</div>
+	</div>
+	<div id="layoutSidenav_content">
+		<h3>찾았다</h3>
 	</div>
 	<script src="https://code.jquery.com/jquery-3.4.1.min.js"
 		crossorigin="anonymous"></script>

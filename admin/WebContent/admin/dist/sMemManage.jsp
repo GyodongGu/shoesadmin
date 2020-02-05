@@ -26,9 +26,9 @@
 			<i class="fas fa-bars"></i>
 		</button>
 		<!-- Navbar Search-->
-		 <form
+		<form
 			class="d-none d-md-inline-block form-inline ml-auto mr-0 mr-md-3 my-2 my-md-0">
-			<!-- <div class="input-group">
+			<div class="input-group" style="visibility: hidden;">
 				<input class="form-control" type="text" placeholder="Search for..."
 					aria-label="Search" aria-describedby="basic-addon2" />
 				<div class="input-group-append">
@@ -36,8 +36,8 @@
 						<i class="fas fa-search"></i>
 					</button>
 				</div>
-			</div> -->
-		</form> 
+			</div>
+		</form>
 		<!-- Navbar-->
 		<ul class="navbar-nav ml-auto ml-md-0">
 			<li class="nav-item dropdown"><a
@@ -63,8 +63,7 @@
 						<a class="nav-link" href="index.jsp"><div
 								class="sb-nav-link-icon">
 								<i class="fas fa-tachometer-alt"></i>
-							</div> 홈</a>
-							<a class="nav-link" href="eventManage.jsp"><div
+							</div> 홈</a> <a class="nav-link" href="eventManage.jsp"><div
 								class="sb-nav-link-icon">
 								<i class="fas fa-chart-area"></i>
 							</div> 공지사항 및 이벤트 </a>
@@ -95,8 +94,8 @@
 							aria-labelledby="headingTwo" data-parent="#sidenavAccordion">
 							<nav class="sb-sidenav-menu-nested nav accordion"
 								id="sidenavAccordionPages">
-								<a class="nav-link collapsed" href="backup.jsp">구매 회원 탈퇴 후 거래내역
-								</a>
+								<a class="nav-link collapsed" href="backup.jsp">구매 회원 탈퇴 후
+									거래내역 </a>
 								<!-- error page -->
 								<!-- <a class="nav-link collapsed" href="#" data-toggle="collapse"
 									data-target="#pagesCollapseError" aria-expanded="false"
@@ -122,7 +121,7 @@
 								class="sb-nav-link-icon">
 								<i class="fas fa-chart-area"></i>
 							</div> 매출</a>
-							<!-- <a class="nav-link" href="tables.html"><div
+						<!-- <a class="nav-link" href="tables.html"><div
 								class="sb-nav-link-icon">
 								<i class="fas fa-table"></i>
 							</div> 테이블</a> -->
@@ -133,6 +132,71 @@
 					Start Bootstrap
 				</div>
 			</nav>
+		</div>
+		<div id="layoutSidenav_content">
+			<div class="container">
+				<div class="col-lg-6 col-md-12">
+					<form>
+						<div class="form-group row mt-5">
+							<label class="col-4">아이디</label>
+							<div class="col-8">
+								<input type="text" class="form-control">
+							</div>
+						</div>
+						<div class="form-group row">
+							<label class="col-4">비밀번호</label>
+							<div class="col-8">
+								<input type="text" class="form-control ">
+							</div>
+						</div>
+						<!-- 비밀번호확인 추가예정 -->
+						<div class="form-group row">
+							<label class="col-4">상호명</label>
+							<div class="col-8">
+								<input type="text" class="form-control">
+							</div>
+						</div>
+						<div class="form-group row">
+							<label class="col-4">이름</label>
+							<div class="col-8">
+								<input type="text" class="form-control">
+							</div>
+						</div>
+						<div class="form-group row">
+							<label class="col-4">전화번호</label>
+							<div class="col-8">
+								<input type="text" class="form-control">
+							</div>
+						</div>
+						<div class="form-group row">
+							<label class="col-4">사업자번호</label>
+							<div class="col-8">
+								<input type="text" class="form-control">
+							</div>
+						</div>
+						<div class="form-group row">
+							<label class="col-4">주소</label>
+							<div class="col-8">
+								<input type="text" class="form-control">
+								<button type="button">우편번호 검색</button>
+								<input type="text" class="form-control"> <input
+									type="text" class="form-control">
+							</div>
+						</div>
+						<div class="form-group row">
+							<label class="col-4" for="exampleFormControlTextarea1">가게
+								관련 비고</label>
+							<div>
+								<textarea class="form-control col-8"
+									id="exampleFormControlTextarea1" rows="3"></textarea>
+							</div>
+						</div>
+						<div align="right">
+							<button class="btn btn-primary" type="submit">등록</button>
+						</div>
+					</form>
+				</div>
+			</div>
 		</div>
 		<script src="https://code.jquery.com/jquery-3.4.1.min.js"
 			crossorigin="anonymous"></script>

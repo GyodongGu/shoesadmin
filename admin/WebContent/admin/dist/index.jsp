@@ -20,7 +20,7 @@
 </head>
 <body class="sb-nav-fixed">
 	<nav class="sb-topnav navbar navbar-expand navbar-dark bg-dark">
-		<a class="navbar-brand" href="index.html">You Shoes</a>
+		<a class="navbar-brand" href="index.jsp">You Shoes</a>
 		<button class="btn btn-link btn-sm order-1 order-lg-0"
 			id="sidebarToggle" href="#">
 			<i class="fas fa-bars"></i>
@@ -60,7 +60,7 @@
 				<div class="sb-sidenav-menu">
 					<div class="nav">
 						<div class="sb-sidenav-menu-heading">Core</div>
-						<a class="nav-link" href="index.html"><div
+						<a class="nav-link" href="index.jsp"><div
 								class="sb-nav-link-icon">
 								<i class="fas fa-tachometer-alt"></i>
 							</div> 홈</a>
@@ -91,22 +91,8 @@
 							aria-labelledby="headingTwo" data-parent="#sidenavAccordion">
 							<nav class="sb-sidenav-menu-nested nav accordion"
 								id="sidenavAccordionPages">
-								<a class="nav-link collapsed" href="#" data-toggle="collapse"
-									data-target="#pagesCollapseAuth" aria-expanded="false"
-									aria-controls="pagesCollapseAuth">구매 회원 탈퇴 후 거래내역
-									<div class="sb-sidenav-collapse-arrow">
-										<i class="fas fa-angle-down"></i>
-									</div>
+								<a class="nav-link" href="backup.jsp">구매 회원 탈퇴 후 거래내역
 								</a>
-								<div class="collapse" id="pagesCollapseAuth"
-									aria-labelledby="headingOne"
-									data-parent="#sidenavAccordionPages">
-									<nav class="sb-sidenav-menu-nested nav">
-										<a class="nav-link" href="login.html">Login</a><a
-											class="nav-link" href="register.jsp">Register</a><a
-											class="nav-link" href="password.html">Forgot Password</a>
-									</nav>
-								</div>
 								<a class="nav-link collapsed" href="#" data-toggle="collapse"
 									data-target="#pagesCollapseError" aria-expanded="false"
 									aria-controls="pagesCollapseError">Error
@@ -130,10 +116,11 @@
 							</div> 코드ID</a> <a class="nav-link" href="charts.jsp"><div
 								class="sb-nav-link-icon">
 								<i class="fas fa-chart-area"></i>
-							</div> 매출</a><a class="nav-link" href="table.jsp"><div
+							</div> 매출</a>
+							<!-- <a class="nav-link" href="table.jsp"><div
 								class="sb-nav-link-icon">
-								<i class="fas fa-table d-none"></i>
-							</div> 테이블</a>
+								<i class="fas fa-table"></i>
+							</div> 테이블</a>-->
 					</div>
 				</div>
 				<div class="sb-sidenav-footer">

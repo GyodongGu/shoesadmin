@@ -20,7 +20,7 @@
 </head>
 <body class="sb-nav-fixed">
 	<nav class="sb-topnav navbar navbar-expand navbar-dark bg-dark">
-		<a class="navbar-brand" href="index.html">You Shoes</a>
+		<a class="navbar-brand" href="index.jsp">You Shoes</a>
 		<button class="btn btn-link btn-sm order-1 order-lg-0"
 			id="sidebarToggle" href="#">
 			<i class="fas fa-bars"></i>
@@ -60,7 +60,7 @@
 				<div class="sb-sidenav-menu">
 					<div class="nav">
 						<div class="sb-sidenav-menu-heading">Core</div>
-						<a class="nav-link" href="index.html"><div
+						<a class="nav-link" href="index.jsp"><div
 								class="sb-nav-link-icon">
 								<i class="fas fa-tachometer-alt"></i>
 							</div> 홈</a>
@@ -125,17 +125,18 @@
 								</div>
 							</nav>
 						</div>
-						<a class="nav-link" href="#">
+						<a class="nav-link" href="codeManage.jsp">
 							<div class="sb-nav-link-icon">
 								<i class="fas fa-chart-area"></i>
 							</div> 코드ID
-						</a> <a class="nav-link" href="charts.html"><div
+						</a> <a class="nav-link" href="charts.jsp"><div
 								class="sb-nav-link-icon">
 								<i class="fas fa-chart-area"></i>
-							</div> 매출</a><a class="nav-link" href="tables.html"><div
+							</div> 매출</a>
+							<!-- <a class="nav-link" href="table.jsp"><div
 								class="sb-nav-link-icon">
 								<i class="fas fa-table"></i>
-							</div> 테이블</a>
+							</div> 테이블</a> -->
 					</div>
 				</div>
 				<div class="sb-sidenav-footer">
@@ -149,7 +150,7 @@
 				<div class="container-fluid">
 					<h1 class="mt-4">Tables</h1>
 					<ol class="breadcrumb mb-4">
-						<li class="breadcrumb-item"><a href="index.html">Dashboard</a></li>
+						<li class="breadcrumb-item"><a href="index.jsp">Dashboard</a></li>
 						<li class="breadcrumb-item active">Tables</li>
 					</ol>
 					<div class="card mb-4">

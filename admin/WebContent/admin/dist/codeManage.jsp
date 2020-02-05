@@ -111,13 +111,13 @@
 								</div>
 							</nav>
 						</div>
-						<a class="nav-link" href="#"><div class="sb-nav-link-icon">
+						<a class="nav-link" href="codeManage.jsp"><div class="sb-nav-link-icon">
 								<i class="fas fa-chart-area"></i>
-							</div> 코드ID</a> <a class="nav-link" href="charts.html"><div
+							</div> 코드ID</a> <a class="nav-link" href="charts.jsp"><div
 								class="sb-nav-link-icon">
 								<i class="fas fa-chart-area"></i>
 							</div> 매출</a>
-							<!-- <a class="nav-link" href="tables.html"><div
+							<!-- <a class="nav-link" href="table.jsp"><div
 								class="sb-nav-link-icon">
 								<i class="fas fa-table"></i>
 							</div> 테이블</a> -->

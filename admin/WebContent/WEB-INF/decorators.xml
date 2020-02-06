@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<decorators defaultdir="/admin/dist/">
+	<decorator name="basic-theme" page="eventManage.jsp">
+		<pattern>*.jsp</pattern>
+	</decorator>
+	<exclude>
+	<pattern>eventManage.jsp</pattern>
+	</exclude>
+</decorators>

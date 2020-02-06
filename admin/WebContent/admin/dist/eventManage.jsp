@@ -12,7 +12,7 @@
 <meta name="description" content="" />
 <meta name="author" content="" />
 <title>You Shoes</title>
-<link href="/admin/admin/dist/css/styles.css" rel="stylesheet" />
+<link href="css/styles.css" rel="stylesheet" />
 <link
 	href="https://cdn.datatables.net/1.10.20/css/dataTables.bootstrap4.min.css"
 	rel="stylesheet" crossorigin="anonymous" />
@@ -24,15 +24,14 @@
 <script
 	src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.bundle.min.js"
 	crossorigin="anonymous"></script>
-<script src="/admin/admin/dist/js/scripts.js"></script>
+<script src="js/scripts.js"></script>
+<script src="assets/demo/chart-area-demo.js"></script>
 <decorator:head />
 </head>
 <body class="sb-nav-fixed">
 	<nav class="sb-topnav navbar navbar-expand navbar-dark bg-dark">
-		<a class="navbar-brand" href="/admin/admin/dist/index.jsp">You
-			Shoes</a>
-		<button class="btn btn-link btn-sm order-1 order-lg-0"
-			id="sidebarToggle" href="#">
+		<a class="navbar-brand" href="index.jsp">You Shoes</a>
+		<button class="btn btn-link btn-sm order-1 order-lg-0" id="sidebarToggle" href="#">
 			<i class="fas fa-bars"></i>
 		</button>
 		<!-- Navbar Search-->
@@ -75,7 +74,8 @@
 								<i class="fas fa-tachometer-alt"></i>
 							</div> 홈</a> <a class="nav-link" href="callendar.jsp">
 							 <div class="sb-nav-link-icon">
-							<i class="fas fa-chart-area"></i></div> 공지사항 및 이벤트 </a>
+							<i class="fas fa-chart-area"></i>
+							</div> 공지사항 및 이벤트 </a>
 						<div class="sb-sidenav-menu-heading">회원 관리</div>
 						<a class="nav-link collapsed" href="#" data-toggle="collapse"
 							data-target="#collapseLayouts" aria-expanded="false"
@@ -126,5 +126,6 @@
 			</main>
 		</div>
 	</div> 
+<script src="js/scripts.js"></script> 
 </body>
 </html>

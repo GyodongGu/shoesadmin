@@ -6,7 +6,7 @@
 <head>
     <meta charset="utf-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <title>FullCalendar Example</title>
+    <title>FullCalendar</title>
 
     <link rel="shortcut icon" href="image/favicon.ico">
     <link rel="stylesheet" href="vendor/css/fullcalendar.min.css" />
@@ -37,8 +37,7 @@
             <div id="loading"></div>
             <div id="calendar"></div>
         </div>
-
-
+        
         <!-- 일정 추가 MODAL -->
         <div class="modal fade" tabindex="-1" role="dialog" id="eventModal">
             <div class="modal-dialog" role="document">

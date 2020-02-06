@@ -12,10 +12,8 @@
     <link rel="stylesheet" href="vendor/css/fullcalendar.min.css" />
     <link rel="stylesheet" href='vendor/css/select2.min.css' />
     <link rel="stylesheet" href='vendor/css/bootstrap-datetimepicker.min.css' />
-    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Open+Sans:400,500,600">
-    <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
     <link rel="stylesheet" href="css/main.css">
-    <link href="/admin/admin/dist/css/styles.css" rel="stylesheet" />
+    <link href="css/styles.css" rel="stylesheet" />
 
 </head>
 

@@ -70,13 +70,12 @@
 				<div class="sb-sidenav-menu">
 					<div class="nav">
 						<div class="sb-sidenav-menu-heading">Core</div>
-						<a class="nav-link" href="/admin/admin/dist/index.jsp"><div
+						<a class="nav-link" href="index.jsp"><div
 								class="sb-nav-link-icon">
 								<i class="fas fa-tachometer-alt"></i>
-							</div> 홈</a> <a class="nav-link" href="/admin/FullCalendar/callIndex.jsp"><div
-								class="sb-nav-link-icon">
-								<i class="fas fa-chart-area"></i>
-							</div> 공지사항 및 이벤트 </a>
+							</div> 홈</a> <a class="nav-link" href="callendar.jsp">
+							 <div class="sb-nav-link-icon">
+							<i class="fas fa-chart-area"></i></div> 공지사항 및 이벤트 </a>
 						<div class="sb-sidenav-menu-heading">회원 관리</div>
 						<a class="nav-link collapsed" href="#" data-toggle="collapse"
 							data-target="#collapseLayouts" aria-expanded="false"
@@ -89,7 +88,7 @@
 						<div class="collapse" id="collapseLayouts"
 							aria-labelledby="headingOne" data-parent="#sidenavAccordion">
 							<nav class="sb-sidenav-menu-nested nav">
-								<a class="nav-link" href="/admin/admin/dist/sMemManage.jsp">판매 회원 등록 </a>
+								<a class="nav-link" href="sMemManage.jsp">판매 회원 등록 </a>
 							</nav>
 						</div>
 						<a class="nav-link collapsed" href="#" data-toggle="collapse"
@@ -104,32 +103,14 @@
 							aria-labelledby="headingTwo" data-parent="#sidenavAccordion">
 							<nav class="sb-sidenav-menu-nested nav accordion"
 								id="sidenavAccordionPages">
-								<a class="nav-link collapsed" href="/admin/admin/dist/backup.jsp">구매 회원 탈퇴 후
+								<a class="nav-link collapsed" href="backup.jsp">구매 회원 탈퇴 후
 									거래내역 </a>
-								<!-- error page -->
-								<!-- <a class="nav-link collapsed" href="#" data-toggle="collapse"
-									data-target="#pagesCollapseError" aria-expanded="false"
-									aria-controls="pagesCollapseError">Error
-									<div class="sb-sidenav-collapse-arrow">
-										<i class="fas fa-angle-down"></i>
-									</div>
-								</a>
-								 <div class="collapse" id="pagesCollapseError"
-									aria-labelledby="headingOne"
-									data-parent="#sidenavAccordionPages">
-									<nav class="sb-sidenav-menu-nested nav">
-										<a class="nav-link" href="401.html">401 Page</a><a
-											class="nav-link" href="404.html">404 Page</a><a
-											class="nav-link" href="500.html">500 Page</a>
-									</nav>
-								</div> -->
 							</nav>
 						</div>
 						<a class="nav-link" href="codeManage.jsp"><div
 								class="sb-nav-link-icon">
 								<i class="fas fa-chart-area"></i>
-							</div> 코드ID</a> <a class="nav-link" href="charts.jsp"><div
-								class="sb-nav-link-icon">
+							</div> 코드ID</a> <a class="nav-link" href="charts.jsp"><div class="sb-nav-link-icon">
 								<i class="fas fa-chart-area"></i>
 							</div> 매출</a>
 
@@ -144,18 +125,6 @@
 				</div>
 			</main>
 		</div>
-	</div>
-	<script
-		src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.8.0/Chart.min.js"
-		crossorigin="anonymous"></script>
-	<script src="assets/demo/chart-area-demo.js"></script>
-	<script src="assets/demo/chart-bar-demo.js"></script>
-	<script
-		src="https://cdn.datatables.net/1.10.20/js/jquery.dataTables.min.js"
-		crossorigin="anonymous"></script>
-	<script
-		src="https://cdn.datatables.net/1.10.20/js/dataTables.bootstrap4.min.js"
-		crossorigin="anonymous"></script>
-	<script src="assets/demo/datatables-demo.js"></script>
+	</div> 
 </body>
 </html>

@@ -57,11 +57,11 @@
 				<div class="sb-sidenav-menu">
 					<div class="nav">
 						<div class="sb-sidenav-menu-heading">Core</div>
-						<a class="nav-link" href="/admin/admin/dist/index.jsp"><div
+						<a class="nav-link" href="index.jsp"><div
 								class="sb-nav-link-icon">
 								<i class="fas fa-tachometer-alt"></i>
 							</div> 홈</a>
-							<a class="nav-link" href="/admin/FullCalendar/eventManage.jsp"><div
+							<a class="nav-link" href="callendar.jsp"><div
 								class="sb-nav-link-icon">
 								<i class="fas fa-chart-area"></i>
 							</div> 공지사항 및 이벤트 </a>
@@ -77,7 +77,7 @@
 						<div class="collapse" id="collapseLayouts"
 							aria-labelledby="headingOne" data-parent="#sidenavAccordion">
 							<nav class="sb-sidenav-menu-nested nav">
-								<a class="nav-link" href="/admin/admin/dist/sMemManage.jsp">판매 회원 등록</a>
+								<a class="nav-link" href="sMemManage.jsp">판매 회원 등록</a>
 							</nav>
 						</div>
 						<a class="nav-link collapsed" href="#" data-toggle="collapse"
@@ -92,25 +92,8 @@
 							aria-labelledby="headingTwo" data-parent="#sidenavAccordion">
 							<nav class="sb-sidenav-menu-nested nav accordion"
 								id="sidenavAccordionPages">
-								<a class="nav-link" href="/admin/admin/dist/backup.jsp">구매 회원 탈퇴 후 거래내역
+								<a class="nav-link" href="backup.jsp">구매 회원 탈퇴 후 거래내역
 								</a>
-								<!-- error page -->
-								<!-- <a class="nav-link collapsed" href="#" data-toggle="collapse"
-									data-target="#pagesCollapseError" aria-expanded="false"
-									aria-controls="pagesCollapseError">Error
-									<div class="sb-sidenav-collapse-arrow">
-										<i class="fas fa-angle-down"></i>
-									</div>
-								</a>
-								<div class="collapse" id="pagesCollapseError"
-									aria-labelledby="headingOne"
-									data-parent="#sidenavAccordionPages">
-									<nav class="sb-sidenav-menu-nested nav">
-										<a class="nav-link" href="401.html">401 Page</a><a
-											class="nav-link" href="404.html">404 Page</a><a
-											class="nav-link" href="500.html">500 Page</a>
-									</nav>
-								</div> -->
 							</nav>
 						</div>
 						<a class="nav-link" href="/admin/admin/dist/codeManage.jsp">
@@ -124,10 +107,6 @@
 
 					</div>
 				</div>
-				<div class="sb-sidenav-footer">
-					<div class="small">Logged in as:</div>
-					Start Bootstrap
-				</div>
 			</nav>
 		</div>
 		<div id="layoutSidenav_content">
@@ -135,19 +114,16 @@
 				<div class="container-fluid">
 					<h1 class="mt-4">Charts</h1>
 					<ol class="breadcrumb mb-4">
-						<li class="breadcrumb-item"><a href="index.html">Dashboard</a></li>
+						<li class="breadcrumb-item"><a href="index.jsp">Dashboard</a></li>
 						<li class="breadcrumb-item active">Charts</li>
 					</ol>
+					
 					<div class="card mb-4">
-						<div class="card-body">
-							Chart.js is a third party plugin that is used to generate the
-							charts in this template. The charts below have been customized -
-							for further customization options, please visit the official <a
-								target="_blank" href="https://www.chartjs.org/docs/latest/">Chart.js
-								documentation</a>.
-						</div>
+						One of three columns
 					</div>
-					<div class="card mb-4">
+					<div class="row">
+					<div class="col-lg-6">
+					<!-- <div class="card mb-4">
 						<div class="card-header">
 							<i class="fas fa-chart-area mr-1"></i>Area Chart Example
 						</div>
@@ -155,11 +131,27 @@
 							<canvas id="myAreaChart" width="100%" height="30"></canvas>
 						</div>
 						<div class="card-footer small text-muted">Updated yesterday
+							at 11:59 PM</div> -->
+					</div> 
+					</div>
+					<div class="col-lg-6">
+						One of three columns
+					<!-- <div class="card mb-4">
+						<div class="card-header">
+							<i class="fas fa-chart-area mr-1"></i>Area Chart Example 
+						</div>
+						<div class="card-body">
+							<canvas id="myAreaChart" width="100%" height="30"></canvas>
+						</div>
+						<div class="card-footer small text-muted">Updated yesterday
 							at 11:59 PM</div>
+					</div> 
+					</div> -->
 					</div>
 					<div class="row">
 						<div class="col-lg-6">
-							<div class="card mb-4">
+						One of three columns
+							<!-- <div class="card mb-4">
 								<div class="card-header">
 									<i class="fas fa-chart-bar mr-1"></i>Bar Chart Example
 								</div>
@@ -168,10 +160,12 @@
 								</div>
 								<div class="card-footer small text-muted">Updated
 									yesterday at 11:59 PM</div>
-							</div>
+							</div> -->
 						</div>
+						
 						<div class="col-lg-6">
-							<div class="card mb-4">
+						One of three columns
+							<!-- <div class="card mb-4">
 								<div class="card-header">
 									<i class="fas fa-chart-pie mr-1"></i>Pie Chart Example
 								</div>
@@ -180,12 +174,17 @@
 								</div>
 								<div class="card-footer small text-muted">Updated
 									yesterday at 11:59 PM</div>
-							</div>
+							</div> -->
 						</div>
+						
+						<div class="col-lg-6">
+						 One of three columns
+						</div>
+						
 					</div>
 				</div>
 			</main>
-			<footer class="py-4 bg-light mt-auto">
+			<!-- <footer class="py-4 bg-light mt-auto">
 				<div class="container-fluid">
 					<div
 						class="d-flex align-items-center justify-content-between small">
@@ -196,7 +195,7 @@
 						</div>
 					</div>
 				</div>
-			</footer>
+			</footer> -->
 		</div>
 	</div>
 	<script src="https://code.jquery.com/jquery-3.4.1.min.js"

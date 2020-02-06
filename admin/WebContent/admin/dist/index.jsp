@@ -18,6 +18,7 @@
 	src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.11.2/js/all.min.js"
 	crossorigin="anonymous"></script>
 </head>
+
 <body class="sb-nav-fixed">
 	<nav class="sb-topnav navbar navbar-expand navbar-dark bg-dark">
 		<a class="navbar-brand" href="index.jsp">You Shoes</a>
@@ -64,7 +65,7 @@
 								class="sb-nav-link-icon">
 								<i class="fas fa-tachometer-alt"></i>
 							</div> 홈</a>
-							<a class="nav-link" href="eventManage.jsp"><div
+							<a class="nav-link" href="/admin/FullCalendar/callIndex.jsp"><div
 								class="sb-nav-link-icon">
 								<i class="fas fa-chart-area"></i>
 							</div> 공지사항 및 이벤트 </a>
@@ -80,7 +81,7 @@
 						<div class="collapse" id="collapseLayouts"
 							aria-labelledby="headingOne" data-parent="#sidenavAccordion">
 							<nav class="sb-sidenav-menu-nested nav">
-								<a class="nav-link" href="sMemManage.jsp">판매 회원 등록 </a>
+								<a class="nav-link" href="/admin/admin/dist/sMemManage.jsp">판매 회원 등록 </a>
 							</nav>
 						</div>
 						<a class="nav-link collapsed" href="#" data-toggle="collapse"
@@ -116,9 +117,9 @@
 								</div> -->
 							</nav>
 						</div>
-						<a class="nav-link" href="#"><div class="sb-nav-link-icon">
+						<a class="nav-link" href="/admin/admin/dist/codemanage.jsp"><div class="sb-nav-link-icon">
 								<i class="fas fa-chart-area"></i>
-							</div> 코드ID</a> <a class="nav-link" href="charts.jsp"><div
+							</div> 코드ID</a> <a class="nav-link" href="/admin/admin/dist/charts.jsp"><div
 								class="sb-nav-link-icon">
 								<i class="fas fa-chart-area"></i>
 							</div> 매출</a>

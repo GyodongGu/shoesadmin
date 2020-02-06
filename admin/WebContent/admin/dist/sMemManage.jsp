@@ -19,9 +19,6 @@
 	crossorigin="anonymous"></script>
 </head>
 <body class="sb-nav-fixed">
-<div class="row no-gutters vh-100 loader-screen">
-
-</div>
 	<nav class="sb-topnav navbar navbar-expand navbar-dark bg-dark">
 		<a class="navbar-brand" href="index.jsp">You Shoes</a>
 		<button class="btn btn-link btn-sm order-1 order-lg-0"
@@ -66,7 +63,7 @@
 						<a class="nav-link" href="index.jsp"><div
 								class="sb-nav-link-icon">
 								<i class="fas fa-tachometer-alt"></i>
-							</div> 홈</a> <a class="nav-link" href="eventManage.jsp"><div
+							</div> 홈</a> <a class="nav-link" href="/admin/FullCalendar/callIndex.jsp"><div
 								class="sb-nav-link-icon">
 								<i class="fas fa-chart-area"></i>
 							</div> 공지사항 및 이벤트 </a>
@@ -124,10 +121,6 @@
 								class="sb-nav-link-icon">
 								<i class="fas fa-chart-area"></i>
 							</div> 매출</a>
-						<!-- <a class="nav-link" href="tables.html"><div
-								class="sb-nav-link-icon">
-								<i class="fas fa-table"></i>
-							</div> 테이블</a> -->
 					</div>
 				</div>
 				<div class="sb-sidenav-footer">

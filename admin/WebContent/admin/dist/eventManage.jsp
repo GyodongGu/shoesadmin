@@ -1,32 +1,44 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
-    pageEncoding="UTF-8"%>
-<%@ taglib uri="http://www.opensymphony.com/sitemesh/decorator" prefix="decorator" %>
+	pageEncoding="UTF-8"%>
+<%@ taglib uri="http://www.opensymphony.com/sitemesh/decorator"
+	prefix="decorator"%>
 <!DOCTYPE html>
 <html>
 <head>
 <meta charset="UTF-8">
 <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
+<meta name="viewport"
+	content="width=device-width, initial-scale=1, shrink-to-fit=no" />
 <meta name="description" content="" />
 <meta name="author" content="" />
 <title>You Shoes</title>
 <link href="/admin/admin/dist/css/styles.css" rel="stylesheet" />
-<link href="https://cdn.datatables.net/1.10.20/css/dataTables.bootstrap4.min.css" rel="stylesheet" crossorigin="anonymous" />
-<script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.11.2/js/all.min.js" crossorigin="anonymous"></script>
-<script src="https://code.jquery.com/jquery-3.4.1.min.js" crossorigin="anonymous"></script>
-<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.bundle.min.js" crossorigin="anonymous"></script>
+<link
+	href="https://cdn.datatables.net/1.10.20/css/dataTables.bootstrap4.min.css"
+	rel="stylesheet" crossorigin="anonymous" />
+<script
+	src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.11.2/js/all.min.js"
+	crossorigin="anonymous"></script>
+<script src="https://code.jquery.com/jquery-3.4.1.min.js"
+	crossorigin="anonymous"></script>
+<script
+	src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.bundle.min.js"
+	crossorigin="anonymous"></script>
 <script src="/admin/admin/dist/js/scripts.js"></script>
 <decorator:head />
 </head>
 <body class="sb-nav-fixed">
 	<nav class="sb-topnav navbar navbar-expand navbar-dark bg-dark">
-		<a class="navbar-brand" href="/admin/admin/dist/index.jsp">You Shoes</a>
-		<button class="btn btn-link btn-sm order-1 order-lg-0" id="sidebarToggle" href="#"> 
-		<i class="fas fa-bars"></i>
+		<a class="navbar-brand" href="/admin/admin/dist/index.jsp">You
+			Shoes</a>
+		<button class="btn btn-link btn-sm order-1 order-lg-0"
+			id="sidebarToggle" href="#">
+			<i class="fas fa-bars"></i>
 		</button>
 		<!-- Navbar Search-->
-		 <form class="d-none d-md-inline-block form-inline ml-auto mr-0 mr-md-3 my-2 my-md-0">
-			 <div class="input-group">
+		<form
+			class="d-none d-md-inline-block form-inline ml-auto mr-0 mr-md-3 my-2 my-md-0">
+			<div class="input-group" style="visibility: hidden;">
 				<input class="form-control" type="text" placeholder="Search for..."
 					aria-label="Search" aria-describedby="basic-addon2" />
 				<div class="input-group-append">
@@ -34,13 +46,16 @@
 						<i class="fas fa-search"></i>
 					</button>
 				</div>
-			</div> 
-		</form> 
+			</div>
+		</form>
 		<!-- Navbar-->
 		<ul class="navbar-nav ml-auto ml-md-0">
-			<li class="nav-item dropdown">
-			<a class="nav-link dropdown-toggle" id="userDropdown" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><i class="fas fa-user fa-fw"></i></a>
-				<div class="dropdown-menu dropdown-menu-right" aria-labelledby="userDropdown">
+			<li class="nav-item dropdown"><a
+				class="nav-link dropdown-toggle" id="userDropdown" href="#"
+				role="button" data-toggle="dropdown" aria-haspopup="true"
+				aria-expanded="false"><i class="fas fa-user fa-fw"></i></a>
+				<div class="dropdown-menu dropdown-menu-right"
+					aria-labelledby="userDropdown">
 					<a class="dropdown-item" href="#">Settings</a><a
 						class="dropdown-item" href="#">Activity Log</a>
 					<div class="dropdown-divider"></div>
@@ -58,9 +73,8 @@
 						<a class="nav-link" href="/admin/admin/dist/index.jsp"><div
 								class="sb-nav-link-icon">
 								<i class="fas fa-tachometer-alt"></i>
-							</div> 홈</a>
-							<a class="nav-link" href="/admin/FullCalendar/callIndex.jsp"><div
-								class="sb-nav-link-icon">  
+							</div> 홈</a> <a class="nav-link" href="/admin/FullCalendar/callIndex.jsp"><div
+								class="sb-nav-link-icon">
 								<i class="fas fa-chart-area"></i>
 							</div> 공지사항 및 이벤트 </a>
 						<div class="sb-sidenav-menu-heading">회원 관리</div>
@@ -75,7 +89,7 @@
 						<div class="collapse" id="collapseLayouts"
 							aria-labelledby="headingOne" data-parent="#sidenavAccordion">
 							<nav class="sb-sidenav-menu-nested nav">
-								<a class="nav-link" href="sMemManage.jsp">판매 회원 등록 </a>
+								<a class="nav-link" href="/admin/admin/dist/sMemManage.jsp">판매 회원 등록 </a>
 							</nav>
 						</div>
 						<a class="nav-link collapsed" href="#" data-toggle="collapse"
@@ -90,8 +104,8 @@
 							aria-labelledby="headingTwo" data-parent="#sidenavAccordion">
 							<nav class="sb-sidenav-menu-nested nav accordion"
 								id="sidenavAccordionPages">
-								<a class="nav-link collapsed" href="backup.jsp">구매 회원 탈퇴 후 거래내역
-								</a>
+								<a class="nav-link collapsed" href="/admin/admin/dist/backup.jsp">구매 회원 탈퇴 후
+									거래내역 </a>
 								<!-- error page -->
 								<!-- <a class="nav-link collapsed" href="#" data-toggle="collapse"
 									data-target="#pagesCollapseError" aria-expanded="false"
@@ -111,39 +125,37 @@
 								</div> -->
 							</nav>
 						</div>
-						<a class="nav-link" href="codeManage.jsp"><div class="sb-nav-link-icon">
+						<a class="nav-link" href="codeManage.jsp"><div
+								class="sb-nav-link-icon">
 								<i class="fas fa-chart-area"></i>
 							</div> 코드ID</a> <a class="nav-link" href="charts.jsp"><div
 								class="sb-nav-link-icon">
 								<i class="fas fa-chart-area"></i>
 							</div> 매출</a>
-							<!-- <a class="nav-link" href="table.jsp"><div
-								class="sb-nav-link-icon">
-								<i class="fas fa-table"></i>
-							</div> 테이블</a> -->
+
 					</div>
 				</div>
 			</nav>
 		</div>
 		<div id="layoutSidenav_content">
-		<main>
-		<div class="container-fluid">
-		<decorator:body />
+			<main>
+				<div class="container-fluid">
+					<decorator:body />
+				</div>
+			</main>
 		</div>
-		</main>
-		</div>
-		</div>
-		 <script
-			src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.8.0/Chart.min.js"
-			crossorigin="anonymous"></script>
-		<script src="assets/demo/chart-area-demo.js"></script>
-		<script src="assets/demo/chart-bar-demo.js"></script>
-		<script
-			src="https://cdn.datatables.net/1.10.20/js/jquery.dataTables.min.js"
-			crossorigin="anonymous"></script>
-		<script
-			src="https://cdn.datatables.net/1.10.20/js/dataTables.bootstrap4.min.js"
-			crossorigin="anonymous"></script>
-		<script src="assets/demo/datatables-demo.js"></script> 
-		</body>
+	</div>
+	<script
+		src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.8.0/Chart.min.js"
+		crossorigin="anonymous"></script>
+	<script src="assets/demo/chart-area-demo.js"></script>
+	<script src="assets/demo/chart-bar-demo.js"></script>
+	<script
+		src="https://cdn.datatables.net/1.10.20/js/jquery.dataTables.min.js"
+		crossorigin="anonymous"></script>
+	<script
+		src="https://cdn.datatables.net/1.10.20/js/dataTables.bootstrap4.min.js"
+		crossorigin="anonymous"></script>
+	<script src="assets/demo/datatables-demo.js"></script>
+</body>
 </html>

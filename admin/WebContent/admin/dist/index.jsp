@@ -168,7 +168,7 @@
 					</div>
 					<div class="card mb-4">
 						<div class="card-header">
-							<i class="fas fa-table mr-1"></i>DataTable Example
+							<i class="fas fa-table mr-1"></i>공지사항 및 이벤트
 						</div>
 						<div class="card-body">
 							<div class="table-responsive">

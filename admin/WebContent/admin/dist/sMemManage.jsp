@@ -19,6 +19,9 @@
 	crossorigin="anonymous"></script>
 </head>
 <body class="sb-nav-fixed">
+<div class="row no-gutters vh-100 loader-screen">
+
+</div>
 	<nav class="sb-topnav navbar navbar-expand navbar-dark bg-dark">
 		<a class="navbar-brand" href="index.jsp">You Shoes</a>
 		<button class="btn btn-link btn-sm order-1 order-lg-0"
@@ -137,6 +140,9 @@
 			<div class="container">
 				<div class="col-lg-6 col-md-12">
 					<form>
+						<div class="text-center mt-5">
+							<p class="h2">회원등록</p>
+						</div>
 						<div class="form-group row mt-5">
 							<label class="col-4">아이디</label>
 							<div class="col-8">
@@ -186,12 +192,12 @@
 						<div class="form-group row">
 							<label class="col-4" for="exampleFormControlTextarea1">가게
 								관련 비고</label>
-							<div>
-								<textarea class="form-control col-8"
-									id="exampleFormControlTextarea1" rows="3"></textarea>
+							<div class="col-8">
+								<textarea class="form-control"
+									id="exampleFormControlTextarea1" rows="5" cols="40"></textarea>
 							</div>
 						</div>
-						<div align="right">
+						<div class="float-right">
 							<button class="btn btn-primary" type="submit">등록</button>
 						</div>
 					</form>

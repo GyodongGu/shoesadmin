@@ -2,8 +2,10 @@
 <decorators defaultdir="/admin/dist/">
 	<decorator name="basic-theme" page="eventManage.jsp">
 		<pattern>*.jsp</pattern>
+		<pattern>*.do</pattern>
 	</decorator>
-	<exclude>
+	<excludes>
 	<pattern>eventManage.jsp</pattern>
-	</exclude>
+	<pattern>/ajax/*</pattern>
+	</excludes>
 </decorators>

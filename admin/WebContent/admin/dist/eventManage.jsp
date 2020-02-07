@@ -31,7 +31,8 @@
 <body class="sb-nav-fixed">
 	<nav class="sb-topnav navbar navbar-expand navbar-dark bg-dark">
 		<a class="navbar-brand" href="index.jsp">You Shoes</a>
-		<button class="btn btn-link btn-sm order-1 order-lg-0" id="sidebarToggle" href="#">
+		<button class="btn btn-link btn-sm order-1 order-lg-0"
+			id="sidebarToggle" href="#">
 			<i class="fas fa-bars"></i>
 		</button>
 		<!-- Navbar Search-->
@@ -73,9 +74,10 @@
 								class="sb-nav-link-icon">
 								<i class="fas fa-tachometer-alt"></i>
 							</div> 홈</a> <a class="nav-link" href="callendar.jsp">
-							 <div class="sb-nav-link-icon">
-							<i class="fas fa-chart-area"></i>
-							</div> 공지사항 및 이벤트 </a>
+							<div class="sb-nav-link-icon">
+								<i class="fas fa-chart-area"></i>
+							</div> 공지사항 및 이벤트
+						</a>
 						<div class="sb-sidenav-menu-heading">회원 관리</div>
 						<a class="nav-link collapsed" href="#" data-toggle="collapse"
 							data-target="#collapseLayouts" aria-expanded="false"
@@ -110,7 +112,8 @@
 						<a class="nav-link" href="codeManage.jsp"><div
 								class="sb-nav-link-icon">
 								<i class="fas fa-chart-area"></i>
-							</div> 코드ID</a> <a class="nav-link" href="charts.jsp"><div class="sb-nav-link-icon">
+							</div> 코드ID</a> <a class="nav-link" href="charts.jsp"><div
+								class="sb-nav-link-icon">
 								<i class="fas fa-chart-area"></i>
 							</div> 매출</a>
 
@@ -125,19 +128,19 @@
 				</div>
 			</main>
 		</div>
-	</div> 
-<script src="js/scripts.js"></script> 
+	</div>
+	<script src="js/scripts.js"></script>
 	<script
 		src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.8.0/Chart.min.js"
 		crossorigin="anonymous"></script>
-			<script src="assets/demo/chart-area-demo.js"></script>
+	<script src="assets/demo/chart-area-demo.js"></script>
 	<script src="assets/demo/chart-bar-demo.js"></script>
-		<script
+	<script
 		src="https://cdn.datatables.net/1.10.20/js/jquery.dataTables.min.js"
 		crossorigin="anonymous"></script>
 	<script
 		src="https://cdn.datatables.net/1.10.20/js/dataTables.bootstrap4.min.js"
 		crossorigin="anonymous"></script>
-			<script src="assets/demo/datatables-demo.js"></script>
+	<script src="assets/demo/datatables-demo.js"></script>
 </body>
 </html>

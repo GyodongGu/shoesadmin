@@ -12,8 +12,8 @@
 </head>
 <body>
 
-	<div class="col-lg-6 col-md-12">
-		<form class="form-group">
+	<div class="row">
+		<div class="card col-lg-6">
 			<div class="text-center mt-3">
 				<p class="h2">회원등록</p>
 			</div>
@@ -80,9 +80,12 @@
 				</div>
 			</div>
 			<div class="float-right">
-				<input class="btn btn-primary" type="submit" value="등록">
+				<input class="btn btn-primary btn-lg" type="submit" value="등 록">
 			</div>
-		</form>
+		</div>
+		<div class="card col-lg-6">
+			뭐넣지?
+		</div>
 	</div>
 	<!-- <div class="card-header">
 				<i class="fas fa-table mr-1"></i>판매 회원 목록

@@ -69,16 +69,23 @@
 				id="sidenavAccordion">
 				<div class="sb-sidenav-menu">
 					<div class="nav">
-						<div class="sb-sidenav-menu-heading">Core</div>
+						<div class="sb-sidenav-menu-heading"></div>
 						<a class="nav-link" href="index.jsp"><div
 								class="sb-nav-link-icon">
 								<i class="fas fa-tachometer-alt"></i>
-							</div> 홈</a> <a class="nav-link" href="callendar.jsp">
+							</div> 홈</a> <a class="nav-link" href="AlertEvent.jsp">
 							<div class="sb-nav-link-icon">
 								<i class="fas fa-chart-area"></i>
-							</div> 공지사항 및 이벤트
+							</div>공지사항&이벤트</a>
+							<br>
+							<div class="sb-sidenav-menu-heading"></div>
+						<a class="nav-link" href="callendar.jsp"><div
+								class="sb-nav-link-icon">
+								<i class="fas fa-tachometer-alt"></i>
+							</div>일정관리</a>
+							
 						</a>
-						<div class="sb-sidenav-menu-heading">회원 관리</div>
+						<div class="sb-sidenav-menu-heading"></div>
 						<a class="nav-link collapsed" href="#" data-toggle="collapse"
 							data-target="#collapseLayouts" aria-expanded="false"
 							aria-controls="collapseLayouts"><div class="sb-nav-link-icon">

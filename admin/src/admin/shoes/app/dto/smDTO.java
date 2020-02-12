@@ -1,0 +1,107 @@
+package admin.shoes.app.dto;
+
+import java.sql.Date;
+
+public class smDTO {
+	private String sm_id;
+	private String shop_name;
+	private String sm_pw;
+	private String sm_name;
+	private int sm_tell;
+	private int business_no;
+	private Date sm_date;
+	private int sm_post;
+	private String sm_addr1;
+	private String sm_addr2;
+	private String sm_stat_cd;
+	private String mgr_auth_cd;
+	private String sm_remark;
+
+	
+	public String getSm_id() {
+		return sm_id;
+	}
+	public void setSm_id(String sm_id) {
+		this.sm_id = sm_id;
+	}
+	public String getShop_name() {
+		return shop_name;
+	}
+	public void setShop_name(String shop_name) {
+		this.shop_name = shop_name;
+	}
+	public String getSm_pw() {
+		return sm_pw;
+	}
+	public void setSm_pw(String sm_pw) {
+		this.sm_pw = sm_pw;
+	}
+	public String getSm_name() {
+		return sm_name;
+	}
+	public void setSm_name(String sm_name) {
+		this.sm_name = sm_name;
+	}
+	public int getSm_tell() {
+		return sm_tell;
+	}
+	public void setSm_tell(int sm_tell) {
+		this.sm_tell = sm_tell;
+	}
+	public int getBusiness_no() {
+		return business_no;
+	}
+	public void setBusiness_no(int business_no) {
+		this.business_no = business_no;
+	}
+	public Date getSm_date() {
+		return sm_date;
+	}
+	public void setSm_date(Date sm_date) {
+		this.sm_date = sm_date;
+	}
+	public int getSm_post() {
+		return sm_post;
+	}
+	public void setSm_post(int sm_post) {
+		this.sm_post = sm_post;
+	}
+	public String getSm_addr1() {
+		return sm_addr1;
+	}
+	public void setSm_addr1(String sm_addr1) {
+		this.sm_addr1 = sm_addr1;
+	}
+	public String getSm_addr2() {
+		return sm_addr2;
+	}
+	public void setSm_addr2(String sm_addr2) {
+		this.sm_addr2 = sm_addr2;
+	}
+	public String getSm_stat_cd() {
+		return sm_stat_cd;
+	}
+	public void setSm_stat_cd(String sm_stat_cd) {
+		this.sm_stat_cd = sm_stat_cd;
+	}
+	public String getMgr_auth_cd() {
+		return mgr_auth_cd;
+	}
+	public void setMgr_auth_cd(String mgr_auth_cd) {
+		this.mgr_auth_cd = mgr_auth_cd;
+	}
+	public String getSm_remark() {
+		return sm_remark;
+	}
+	public void setSm_remark(String sm_remark) {
+		this.sm_remark = sm_remark;
+	}
+	@Override
+	public String toString() {
+		return "smDTO [sm_id=" + sm_id + ", shop_name=" + shop_name + ", sm_pw=" + sm_pw + ", sm_name=" + sm_name
+				+ ", sm_tell=" + sm_tell + ", business_no=" + business_no + ", sm_date=" + sm_date + ", sm_post="
+				+ sm_post + ", sm_addr1=" + sm_addr1 + ", sm_addr2=" + sm_addr2 + ", sm_stat_cd=" + sm_stat_cd
+				+ ", mgr_auth_cd=" + mgr_auth_cd + ", sm_remark=" + sm_remark + "]";
+	}
+	
+}

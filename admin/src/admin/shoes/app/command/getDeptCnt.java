@@ -8,8 +8,8 @@ import javax.servlet.ServletException;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import admin.shoes.app.ajax.chartDAO;
 import admin.shoes.app.common.Command;
+import admin.shoes.app.dao.chartDAO;
 import net.sf.json.JSONArray;
 
 public class getDeptCnt implements Command{

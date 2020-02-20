@@ -8,10 +8,8 @@
 <title>You Shoes</title>
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
 <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
-<script src="../dist/css/styles.css"></script>
+<script src="${pageContext.request.contextPath}/view/css/styles.css"></script>
 <script type="text/javascript">
-
-	
     // Load the Visualization API and the corechart package.
     google.charts.load('current', {'packages':['corechart']});
  

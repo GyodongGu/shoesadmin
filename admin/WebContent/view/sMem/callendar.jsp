@@ -1,5 +1,4 @@
-<%@ page language="java" contentType="text/html; charset=UTF-8"
-	pageEncoding="UTF-8"%>
+<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html lang="ko">
 
@@ -7,11 +6,11 @@
 <meta charset="utf-8" />
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <title>FullCalendar</title>
-<link href='../callendar/packages/core/main.css' rel='stylesheet' />
-<link href='../callendar/packages/daygrid/main.css' rel='stylesheet' />
-<script src='../callendar/packages/core/main.js'></script>
-<script src='../callendar/packages/daygrid/main.js'></script>
-<script src='../callendar/packages/interaction/main.js'></script>
+<link href='${pageContext.request.contextPath}/view/callendar/packages/core/main.css' rel='stylesheet' />
+<link href='${pageContext.request.contextPath}/view/callendar/packages/daygrid/main.css' rel='stylesheet' />
+<script src='${pageContext.request.contextPath}/view/callendar/packages/core/main.js'></script>
+<script src='${pageContext.request.contextPath}/view/callendar/packages/daygrid/main.js'></script>
+<script src='${pageContext.request.contextPath}/view/callendar/packages/interaction/main.js'></script>
 <script>
 	document.addEventListener('DOMContentLoaded', function() {
 		var calendarEl = document.getElementById('calendar');

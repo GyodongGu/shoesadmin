@@ -1,4 +1,4 @@
-package admin.shoes.app.common;
+package admin.shoes.app.controller;
 
 import java.io.IOException;
 import java.util.HashMap;
@@ -12,40 +12,25 @@ import javax.servlet.http.HttpServletResponse;
 
 import admin.shoes.app.command.SetHoliday;
 import admin.shoes.app.command.getDeptCnt;
+import admin.shoes.app.common.Command;
 
 
-@WebServlet("*.do") // localhost/model1/ //.do
-public class NewFrontController extends HttpServlet {
+@WebServlet("*.do") 
+public class FrontController extends HttpServlet {
 
 	private static final long serialVersionUID = 1L;
 	HashMap<String, Command> cont = new HashMap<String, Command>();
 
-	public NewFrontController() {
+	public FrontController() {
 		super();
 	}
 
 	public void init(ServletConfig config) throws ServletException {
-		// 해쉬맵 구조를 put() 시켜준다.
-		// cont.put("/index.do", new IndexCommand()); // 홈페이지 호출
-		// board
-		// 등록
-
-		// 수정
-		// 삭제
-		// 상세보기
-		// 목록
-		// 수정폼
-		// 등록폼
-		// member
+		/* 관리자 */
 		
-		//ajax
-		
-		//사용자관리
-		
-		//일정 업로드
-		cont.put("/ajax/SetHoliday.do", new SetHoliday());
-		//차트데이터
-		cont.put("/ajax/getDeptCnt.do", new getDeptCnt());
+		/* 판매자 */
+		cont.put("/ajax/SetHoliday.do", new SetHoliday());  //일정 업로드
+		cont.put("/ajax/getDeptCnt.do", new getDeptCnt());  //차트데이터
 		
 	}
 

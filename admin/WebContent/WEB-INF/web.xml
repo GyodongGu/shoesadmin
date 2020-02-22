@@ -4,6 +4,14 @@
 	<welcome-file-list>
 		<welcome-file>sMem.jsp</welcome-file>
 	</welcome-file-list>
+	<error-page>
+		<error-code>404</error-code>
+		<location>/view/error/404error.html</location>
+	</error-page>
+	<error-page>
+		<error-code>500</error-code>
+		<location>/view/error/500error.html</location>
+	</error-page>
 	<filter>
 		<filter-name>sitemesh</filter-name>
 		<filter-class>com.opensymphony.sitemesh.webapp.SiteMeshFilter</filter-class>
@@ -11,5 +19,9 @@
 	<filter-mapping>
 		<filter-name>sitemesh</filter-name>
 		<url-pattern>*.jsp</url-pattern>
+	</filter-mapping>
+	<filter-mapping>
+		<filter-name>sitemesh</filter-name>
+		<url-pattern>*.do</url-pattern>
 	</filter-mapping>
 </web-app>

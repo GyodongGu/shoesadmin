@@ -15,7 +15,7 @@
 <script src="https://code.jquery.com/jquery-3.4.1.min.js" crossorigin="anonymous"></script>
 <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.bundle.min.js" crossorigin="anonymous"></script>
 <script src="${pageContext.request.contextPath}/view/js/scripts.js"></script>
-<script src="assets/demo/chart-area-demo.js"></script>
+<script src="${pageContext.request.contextPath}/view/assets/demo/chart-area-demo.js"></script>
 </head>
 <body class="sb-nav-fixed">
 

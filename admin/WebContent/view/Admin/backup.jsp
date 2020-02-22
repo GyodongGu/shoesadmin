@@ -1,8 +1,9 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
+<%@ taglib uri="http://www.opensymphony.com/sitemesh/decorator" prefix="decorator"%>
 <!DOCTYPE html>
 <html>
 <head>
-<title>You Shoes</title>
+<title>YouShoes</title>
 </head>
 <body>
 	<br>
@@ -16,12 +17,14 @@
 			</tr>
 		</thead>
 		<tbody>
+		
 			<tr>
-				<th scope="row">1</th>
+				<th scope="row"></th>
 				<td>Mark</td>
 				<td>Otto</td>
 				<td>@mdo</td>
 			</tr>
+			
 		</tbody>
 	</table>
 </body>

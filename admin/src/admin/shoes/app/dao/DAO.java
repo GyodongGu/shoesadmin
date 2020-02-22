@@ -16,15 +16,14 @@ public class DAO {
 	
 	private String driver = "oracle.jdbc.driver.OracleDriver";
 	private String url = "jdbc:oracle:thin:@localhost:1521:xe";
-	private String user = "youshoes";
-	private String pw = "1234";
+	private String user = "you";
+	private String pw = "you";
 	
 	public DAO() {
 		try {
 			Class.forName(driver);
 			conn=DriverManager.getConnection(url, user, pw);
 		} catch (ClassNotFoundException | SQLException e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
 	}

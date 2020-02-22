@@ -27,6 +27,14 @@ public class FrontController extends HttpServlet {
 
 	public void init(ServletConfig config) throws ServletException {
 		/* 관리자 */
+		cont.put("/ajax/SetHoliday.do", new SetHoliday());  //코드ID 조회
+		cont.put("/ajax/SetHoliday.do", new SetHoliday());  //구매회원 백업 거래내역 조회
+		cont.put("/ajax/SetHoliday.do", new SetHoliday());  //판매회원 등록
+		cont.put("/ajax/SetHoliday.do", new SetHoliday());  //공지사항 등록
+		
+		
+		
+		
 		
 		/* 판매자 */
 		cont.put("/ajax/SetHoliday.do", new SetHoliday());  //일정 업로드

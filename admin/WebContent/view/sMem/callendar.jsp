@@ -23,7 +23,7 @@
 			},
 			eventSources: [
 				
-			]
+			],
 			customButtons : {
 				addEventButton : {
 					text : '휴일일정 등록',

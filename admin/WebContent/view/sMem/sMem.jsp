@@ -3,7 +3,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-<title>You Shoes</title>
+<title>YouShoes</title>
 </head>
 <body>
 	<h1 class="mt-4">메인보드(Dashboard)</h1>

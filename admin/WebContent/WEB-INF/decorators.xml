@@ -1,20 +1,12 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<decorators defaultdir="/view/">
-	<decorator name="basic-theme" page="siteMesh.jsp">
-		<pattern>/view/Admin/backup.jsp</pattern>
-		<pattern>/view/Admin/codeManage.jsp</pattern>
-		<pattern>/view/Admin/eventInsert.jsp</pattern>
-		<pattern>/view/Admin/backup.jsp</pattern>
-		<pattern>/view/Admin/InsertEvent.jsp</pattern>
-		<pattern>/view/Admin/sMem.jsp</pattern>
-		<pattern>/view/Admin/sMemManage.jsp</pattern>
-		
-	
+<decorators defaultdir="/view/Admin/">
+	<decorator name="sideSubmenu" page="siteMesh.jsp">
+		<pattern>/view/Admin/*</pattern>
 		<pattern>*.do</pattern>
 	</decorator>
+
 	<excludes>
-	<pattern>siteMesh.jsp</pattern>
-	
-	<pattern>/ajax/*</pattern>
+		<pattern>siteMesh.jsp</pattern>
+		<pattern>/ajax/*</pattern>
 	</excludes>
 </decorators>

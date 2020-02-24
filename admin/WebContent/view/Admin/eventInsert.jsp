@@ -1,5 +1,5 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
-<%@ taglib uri="http://www.opensymphony.com/sitemesh/decorator" prefix="decorator"%>
+<%@ taglib prefix="decorator" uri="http://www.opensymphony.com/sitemesh/decorator"%>
 <!DOCTYPE html>
 <html>
 <head>
@@ -8,7 +8,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
 <meta name="description" content="" />
 <meta name="author" content="" />
-<title>YouShoes</title>
+<title><decorator:title default="traveler" /></title>
 <link href="${pageContext.request.contextPath}/view/css/styles.css" rel="stylesheet" />
 <link href="https://cdn.datatables.net/1.10.20/css/dataTables.bootstrap4.min.css" rel="stylesheet" crossorigin="anonymous" />
 <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.11.2/js/all.min.js" crossorigin="anonymous"></script>
@@ -32,9 +32,12 @@
 		</form>
 		<!-- Navbar-->
 		<ul class="navbar-nav ml-auto ml-md-0">
-			<li class="nav-item dropdown"><a class="nav-link dropdown-toggle" id="userDropdown" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><i class="fas fa-user fa-fw"></i></a>
+			<li class="nav-item dropdown"><a class="nav-link dropdown-toggle" id="userDropdown" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+					<i class="fas fa-user fa-fw"></i>
+				</a>
 				<div class="dropdown-menu dropdown-menu-right" aria-labelledby="userDropdown">
-					<a class="dropdown-item" href="#">Settings</a><a class="dropdown-item" href="#">Activity Log</a>
+					<a class="dropdown-item" href="#">Settings</a>
+					<a class="dropdown-item" href="#">Activity Log</a>
 					<div class="dropdown-divider"></div>
 					<a class="dropdown-item" href="login.html">Logout</a>
 				</div></li>
@@ -46,39 +49,59 @@
 				<div class="sb-sidenav-menu">
 					<div class="nav">
 						<div class="sb-sidenav-menu-heading">Core</div>
-						<a class="nav-link" href="#"><div class="sb-nav-link-icon">
+						<a class="nav-link" href="#">
+							<div class="sb-nav-link-icon">
 								<i class="fas fa-tachometer-alt"></i>
-							</div> 홈</a> <a class="nav-link" href="callneder.jsp"><div class="sb-nav-link-icon">
+							</div>
+							홈
+						</a>
+						<a class="nav-link" href="callneder.jsp">
+							<div class="sb-nav-link-icon">
 								<i class="fas fa-chart-area"></i>
-							</div> 공지사항 및 이벤트 </a>
+							</div>
+							공지사항 및 이벤트
+						</a>
 						<div class="sb-sidenav-menu-heading">회원 관리</div>
-						<a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseLayouts" aria-expanded="false" aria-controls="collapseLayouts"><div class="sb-nav-link-icon">
+						<a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseLayouts" aria-expanded="false" aria-controls="collapseLayouts">
+							<div class="sb-nav-link-icon">
 								<i class="fas fa-columns"></i>
-							</div> 판매 회원 관리
+							</div>
+							판매 회원 관리
 							<div class="sb-sidenav-collapse-arrow">
 								<i class="fas fa-angle-down"></i>
-							</div></a>
+							</div>
+						</a>
 						<div class="collapse" id="collapseLayouts" aria-labelledby="headingOne" data-parent="#sidenavAccordion">
 							<nav class="sb-sidenav-menu-nested nav">
 								<a class="nav-link" href="sMemManage.jsp">판매 회원 등록 </a>
 							</nav>
 						</div>
-						<a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapsePages" aria-expanded="false" aria-controls="collapsePages"><div class="sb-nav-link-icon">
+						<a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapsePages" aria-expanded="false" aria-controls="collapsePages">
+							<div class="sb-nav-link-icon">
 								<i class="fas fa-book-open"></i>
-							</div> 구매 회원 관리
+							</div>
+							구매 회원 관리
 							<div class="sb-sidenav-collapse-arrow">
 								<i class="fas fa-angle-down"></i>
-							</div></a>
+							</div>
+						</a>
 						<div class="collapse" id="collapsePages" aria-labelledby="headingTwo" data-parent="#sidenavAccordion">
 							<nav class="sb-sidenav-menu-nested nav accordion" id="sidenavAccordionPages">
 								<a class="nav-link collapsed" href="backup.jsp">구매 회원 탈퇴 후 거래내역 </a>
 							</nav>
 						</div>
-						<a class="nav-link" href="codeManage.jsp"><div class="sb-nav-link-icon">
+						<a class="nav-link" href="codeManage.jsp">
+							<div class="sb-nav-link-icon">
 								<i class="fas fa-chart-area"></i>
-							</div> 코드ID</a> <a class="nav-link" href="charts.jsp"><div class="sb-nav-link-icon">
+							</div>
+							코드ID
+						</a>
+						<a class="nav-link" href="charts.jsp">
+							<div class="sb-nav-link-icon">
 								<i class="fas fa-chart-area"></i>
-							</div> 매출</a>
+							</div>
+							매출
+						</a>
 					</div>
 				</div>
 			</nav>

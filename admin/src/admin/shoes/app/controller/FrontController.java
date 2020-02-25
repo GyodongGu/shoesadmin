@@ -51,7 +51,7 @@ public class FrontController extends HttpServlet {
 		String context = request.getContextPath();
 		String path = uri.substring(context.length());
 		// 로그 처리
-		System.out.println("path=" + path);
+		//System.out.println("path=" + path);
 		// 권한 체크 (로그인체크)
 		Command commandImpl = cont.get(path);
 		String page = null;
@@ -63,7 +63,7 @@ public class FrontController extends HttpServlet {
 					String view = page.substring(9);
 					response.sendRedirect(view);
 				} else if (page.startsWith("ajax:")) {
-					System.out.println(page.substring(5));
+					//System.out.println(page.substring(5));
 					response.getWriter().append(page.substring(5));
 				} else if (page.startsWith("script:")) {
 					response.getWriter().append("<script>").append(page.substring(7)).append("<script>");

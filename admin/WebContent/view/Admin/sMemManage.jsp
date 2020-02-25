@@ -5,6 +5,7 @@
 <head>
 </head>
 <body>
+<br>
 	<div>
 		<div class="card text-center">
 			<div class="card-header">판매 회원 등록</div>

@@ -67,7 +67,7 @@ integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9If
 						<div class="sb-sidenav-menu-heading"></div>
 						<!-- 사이드바 기본 메뉴들 -->
 						<a class="nav-link" href="${pageContext.request.contextPath}/view/sMem/sMem.jsp"> 홈 </a>
-						<a class="nav-link" href="${pageContext.request.contextPath}/view/Admin/eventInsert.jsp"> 공지사항 </a>
+						<a class="nav-link" href="${pageContext.request.contextPath}/view/Admin/InsertEvent.jsp"> 공지사항 </a>
 						<a class="nav-link" href="${pageContext.request.contextPath}/view/sMem/callendar.jsp"> 일정관리 </a>
 						<!-- // 사이드바 기본 메뉴들 -->
 						<div class="sb-sidenav-menu-heading"></div>

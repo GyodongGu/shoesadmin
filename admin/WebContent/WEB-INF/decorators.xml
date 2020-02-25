@@ -4,17 +4,16 @@
 		<pattern>/view/Admin/backup.jsp</pattern>
 		<pattern>/view/Admin/codeManage.jsp</pattern>
 		<pattern>/view/Admin/eventInsert.jsp</pattern>
-		<pattern>/view/Admin/backup.jsp</pattern>
-		<pattern>/view/Admin/InsertEvent.jsp</pattern>
-		<pattern>/view/Admin/sMem.jsp</pattern>
 		<pattern>/view/Admin/sMemManage.jsp</pattern>
-		
-	
+		<pattern>/view/sMem/callendar.jsp</pattern>
+		<pattern>/view/sMem/charts.jsp</pattern>
+		<pattern>/view/sMem/shopUpdate.jsp</pattern>
+		<pattern>/view/sMem/sMem.jsp</pattern>	
 		<pattern>*.do</pattern>
 	</decorator>
+	
 	<excludes>
 	<pattern>siteMesh.jsp</pattern>
-	
 	<pattern>/ajax/*</pattern>
 	</excludes>
 </decorators>

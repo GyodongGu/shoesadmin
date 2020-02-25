@@ -1,15 +1,9 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
-<%@ taglib uri="http://www.opensymphony.com/sitemesh/decorator"
-	prefix="decorator"%>
 <!DOCTYPE html>
-<html lang="en">
+<html>
 <head>
-<title>You Shoes</title>
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
-<script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
-<script src="${pageContext.request.contextPath}/view/css/styles.css"></script>
-<script type="text/javascript">
+<script>
     // Load the Visualization API and the corechart package.
     google.charts.load('current', {'packages':['corechart']});
  
@@ -143,7 +137,6 @@
       	}); 
         }
   </script> 
- 
 </head>
 <body>
 	<br>

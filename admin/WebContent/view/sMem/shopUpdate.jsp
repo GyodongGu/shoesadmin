@@ -3,8 +3,6 @@
 <!DOCTYPE html>
 <html>
 <head>
-<meta charset="UTF-8">
-<title>You Shoes</title>
 <style type="text/css">
 form {
 	margin: 0 auto;

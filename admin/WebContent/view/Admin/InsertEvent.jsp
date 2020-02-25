@@ -3,8 +3,6 @@
 <!DOCTYPE html>
 <html>
 <head>
-<meta charset="UTF-8">
-<title>YouShoes</title>
 </head>
 <body>
 	<div class="card mb-4">

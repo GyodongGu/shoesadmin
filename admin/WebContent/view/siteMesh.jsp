@@ -11,15 +11,24 @@
 <title>YouShoes</title>
 <link href="${pageContext.request.contextPath}/view/css/styles.css" rel="stylesheet" />
 <link href="https://cdn.datatables.net/1.10.20/css/dataTables.bootstrap4.min.css" rel="stylesheet" crossorigin="anonymous" />
-<script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.11.2/js/all.min.js" crossorigin="anonymous"></script>
-<script src="https://code.jquery.com/jquery-3.4.1.min.js" crossorigin="anonymous"></script>
-<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.bundle.min.js" crossorigin="anonymous"></script>
-<script src="${pageContext.request.contextPath}/view/js/scripts.js"></script>
-<script src="${pageContext.request.contextPath}/view/assets/demo/chart-area-demo.js"></script>
+<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" 
+integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.11.2/js/all.min.js" crossorigin="anonymous"></script>
+	<script src="https://code.jquery.com/jquery-3.4.1.min.js" crossorigin="anonymous"></script>
+	<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.bundle.min.js" crossorigin="anonymous"></script>
+	<script src="${pageContext.request.contextPath}/view/js/scripts.js"></script>
+	<script src="${pageContext.request.contextPath}/view/assets/demo/chart-area-demo.js"></script>
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+	<script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.8.0/Chart.min.js" crossorigin="anonymous"></script>
+	<script src="${pageContext.request.contextPath}/view/assets/demo/chart-area-demo.js"></script>
+	<script src="${pageContext.request.contextPath}/view/assets/demo/chart-bar-demo.js"></script>
+	<script src="https://cdn.datatables.net/1.10.20/js/jquery.dataTables.min.js" crossorigin="anonymous"></script>
+	<script src="https://cdn.datatables.net/1.10.20/js/dataTables.bootstrap4.min.js" crossorigin="anonymous"></script>
+	<script src="${pageContext.request.contextPath}/view/assets/demo/datatables-demo.js"></script>
+<decorator:head />
 </head>
 <body class="sb-nav-fixed">
-
-
 	<!-- 상단 메뉴바 -->
 	<nav class="sb-topnav navbar navbar-expand navbar-dark bg-dark">
 		<a class="navbar-brand" href="#">YouShoes</a>
@@ -56,8 +65,6 @@
 	</nav>
 	<!-- // 상단 메뉴바 -->
 	
-	
-	
 	<!-- 사이드 메뉴바  -->
 	<div id="layoutSidenav">
 		<div id="layoutSidenav_nav">
@@ -69,7 +76,7 @@
 						<a class="nav-link" href="${pageContext.request.contextPath}/view/sMem/sMem.jsp">
 							홈
 						</a> 
-						<a class="nav-link" href="${pageContext.request.contextPath}/view/Admin/AlertEvent.jsp">
+						<a class="nav-link" href="${pageContext.request.contextPath}/view/Admin/InsertEvevnt.jsp">
 							공지사항
 						</a> 
 						<a class="nav-link" href="${pageContext.request.contextPath}/view/sMem/callendar.jsp">
@@ -99,15 +106,8 @@
 			</nav>
 		</div>
 	</div>
-	<!-- 사이드 메뉴바  -->
-	
-	
-	<script src="${pageContext.request.contextPath}/view/js/scripts.js"></script>
-	<script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.8.0/Chart.min.js" crossorigin="anonymous"></script>
-	<script src="${pageContext.request.contextPath}/view/assets/demo/chart-area-demo.js"></script>
-	<script src="${pageContext.request.contextPath}/view/assets/demo/chart-bar-demo.js"></script>
-	<script src="https://cdn.datatables.net/1.10.20/js/jquery.dataTables.min.js" crossorigin="anonymous"></script>
-	<script src="https://cdn.datatables.net/1.10.20/js/dataTables.bootstrap4.min.js" crossorigin="anonymous"></script>
-	<script src="${pageContext.request.contextPath}/view/assets/demo/datatables-demo.js"></script>
+	<div>
+	<decorator:body />
+	</div>
 </body>
 </html>

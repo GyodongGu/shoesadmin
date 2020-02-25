@@ -1,4 +1,5 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <%@ taglib uri="http://www.opensymphony.com/sitemesh/decorator" prefix="decorator"%>
 <!DOCTYPE html>
 <html>
@@ -17,13 +18,15 @@
 			</tr>
 		</thead>
 		<tbody>
+			<c:forEach items="${codeList}" var="CodeList">
 			<tr>
-				<th scope="row">1</th>
-				<td>Mark</td>
-				<td>Otto</td>
-				<td>@mdo</td>
-				<td>@mdo</td>
+				<th scope="row">${CodeList.code_id}</th>
+				<td>${CodeList.code_type}</td>
+				<td>${CodeList.code_name}</td>
+				<td>${CodeList.code_use}</td>
+				<td>${CodeList.code_explain}</td>
 			</tr>
+			</c:forEach>
 		</tbody>
 	</table>
 </body>

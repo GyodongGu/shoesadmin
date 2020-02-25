@@ -1,17 +1,24 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <web-app xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns="http://xmlns.jcp.org/xml/ns/javaee" xsi:schemaLocation="http://xmlns.jcp.org/xml/ns/javaee http://xmlns.jcp.org/xml/ns/javaee/web-app_3_1.xsd" id="WebApp_ID" version="3.1">
 	<display-name>sMem</display-name>
+	
 	<welcome-file-list>
 		<welcome-file>sMem.jsp</welcome-file>
 	</welcome-file-list>
+	
+	
+	<!-- Error Page -->
 	<error-page>
 		<error-code>404</error-code>
-		<location>/view/error/404error.html</location>
+		<location>/view/error/404error.jsp</location>
 	</error-page>
 	<error-page>
 		<error-code>500</error-code>
-		<location>/view/error/500error.html</location>
+		<location>/view/error/500error.jsp</location>
 	</error-page>
+	<!-- // Error Page -->
+	
+	<!-- Sitemesh Page Filter -->
 	<filter>
 		<filter-name>sitemesh</filter-name>
 		<filter-class>com.opensymphony.sitemesh.webapp.SiteMeshFilter</filter-class>
@@ -24,4 +31,6 @@
 		<filter-name>sitemesh</filter-name>
 		<url-pattern>*.do</url-pattern>
 	</filter-mapping>
+	<!-- // Sitemesh Page Filter -->
+	
 </web-app>

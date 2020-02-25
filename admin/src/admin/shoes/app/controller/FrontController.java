@@ -10,8 +10,12 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import admin.shoes.app.command.InsertEventCommand;
 import admin.shoes.app.command.SetHoliday;
+import admin.shoes.app.command.backupCommand;
+import admin.shoes.app.command.codeManageCommand;
 import admin.shoes.app.command.getDeptCnt;
+import admin.shoes.app.command.sMemManageCommand;
 import admin.shoes.app.common.Command;
 
 
@@ -27,13 +31,10 @@ public class FrontController extends HttpServlet {
 
 	public void init(ServletConfig config) throws ServletException {
 		/* 관리자 */
-		cont.put("/ajax/SetHoliday.do", new SetHoliday());  //코드ID 조회
-		cont.put("/ajax/SetHoliday.do", new SetHoliday());  //구매회원 백업 거래내역 조회
-		cont.put("/ajax/SetHoliday.do", new SetHoliday());  //판매회원 등록
-		cont.put("/ajax/SetHoliday.do", new SetHoliday());  //공지사항 등록
-		
-		
-		
+		cont.put("/codeManage.do", new codeManageCommand());  //코드ID 조회
+		cont.put("/backup.do", new backupCommand());  //구매회원 백업 거래내역 조회
+		cont.put("/InsertEvent.do", new InsertEventCommand());    //공지사항 등록
+		cont.put("/sMemManage.do", new sMemManageCommand());   //판매회원 등록
 		
 		
 		/* 판매자 */

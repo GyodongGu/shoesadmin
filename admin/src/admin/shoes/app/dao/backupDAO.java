@@ -6,8 +6,14 @@ import java.util.List;
 
 import admin.shoes.app.dto.backupDTO;
 
-public class backupDAO extends DAO {
+/**
+ * @author 유승우
+ * 1. backup테이블 조회 backupSelect()
+ *
+ */
 
+public class backupDAO extends DAO {
+	// 1. backup테이블 조회 backupSelect()
 	public List<backupDTO> backupSelect() {
 		List<backupDTO> list = new ArrayList<backupDTO>();
 		String sql = "select * from backup";

@@ -31,15 +31,44 @@ public class FrontController extends HttpServlet {
 
 	public void init(ServletConfig config) throws ServletException {
 		/* 관리자 */
-		cont.put("/codeManage.do", new codeManageCommand());  //코드ID 조회
-		cont.put("/backup.do", new backupCommand());  //구매회원 백업 거래내역 조회
-		cont.put("/InsertEvent.do", new InsertEventCommand());    //공지사항 등록
-		cont.put("/sMemManage.do", new sMemManageCommand());   //판매회원 등록
+		// 기타 테이블 조회
+		cont.put("/codeManage.do", new codeManageCommand());   //코드ID 조회
+		cont.put("/backup.do", new backupCommand());           //구매회원 백업 거래내역 조회
 		
+		// 공지사항
+		cont.put("/InsertEvent.do", new InsertEventCommand()); //공지사항 조회
+		cont.put("/InsertEvent.do", new InsertEventCommand()); //공지사항 등록
+		
+		// 판매자 관리
+		cont.put("/sMemManage.do", new sMemManageCommand());   //판매회원 조회
+		cont.put("/sMemManage.do", new sMemManageCommand());   //판매회원 등록
+//		cont.put("/sMemManage.do", new sMemManageCommand());   //판매회원 수정
+//		cont.put("/sMemManage.do", new sMemManageCommand());   //판매회원 삭제
+
+		// 매출 통계
+//		cont.put("/sMemManage.do", new sMemManageCommand());   // YouShoes의 총 매출
 		
 		/* 판매자 */
+		// 매장 수정
+//		cont.put("/sMemManage.do", new sMemManageCommand());   // 매장 수정
+		
+		// 상품 등록
+//		cont.put("/sMemManage.do", new sMemManageCommand());   // 상품 등록
+//		cont.put("/sMemManage.do", new sMemManageCommand());   // 상품 수정
+//		cont.put("/sMemManage.do", new sMemManageCommand());   // 상품 삭제
+		
+		// 배송 관리 
+//		cont.put("/sMemManage.do", new sMemManageCommand());   // delivery 테이블 수정
+		
+		// 고객 관리
+//		cont.put("/sMemManage.do", new sMemManageCommand());   // 구매한 구매회원 조회
+		
+		// 일정 등록
 		cont.put("/ajax/SetHoliday.do", new SetHoliday());  //일정 업로드
 		cont.put("/ajax/getDeptCnt.do", new getDeptCnt());  //차트데이터
+		
+		// 매출 통계
+//		cont.put("/sMemManage.do", new sMemManageCommand());   // 판매자별 총 매출
 		
 	}
 

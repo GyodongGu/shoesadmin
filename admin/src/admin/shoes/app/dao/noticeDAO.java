@@ -6,11 +6,16 @@ import admin.shoes.app.dto.noticeDTO;
 
 /**
  * 
- * @author 유승우 1. 공지사항 등록 noticeInsert()
+ * @author 유승우 
+ * 1. 공지사항 조회 noticeSelect()
+ * 2. 공지사항 등록 noticeInsert() 
  */
 
 public class noticeDAO extends DAO {
-	// 1. 공지사항 등록 noticeInsert()
+	// 1. 공지사항 조회 noticeSelect()
+	
+	
+	// 2. 공지사항 등록 noticeInsert()
 	public int noticeInsert(noticeDTO dto) {
 		int n = 0;
 		String sql = "insert into notice(notice_no, notice_title, notice_date, notice_content)"

@@ -11,10 +11,11 @@ public class pmDTO {
 	private Date pm_birth;
 	private String pm_email;
 	private Date pm_date;
-	private int pm_tell;
-	private int pm_post;
+	private String pm_tell;
+	private String pm_post;
 	private String pm_addr1;
 	private String pm_addr2;
+	private String pm_addr3;
 	private int point_now;
 	
 	public int getPm_no() {
@@ -65,16 +66,16 @@ public class pmDTO {
 	public void setPm_date(Date pm_date) {
 		this.pm_date = pm_date;
 	}
-	public int getPm_tell() {
+	public String getPm_tell() {
 		return pm_tell;
 	}
-	public void setPm_tell(int pm_tell) {
+	public void setPm_tell(String pm_tell) {
 		this.pm_tell = pm_tell;
 	}
-	public int getPm_post() {
+	public String getPm_post() {
 		return pm_post;
 	}
-	public void setPm_post(int pm_post) {
+	public void setPm_post(String pm_post) {
 		this.pm_post = pm_post;
 	}
 	public String getPm_addr1() {
@@ -89,6 +90,12 @@ public class pmDTO {
 	public void setPm_addr2(String pm_addr2) {
 		this.pm_addr2 = pm_addr2;
 	}
+	public String getPm_addr3() {
+		return pm_addr3;
+	}
+	public void setPm_addr3(String pm_addr3) {
+		this.pm_addr3 = pm_addr3;
+	}
 	public int getPoint_now() {
 		return point_now;
 	}
@@ -100,8 +107,9 @@ public class pmDTO {
 		return "pmDTO [pm_no=" + pm_no + ", pm_id=" + pm_id + ", pm_pw=" + pm_pw + ", pm_name=" + pm_name
 				+ ", pm_stat_cd=" + pm_stat_cd + ", pm_birth=" + pm_birth + ", pm_email=" + pm_email + ", pm_date="
 				+ pm_date + ", pm_tell=" + pm_tell + ", pm_post=" + pm_post + ", pm_addr1=" + pm_addr1 + ", pm_addr2="
-				+ pm_addr2 + ", point_now=" + point_now + "]";
+				+ pm_addr2 + ", pm_addr3=" + pm_addr3 + ", point_now=" + point_now + "]";
 	}
 	
+		
 	
 }

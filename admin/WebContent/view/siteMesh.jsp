@@ -71,7 +71,7 @@
 						<a class="nav-link" href="${pageContext.request.contextPath}/view/Admin/backup.jsp"> 구매 회원 탈퇴 후 백업 거래 내역 </a>
 						<a class="nav-link" href="${pageContext.request.contextPath}/view/Admin/codeManage.jsp"> 코드ID </a>
 						<a class="nav-link" href="${pageContext.request.contextPath}/view/Admin/adminCharts.jsp"> 매출 </a>
-						<a class="nav-link" href="${pageContext.request.contextPath}/view/Admin/allGuest.jsp"> 전체고객리스트 </a>
+						<a class="nav-link" href="${pageContext.request.contextPath}/allGuest.do"> 전체고객리스트 </a>
 						<!-- // 관리자 메뉴 -->
 						<!-- 판매자 메뉴  -->
 						<a class="nav-link" href="${pageContext.request.contextPath}/view/sMem/shopUpdate.jsp"> 매장관리 </a>

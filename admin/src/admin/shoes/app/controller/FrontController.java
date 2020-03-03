@@ -17,6 +17,7 @@ import admin.shoes.app.command.ProductInsertFormCommand;
 import admin.shoes.app.command.SMemCommand;
 import admin.shoes.app.command.SetHoliday;
 import admin.shoes.app.command.UpdateSmemCommand;
+import admin.shoes.app.command.allGuestCommand;
 import admin.shoes.app.command.backupCommand;
 import admin.shoes.app.command.codeManageCommand;
 import admin.shoes.app.command.eventManageCommand;
@@ -43,6 +44,7 @@ public class FrontController extends HttpServlet {
 		/* 관리자 */
 		// 기타 테이블 조회
 		cont.put("/codeManage.do", new codeManageCommand()); //코드ID 조회
+		cont.put("/allGuest.do", new allGuestCommand()); //전체고객리스트
 		cont.put("/backup.do", new backupCommand()); //구매회원 백업 거래내역 조회
 
 		// 공지사항

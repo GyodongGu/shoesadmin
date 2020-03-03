@@ -2,27 +2,24 @@ package admin.shoes.app.command;
 
 import java.io.IOException;
 import java.util.List;
-import java.util.Map;
 
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import admin.shoes.app.common.Command;
-import admin.shoes.app.dao.chartDAO;
-import net.sf.json.JSONArray;
+import admin.shoes.app.dao.noticeDAO;
+import admin.shoes.app.dto.noticeDTO;
 
-public class getDeptCnt implements Command {
+public class eventManageCommand implements Command {
 
 	@Override
 	public String execute(HttpServletRequest request, HttpServletResponse response) throws IOException, ServletException {
-		// ChartDAO
-		chartDAO dao = new chartDAO();
-		List<Map<String, Object>> list = dao.getDetpCnt();
-		// Json String 변환
-		String result = JSONArray.fromObject(list).toString();
-
-		return "ajax:" + result;
+		noticeDAO ndao = new noticeDAO();
+		List<noticeDTO> sMemNotice = ndao.noticeSelect();
+		request.setAttribute("sMemNotice", sMemNotice);
+		
+		return "/view/Admin/eventManage.jsp";
 	}
 
 }

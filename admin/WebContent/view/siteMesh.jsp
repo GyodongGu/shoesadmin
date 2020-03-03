@@ -11,21 +11,17 @@
 <title>YouShoes</title>
 <link href="${pageContext.request.contextPath}/view/css/styles.css" rel="stylesheet" />
 <link href="https://cdn.datatables.net/1.10.20/css/dataTables.bootstrap4.min.css" rel="stylesheet" crossorigin="anonymous" />
-<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" 
-integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
-	<script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.11.2/js/all.min.js" crossorigin="anonymous"></script>
-	<script src="https://code.jquery.com/jquery-3.4.1.min.js" crossorigin="anonymous"></script>
-	<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.bundle.min.js" crossorigin="anonymous"></script>
-
-	<!-- charts.jsp -->
-	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
-	<script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
-	<script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.8.0/Chart.min.js" crossorigin="anonymous"></script>
-	
-	<!--  eventInsert.jsp -->
-	<link href="https://cdn.datatables.net/1.10.20/css/dataTables.bootstrap4.min.css" rel="stylesheet" crossorigin="anonymous" />
-	<script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.11.2/js/all.min.js" crossorigin="anonymous"></script>
-
+<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+<script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.11.2/js/all.min.js" crossorigin="anonymous"></script>
+<script src="https://code.jquery.com/jquery-3.4.1.min.js" crossorigin="anonymous"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.bundle.min.js" crossorigin="anonymous"></script>
+<!-- charts.jsp -->
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+<script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.8.0/Chart.min.js" crossorigin="anonymous"></script>
+<!--  eventInsert.jsp -->
+<link href="https://cdn.datatables.net/1.10.20/css/dataTables.bootstrap4.min.css" rel="stylesheet" crossorigin="anonymous" />
+<script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.11.2/js/all.min.js" crossorigin="anonymous"></script>
 <decorator:head />
 </head>
 <body class="sb-nav-fixed">
@@ -71,13 +67,12 @@ integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9If
 						<!-- // 사이드바 기본 메뉴들 -->
 						<div class="sb-sidenav-menu-heading"></div>
 						<!-- // 관리자 메뉴 -->
-						<a class="nav-link" href="${pageContext.request.contextPath}/view/Admin/sMemManage.jsp"> 판매 회원 관리 </a>
+						<a class="nav-link" href="${pageContext.request.contextPath}/sMemManage.do"> 판매 회원 관리 </a>
 						<a class="nav-link" href="${pageContext.request.contextPath}/view/Admin/backup.jsp"> 구매 회원 탈퇴 후 백업 거래 내역 </a>
 						<a class="nav-link" href="${pageContext.request.contextPath}/view/Admin/codeManage.jsp"> 코드ID </a>
 						<a class="nav-link" href="${pageContext.request.contextPath}/view/Admin/adminCharts.jsp"> 매출 </a>
 						<a class="nav-link" href="${pageContext.request.contextPath}/view/Admin/allGuest.jsp"> 전체고객리스트 </a>
 						<!-- // 관리자 메뉴 -->
-						
 						<!-- 판매자 메뉴  -->
 						<a class="nav-link" href="${pageContext.request.contextPath}/view/sMem/shopUpdate.jsp"> 매장관리 </a>
 						<a class="nav-link" href="${pageContext.request.contextPath}/view/sMem/product.jsp"> 상품 </a>
@@ -91,12 +86,11 @@ integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9If
 			</nav>
 		</div>
 		<div id="layoutSidenav_content">
-		<div class="container-fluid">
-	<decorator:body />
+			<div class="container-fluid">
+				<decorator:body />
+			</div>
+		</div>
 	</div>
-	</div>
-	</div>
-	
 	<script src="${pageContext.request.contextPath}/view/js/scripts.js"></script>
 	<script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.8.0/Chart.min.js" crossorigin="anonymous"></script>
 	<script src="${pageContext.request.contextPath}/view/assets/demo/chart-area-demo.js"></script>
@@ -104,6 +98,5 @@ integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9If
 	<script src="https://cdn.datatables.net/1.10.20/js/jquery.dataTables.min.js" crossorigin="anonymous"></script>
 	<script src="https://cdn.datatables.net/1.10.20/js/dataTables.bootstrap4.min.js" crossorigin="anonymous"></script>
 	<script src="${pageContext.request.contextPath}/view/assets/demo/datatables-demo.js"></script>
-
 </body>
 </html>

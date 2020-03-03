@@ -13,6 +13,8 @@ import javax.servlet.http.HttpServletResponse;
 import admin.shoes.app.command.DeleteSmemCommand;
 import admin.shoes.app.command.InsertEventCommand;
 import admin.shoes.app.command.InsertSmemCommand;
+import admin.shoes.app.command.ProductInsertFormCommand;
+import admin.shoes.app.command.SMemCommand;
 import admin.shoes.app.command.SetHoliday;
 import admin.shoes.app.command.UpdateSmemCommand;
 import admin.shoes.app.command.backupCommand;
@@ -36,6 +38,8 @@ public class FrontController extends HttpServlet {
 	public void init(ServletConfig config) throws ServletException {
 		charset = config.getInitParameter("charset");
 
+		
+		cont.put("/sMem.do", new SMemCommand());	//main페이지
 		/* 관리자 */
 		// 기타 테이블 조회
 		cont.put("/codeManage.do", new codeManageCommand()); //코드ID 조회
@@ -59,10 +63,11 @@ public class FrontController extends HttpServlet {
 		//		cont.put("/sMemManage.do", new sMemManageCommand());   // 매장 수정
 
 		// 상품 등록
-		//		cont.put("/sMemManage.do", new sMemManageCommand());   // 상품 등록
-		//		cont.put("/sMemManage.do", new sMemManageCommand());   // 상품 수정
-		//		cont.put("/sMemManage.do", new sMemManageCommand());   // 상품 삭제
-
+		cont.put("/productInsertForm.do", new ProductInsertFormCommand()); //상품등록페이지
+//		cont.put("/sMemManage.do", new sMemManageCommand());   // 상품 등록
+//		cont.put("/sMemManage.do", new sMemManageCommand());   // 상품 수정
+//		cont.put("/sMemManage.do", new sMemManageCommand());   // 상품 삭제
+		
 		// 배송 관리 
 		//		cont.put("/sMemManage.do", new sMemManageCommand());   // delivery 테이블 수정
 

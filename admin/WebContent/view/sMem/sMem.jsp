@@ -5,7 +5,7 @@
 <head>
 </head>
 <body>
-	<h1 class="mt-4">메인보드(Dashboard)</h1>
+	<h1 class="mt-4">메인보드(Dashboard)${nid }</h1>
 	<br>
 	<!-- 내부 전체 감싸는 부분 -->
 	<div class="row">

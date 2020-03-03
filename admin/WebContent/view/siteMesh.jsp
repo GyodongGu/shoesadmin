@@ -75,7 +75,7 @@
 						<!-- // 관리자 메뉴 -->
 						<!-- 판매자 메뉴  -->
 						<a class="nav-link" href="${pageContext.request.contextPath}/view/sMem/shopUpdate.jsp"> 매장관리 </a>
-						<a class="nav-link" href="${pageContext.request.contextPath}/view/sMem/product.jsp"> 상품 </a>
+						<a class="nav-link" href="${pageContext.request.contextPath}/productInsertForm.do"> 상품 </a>
 						<a class="nav-link" href="${pageContext.request.contextPath}/view/sMem/callendar.jsp"> 일정관리 </a>
 						<a class="nav-link" href="${pageContext.request.contextPath}/view/sMem/charts.jsp"> 매출 </a>
 						<a class="nav-link" href="${pageContext.request.contextPath}/view/sMem/guestList.jsp"> 고객관리 </a>

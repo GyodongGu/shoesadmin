@@ -68,15 +68,23 @@ integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9If
 						<!-- 사이드바 기본 메뉴들 -->
 						<a class="nav-link" href="${pageContext.request.contextPath}/view/sMem/sMem.jsp"> 홈 </a>
 						<a class="nav-link" href="${pageContext.request.contextPath}/view/Admin/eventManage.jsp"> 공지사항 </a>
-						<a class="nav-link" href="${pageContext.request.contextPath}/view/sMem/callendar.jsp"> 일정관리 </a>
 						<!-- // 사이드바 기본 메뉴들 -->
 						<div class="sb-sidenav-menu-heading"></div>
-						<!-- 사이드바 추가 관리 메뉴들 -->
+						<!-- // 관리자 메뉴 -->
 						<a class="nav-link" href="${pageContext.request.contextPath}/view/Admin/sMemManage.jsp"> 판매 회원 관리 </a>
 						<a class="nav-link" href="${pageContext.request.contextPath}/view/Admin/backup.jsp"> 구매 회원 탈퇴 후 백업 거래 내역 </a>
 						<a class="nav-link" href="${pageContext.request.contextPath}/view/Admin/codeManage.jsp"> 코드ID </a>
+						<a class="nav-link" href="${pageContext.request.contextPath}/view/Admin/adminCharts.jsp"> 매출 </a>
+						<!-- // 관리자 메뉴 -->
+						
+						<!-- 판매자 메뉴  -->
+						<a class="nav-link" href="${pageContext.request.contextPath}/view/sMem/shopUpdate.jsp"> 매장관리 </a>
+						<a class="nav-link" href="${pageContext.request.contextPath}/view/sMem/product.jsp"> 상품 </a>
+						<a class="nav-link" href="${pageContext.request.contextPath}/view/sMem/callendar.jsp"> 일정관리 </a>
 						<a class="nav-link" href="${pageContext.request.contextPath}/view/sMem/charts.jsp"> 매출 </a>
-						<!-- // 사이드바 추가 관리 메뉴들 -->
+						<a class="nav-link" href="${pageContext.request.contextPath}/view/sMem/guestList.jsp"> 고객관리 </a>
+						<a class="nav-link" href="${pageContext.request.contextPath}/view/sMem/delivery.jsp"> 배송등록 </a>
+						<!-- 판매자 메뉴  -->
 					</div>
 				</div>
 			</nav>

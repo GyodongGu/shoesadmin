@@ -8,24 +8,21 @@ import admin.shoes.app.dto.smDTO;
 
 /**
  * 
- * @author 유승우
- * 1. 판매회원 전체조회    smSelect()
- * 2. 판매회원 등록    smInsert()
- * 3. 판매회원 수정    smUpdate()
- * 4. 판매회원 삭제    smDelete()
+ * @author 유승우 1. 판매회원 전체조회 smSelect() 2. 판매회원 등록 smInsert() 3. 판매회원 수정
+ *         smUpdate() 4. 판매회원 삭제 smDelete()
  *
  */
 
-public class smDAO extends DAO { 
+public class smDAO extends DAO {
 	// 1. 판매회원 전체 조회    smSelect()
 	public List<smDTO> smSelect() {
 		List<smDTO> list = new ArrayList<smDTO>();
 		String sql = "select * from sales_member";
-		
+
 		try {
 			psmt = conn.prepareStatement(sql);
 			rs = psmt.executeQuery();
-			while(rs.next()) {
+			while (rs.next()) {
 				smDTO smdto = new smDTO();
 				smdto.setSm_id(rs.getString("sm_id"));
 				smdto.setShop_name(rs.getString("shop_name"));
@@ -49,12 +46,11 @@ public class smDAO extends DAO {
 		}
 		return list;
 	}
-	
-	// 2. 판매회원 등록    smInsert() - 미완성
+
+	// 2. 판매회원 등록    smInsert()
 	public int smInsert(smDTO dto) {
 		int n = 0;
-		String sql = "insert into sales_member(sm_id, shop_name, sm_pw, sm_name, sm_tell, business_no, sm_date, sm_post, sm_addr1, sm_addr2, sm_stat_cd, mgr_auth_cd, sm_remark)"
-				   + "values(?, ?, ?, ?, ?, ?, sysdate, ? , ?,  ?, ?, ?, ?)";
+		String sql = "insert into sales_member(sm_id, shop_name, sm_pw, sm_name, sm_tell, business_no, sm_date, sm_post, sm_addr1, sm_addr2, sm_stat_cd, mgr_auth_cd, sm_remark)" + "values(?, ?, ?, ?, ?, ?, sysdate, ? , ?,  ?, ?, ?, ?)";
 		try {
 			psmt = conn.prepareStatement(sql);
 			psmt.setString(1, dto.getSm_id());
@@ -69,7 +65,7 @@ public class smDAO extends DAO {
 			psmt.setString(10, dto.getSm_stat_cd());
 			psmt.setString(11, dto.getMgr_auth_cd());
 			psmt.setString(12, dto.getSm_remark());
-			
+
 		} catch (SQLException e) {
 			e.printStackTrace();
 		} finally {
@@ -77,41 +73,44 @@ public class smDAO extends DAO {
 		}
 		return n;
 	}
-	
+
 	// 3. 판매회원 수정    smUpdate()
-	public void smUpdate(smDTO smDTO) {
+	public int smUpdate(smDTO smDTO) {
+		int p = 0;
 		try {
-		String sql = "update sales_member set shop_name = ?, sm_pw = ?, sm_tell = ?, business_no = ?, sm_post = ?, sm_addr1 = ?, sm_addr2 = ?";
-		System.out.print(sql);
-		psmt = conn.prepareStatement(sql);
-		psmt.setString(1, smDTO.getShop_name());
-		psmt.setString(2, smDTO.getSm_pw());
-		psmt.setInt(3, smDTO.getSm_tell());
-		psmt.setInt(4, smDTO.getBusiness_no());
-		psmt.setInt(5, smDTO.getSm_post());
-		psmt.setString(6, smDTO.getSm_addr1());
-		psmt.setString(7, smDTO.getSm_addr2());
-		psmt.executeUpdate();
+			String sql = "update sales_member set shop_name = ?, sm_pw = ?, sm_tell = ?, business_no = ?, sm_post = ?, sm_addr1 = ?, sm_addr2 = ?";
+			System.out.print(sql);
+			psmt = conn.prepareStatement(sql);
+			psmt.setString(1, smDTO.getShop_name());
+			psmt.setString(2, smDTO.getSm_pw());
+			psmt.setInt(3, smDTO.getSm_tell());
+			psmt.setInt(4, smDTO.getBusiness_no());
+			psmt.setInt(5, smDTO.getSm_post());
+			psmt.setString(6, smDTO.getSm_addr1());
+			psmt.setString(7, smDTO.getSm_addr2());
+			p = psmt.executeUpdate();
 		} catch (SQLException e) {
 			e.printStackTrace();
 		} finally {
 			close();
 		}
+		return p;
 	}
-	
-	
+
 	//4. 판매회원 삭제    smDelete()
-	public void smDelete(String id) {
+	public int smDelete(smDTO smDTO) {
+		int p = 0;
 		try {
 			String sql = "delete from sales_member where sm_id = ?";
 			System.out.println(sql);
 			psmt = conn.prepareStatement(sql);
-			psmt.setString(1, id);
-			psmt.executeUpdate();
+			psmt.setString(1, smDTO.getSm_id());
+			p = psmt.executeUpdate();
 		} catch (SQLException e) {
 			e.printStackTrace();
 		} finally {
 			close();
 		}
+		return p;
 	}
 }

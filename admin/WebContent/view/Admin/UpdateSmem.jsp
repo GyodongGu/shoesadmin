@@ -5,7 +5,7 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>Insert title here</title>
+<title>판매 유저 업데이트</title>
 </head>
 <body>
 	<br>

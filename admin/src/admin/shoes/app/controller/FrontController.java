@@ -12,6 +12,7 @@ import javax.servlet.http.HttpServletResponse;
 
 import admin.shoes.app.command.DeleteSmemCommand;
 import admin.shoes.app.command.InsertEventCommand;
+import admin.shoes.app.command.InsertProductCommand;
 import admin.shoes.app.command.InsertSmemCommand;
 import admin.shoes.app.command.ProductInsertFormCommand;
 import admin.shoes.app.command.SMemCommand;
@@ -66,7 +67,7 @@ public class FrontController extends HttpServlet {
 
 		// 상품 등록
 		cont.put("/productInsertForm.do", new ProductInsertFormCommand()); //상품등록페이지
-//		cont.put("/sMemManage.do", new sMemManageCommand());   // 상품 등록
+		cont.put("/productInsert.do", new InsertProductCommand());   // 상품 등록
 //		cont.put("/sMemManage.do", new sMemManageCommand());   // 상품 수정
 //		cont.put("/sMemManage.do", new sMemManageCommand());   // 상품 삭제
 		

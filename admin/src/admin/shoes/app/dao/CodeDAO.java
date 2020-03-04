@@ -37,4 +37,29 @@ public class CodeDAO extends DAO {
 		return list;
 	}
 	
+	public List<codeDTO> SelectOneType(String type){
+		List<codeDTO> list = new ArrayList<codeDTO>();
+		
+		String sql = "select * from code where code_type=?";
+		
+		try {
+			psmt=conn.prepareStatement(sql);
+			psmt.setString(1, type);
+			rs = psmt.executeQuery();
+			while(rs.next()) {
+				codeDTO cdto = new codeDTO();
+				cdto.setCode_id(rs.getString("code_id"));
+				cdto.setCode_type(rs.getString("code_type"));
+				cdto.setCode_name(rs.getString("code_name"));
+				cdto.setCode_use(rs.getString("code_use"));
+				cdto.setCode_explain(rs.getString("code_explain"));
+				list.add(cdto);
+			}
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		return list;
+	}
+	
 }

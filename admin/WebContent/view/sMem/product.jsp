@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <!DOCTYPE html>
 <html>
 <head>
@@ -16,10 +17,16 @@
 						<h3 class="text-center font-weight-light my-4">상품 등록</h3>
 					</div>
 					<div class="card-body">
-						<form>							
+						<form name="" method="POST" action="${pageContext.request.contextPath}/productInsert.do" enctype="multipart/form-data">							
 							<div class="form-group">
 								<label class="small mb-1" for="productName">제품이름</label>
 								<input class="form-control py-4" id="productName" name="pdt_name" type="text" placeholder="제품 이름을 입력해주세요" />
+							</div>
+							<div class="form-group">
+								<p class="small mb-1">제품사진</p>
+								<input type="file" name="file1"/>
+								<input type="file" name="file2"/>
+								<input type="file" name="file3"/>
 							</div>
 							<div class="form-group">
 								<p class="small mb-1">기성화 OR 맞춤화</p>
@@ -42,8 +49,21 @@
 								<label class="small mb-1" for="pdt_price">가격</label>
 								<input class="form-control py-4" id="pdt_price" name="pdt_price" type="text" placeholder="가격을 입력해주세요" />
 							</div>
+							<div class="form-group selectsize">
+								<label class="small mb-1" for="pdt_size_cd">사이즈</label>
+								<select id="pdt_size_cd" name="pdt_size_cd">
+									<option value="">사이즈선택</option>
+									<c:forEach var="size" items="${slist }">
+										<option value="${size.code_id }">${size.code_name }</option>
+									</c:forEach>
+								</select><br>
+								<c:forEach var="color" items="${clist }">
+									<input type="checkbox" name="pdt_color_cd" value="${color.code_id }" />${color.code_name }
+								</c:forEach>
+							</div>
+							
 							<div class="form-group mt-4 mb-0">
-								<a class="btn btn-primary btn-block" href="login.html">등록</a>
+								<button type="submit" class="btn btn-primary btn-block">등록</button>
 							</div>
 						</form>
 					</div>

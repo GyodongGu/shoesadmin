@@ -17,7 +17,16 @@ public class pmDTO {
 	private String pm_addr2;
 	private String pm_addr3;
 	private int point_now;
+	private String mgr_auth_cd;
 	
+	
+	
+	public String getMgr_auth_cd() {
+		return mgr_auth_cd;
+	}
+	public void setMgr_auth_cd(String mgr_auth_cd) {
+		this.mgr_auth_cd = mgr_auth_cd;
+	}
 	public int getPm_no() {
 		return pm_no;
 	}
@@ -102,14 +111,8 @@ public class pmDTO {
 	public void setPoint_now(int point_now) {
 		this.point_now = point_now;
 	}
-	@Override
-	public String toString() {
-		return "pmDTO [pm_no=" + pm_no + ", pm_id=" + pm_id + ", pm_pw=" + pm_pw + ", pm_name=" + pm_name
-				+ ", pm_stat_cd=" + pm_stat_cd + ", pm_birth=" + pm_birth + ", pm_email=" + pm_email + ", pm_date="
-				+ pm_date + ", pm_tell=" + pm_tell + ", pm_post=" + pm_post + ", pm_addr1=" + pm_addr1 + ", pm_addr2="
-				+ pm_addr2 + ", pm_addr3=" + pm_addr3 + ", point_now=" + point_now + "]";
-	}
 	
-		
+
+	
 	
 }

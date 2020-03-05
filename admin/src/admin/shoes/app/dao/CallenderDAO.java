@@ -13,15 +13,14 @@ import admin.shoes.app.dto.dailyWorkDTO;
 
 public class CallenderDAO extends DAO{
 
-	public int insertform(Date date) {
+	public int insertform(String id, Date date) {
 		int result = 0;
 		try {
-			String sql = "insert into daily_work (sm_id, rest_date) values ('manshoes01', ?)";
+			String sql = "insert into daily_work (sm_id, rest_date) values (?, ?)";
 			psmt = conn.prepareStatement(sql);
-			//psmt.setString(1, dto.getSm_id());
-			psmt.setDate(1,  date);
+			psmt.setString(1, id);
+			psmt.setDate(2,  date);
 			result = psmt.executeUpdate();
-			System.out.println(result);
 		} catch (Exception e) {
 			e.printStackTrace();
 		}finally {
@@ -30,33 +29,34 @@ public class CallenderDAO extends DAO{
 		return result;
 	}
 	
-	public List<Map<String, Object>> selectform() {
+	public List<Map<String, Object>> selectform(String id) {
 		List<Map<String, Object>> list = new ArrayList<Map<String, Object>>();
 		try {
-			String sql = "select '' as title, rest_date as start from daily_work";
+			String sql = "select sm_id, to_char(rest_date, 'yyyy-mm-dd') as rest_date from daily_work where sm_id = ?";
 			psmt = conn.prepareStatement(sql);
+			psmt.setString(1, id);
 			rs = psmt.executeQuery();
 			while(rs.next()) {
 				Map<String, Object> map = new HashMap<String, Object>();
-				map.put("title", "");
-				map.put("start", rs.getDate("rest_date"));
+				map.put("title", "휴일");
+				map.put("start", rs.getString("rest_date"));
 				list.add(map);
-			}
+			} 
 		} catch (Exception e) {
 			e.printStackTrace();
 		}finally {
 			close();
-		}
+		} 
 		return list;
 	}
 	
-	public int deleteform(Date date) {
+	public int deleteform(dailyWorkDTO dto) {
 		int result = 0;
 		try {
-			String sql = "delete daily_work where rest_date = ?";
+			String sql = "delete daily_work where rest_date = ? and sm_id = ?";
 			psmt = conn.prepareStatement(sql);
-			//psmt.setString(1, dto.getSm_id());
-			psmt.setDate(1,  date);
+			psmt.setDate(1,  dto.getRest_date());
+			psmt.setString(2, dto.getSm_id());
 			result = psmt.executeUpdate();
 		} catch (Exception e) {
 			e.printStackTrace();

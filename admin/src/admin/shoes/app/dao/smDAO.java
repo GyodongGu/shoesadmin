@@ -28,15 +28,18 @@ public class smDAO extends DAO {
 				smdto.setShop_name(rs.getString("shop_name"));
 				smdto.setSm_pw(rs.getString("sm_pw"));
 				smdto.setSm_name(rs.getString("sm_name"));
-				smdto.setSm_tell(rs.getInt("sm_tell"));
+				smdto.setSm_tell(rs.getString("sm_tell"));
 				smdto.setBusiness_no(rs.getInt("business_no"));
 				smdto.setSm_date(rs.getDate("sm_date"));
-				smdto.setSm_post(rs.getInt("sm_post"));
+				smdto.setSm_post(rs.getString("sm_post"));
 				smdto.setSm_addr1(rs.getString("sm_addr1"));
 				smdto.setSm_addr2(rs.getString("sm_addr2"));
+				smdto.setSm_addr2(rs.getString("sm_addr3"));
 				smdto.setSm_stat_cd(rs.getString("sm_stat_cd"));
 				smdto.setMgr_auth_cd(rs.getString("mgr_auth_cd"));
 				smdto.setSm_remark(rs.getString("sm_remark"));
+				smdto.setSm_time(rs.getString("sm_time"));
+				smdto.setSm_remark(rs.getString("sm_rest"));
 				list.add(smdto);
 			}
 		} catch (SQLException e) {
@@ -57,9 +60,9 @@ public class smDAO extends DAO {
 			psmt.setString(2, dto.getShop_name());
 			psmt.setString(3, dto.getSm_pw());
 			psmt.setString(4, dto.getSm_name());
-			psmt.setInt(5, dto.getSm_tell());
+			psmt.setString(5, dto.getSm_tell());
 			psmt.setInt(6, dto.getBusiness_no());
-			psmt.setInt(7, dto.getSm_post());
+			psmt.setString(7, dto.getSm_post());
 			psmt.setString(8, dto.getSm_addr1());
 			psmt.setString(9, dto.getSm_addr2());
 			psmt.setString(10, dto.getSm_stat_cd());
@@ -83,9 +86,9 @@ public class smDAO extends DAO {
 			psmt = conn.prepareStatement(sql);
 			psmt.setString(1, smDTO.getShop_name());
 			psmt.setString(2, smDTO.getSm_pw());
-			psmt.setInt(3, smDTO.getSm_tell());
+			psmt.setString(3, smDTO.getSm_tell());
 			psmt.setInt(4, smDTO.getBusiness_no());
-			psmt.setInt(5, smDTO.getSm_post());
+			psmt.setString(5, smDTO.getSm_post());
 			psmt.setString(6, smDTO.getSm_addr1());
 			psmt.setString(7, smDTO.getSm_addr2());
 			p = psmt.executeUpdate();

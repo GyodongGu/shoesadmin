@@ -1,6 +1,7 @@
 package admin.shoes.app.dto;
 
 import java.sql.Date;
+import java.util.List;
 
 public class reviewDTO {
 	private int rw_no;
@@ -10,7 +11,23 @@ public class reviewDTO {
 	private int rw_stars;
 	private Date rw_date;
 	private String rw_content;
+	private List<imageDetailDTO> img_name;
+	private likeDTO likeview;
 	
+	
+	
+	public likeDTO getLikeview() {
+		return likeview;
+	}
+	public void setLikeview(likeDTO likeview) {
+		this.likeview = likeview;
+	}
+	public List<imageDetailDTO> getImg_name() {
+		return img_name;
+	}
+	public void setImg_name(List<imageDetailDTO> img_name) {
+		this.img_name = img_name;
+	}
 	public int getRw_no() {
 		return rw_no;
 	}

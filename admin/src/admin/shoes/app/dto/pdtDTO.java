@@ -1,6 +1,7 @@
 package admin.shoes.app.dto;
 
 import java.sql.Date;
+import java.util.List;
 
 public class pdtDTO {
 	private int pdt_no;
@@ -12,7 +13,38 @@ public class pdtDTO {
 	private int pdt_price;
 	private String pdt_stat_cd;
 	private Date pdt_date;
+	private List<imageDetailDTO>img_name;
+	private String pdt_kind_name;
+	private int pdt_size_cd;
+	private String pdt_color_cd;
 	
+	
+	
+	
+	public int getPdt_size_cd() {
+		return pdt_size_cd;
+	}
+	public void setPdt_size_cd(int pdt_size_cd) {
+		this.pdt_size_cd = pdt_size_cd;
+	}
+	public String getPdt_color_cd() {
+		return pdt_color_cd;
+	}
+	public void setPdt_color_cd(String pdt_color_cd) {
+		this.pdt_color_cd = pdt_color_cd;
+	}
+	public String getPdt_kind_name() {
+		return pdt_kind_name;
+	}
+	public void setPdt_kind_name(String pdt_kind_name) {
+		this.pdt_kind_name = pdt_kind_name;
+	}
+	public List<imageDetailDTO> getImg_name() {
+		return img_name;
+	}
+	public void setImg_name(List<imageDetailDTO> img_name) {
+		this.img_name = img_name;
+	}
 	public int getPdt_no() {
 		return pdt_no;
 	}

@@ -2,12 +2,16 @@ package admin.shoes.app.command;
 
 import java.io.File;
 import java.io.IOException;
+import java.util.ArrayList;
 import java.util.Enumeration;
+import java.util.List;
 
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
+
+import org.apache.commons.lang.StringUtils;
 
 import com.oreilly.servlet.MultipartRequest;
 import com.oreilly.servlet.multipart.DefaultFileRenamePolicy;
@@ -15,7 +19,9 @@ import com.oreilly.servlet.multipart.DefaultFileRenamePolicy;
 import admin.shoes.app.common.Command;
 import admin.shoes.app.dao.ProductDAO;
 import admin.shoes.app.dao.imageDAO;
+import admin.shoes.app.dao.optDAO;
 import admin.shoes.app.dto.imageDetailDTO;
+import admin.shoes.app.dto.optDTO;
 import admin.shoes.app.dto.pdtDTO;
 
 
@@ -40,6 +46,7 @@ public class InsertProductCommand implements Command {
 		String nid = (String) httpsession.getServletContext().getContext("/youshoes").getAttribute("nid");
 		request.setAttribute("nid", nid);
 		
+		//제품등록
 		String price = multi.getParameter("pdt_price");
 		
 		pdto.setPdt_name(multi.getParameter("pdt_name"));
@@ -51,6 +58,28 @@ public class InsertProductCommand implements Command {
 		
 		pdao.insertProduct(pdto);
 		
+		
+		//제품옵션추가
+		optDAO odao = new optDAO();
+		optDTO odto = new optDTO();
+		
+		String[] size = multi.getParameterValues("pdt_size_cd");
+		String[] color = multi.getParameterValues("pdt_color_cd");
+		System.out.println(size.length);
+		if(!size[0].equals("")) {
+			String resultcolor = StringUtils.join(color,',');
+			
+			for(int i=0; i<size.length; i++) {
+				
+				odto.setPdt_size_cd(Integer.parseInt(size[i]));
+				odto.setPdt_color_cd(resultcolor);
+				odao.insertOpt(odto);
+			}
+		}
+		
+		
+		
+		//이미지 파일 업로드
 		Enumeration fileNames = multi.getFileNames();
 		while(fileNames.hasMoreElements()) {
 			String parameter = (String) fileNames.nextElement();

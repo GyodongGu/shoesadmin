@@ -1,7 +1,12 @@
 package admin.shoes.app.dao;
 
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.util.ArrayList;
+import java.util.List;
 
+import admin.shoes.app.dto.imageDetailDTO;
 import admin.shoes.app.dto.pdtDTO;
 
 public class ProductDAO extends DAO{
@@ -30,6 +35,75 @@ public class ProductDAO extends DAO{
 		}
 		
 		return result;
+	}
+	
+	public List<pdtDTO> productList(String smid){
+		List<pdtDTO> list = new ArrayList<pdtDTO>();
+		
+		String sql = "select * from product p left outer join opt o on p.pdt_no=o.pdt_no where sm_id=?";
+		String sql1="select img_name from image i join image_detail d on i.img_no=d.img_no where section='I02' and section_no=?";
+		String sql2="select code_name from code where code_id=?";
+		
+		PreparedStatement psmt1;
+		ResultSet rs1;
+		
+		PreparedStatement psmt2;
+		ResultSet rs2;
+		
+		
+		try {
+			psmt=conn.prepareStatement(sql);
+			psmt.setString(1, smid);
+			
+			rs=psmt.executeQuery();
+			
+			while(rs.next()) {
+				
+				pdtDTO pdto = new pdtDTO();
+				pdto.setPdt_no(rs.getInt("pdt_no"));
+				pdto.setPdt_name(rs.getString("pdt_name"));
+				pdto.setSm_id(rs.getString("sm_id"));
+				pdto.setPdt_type_cd(rs.getString("pdt_type_cd"));
+				pdto.setPdt_kind_cd(rs.getString("pdt_kind_cd"));
+				pdto.setGender_cd(rs.getString("gender_cd"));
+				pdto.setPdt_price(rs.getInt("pdt_price"));
+				pdto.setPdt_stat_cd(rs.getString("pdt_stat_cd"));
+				pdto.setPdt_date(rs.getDate("pdt_date"));
+				pdto.setPdt_size_cd(rs.getInt("pdt_size_cd"));
+				pdto.setPdt_color_cd(rs.getString("pdt_color_cd"));
+				
+				
+				psmt1=conn.prepareStatement(sql1);
+				psmt1.setInt(1, rs.getInt("pdt_no"));
+				rs1=psmt1.executeQuery();
+				
+				List<imageDetailDTO> imglist = new ArrayList<imageDetailDTO>();
+				while(rs1.next()) {
+					imageDetailDTO iddto = new imageDetailDTO();
+					iddto.setImg_name(rs1.getString("img_name"));
+					imglist.add(iddto);
+				}
+				pdto.setImg_name(imglist);
+				
+				psmt2=conn.prepareStatement(sql2);
+				psmt2.setString(1, rs.getString("pdt_kind_cd"));
+				rs2=psmt2.executeQuery();
+				if(rs2.next()) {
+					pdto.setPdt_kind_name(rs2.getString("code_name"));
+				}
+				
+				list.add(pdto);
+			}
+			
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} finally {
+			close();
+		}
+		
+		
+		return list;
 	}
 
 }

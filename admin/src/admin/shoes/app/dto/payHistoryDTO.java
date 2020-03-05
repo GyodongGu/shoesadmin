@@ -2,7 +2,7 @@ package admin.shoes.app.dto;
 
 import java.sql.Date;
 
-public class payHistioryDTO {
+public class payHistoryDTO {
 	private int order_no;
 	private Date pay_date;
 	private int pay_point;
@@ -27,7 +27,7 @@ public class payHistioryDTO {
 	}
 	@Override
 	public String toString() {
-		return "payHistioryDTO [order_no=" + order_no + ", pay_date=" + pay_date + ", pay_point=" + pay_point + "]";
+		return "payHistoryDTO [order_no=" + order_no + ", pay_date=" + pay_date + ", pay_point=" + pay_point + "]";
 	}
 	
 	

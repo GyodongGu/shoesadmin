@@ -63,7 +63,7 @@
 						<div class="sb-sidenav-menu-heading"></div>
 						<!-- 사이드바 기본 메뉴들 -->
 						<a class="nav-link" href="${pageContext.request.contextPath}/view/sMem/sMem.jsp"> 홈 </a>
-						<a class="nav-link" href="${pageContext.request.contextPath}/view/Admin/eventManage.jsp"> 공지사항 </a>
+						<a class="nav-link" href="${pageContext.request.contextPath}/eventManage.do">공지사항 </a>
 						<!-- // 사이드바 기본 메뉴들 -->
 						<div class="sb-sidenav-menu-heading"></div>
 						<!-- // 관리자 메뉴 -->

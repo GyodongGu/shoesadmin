@@ -1,25 +1,38 @@
 package admin.shoes.app.dto;
 
 public class bookmarkDTO {
-	private int pdt_code;
-	private String pdt_pick;
+	private int pm_no;
+	private int pdt_no;
+	private pdtDTO pdt_name;
+	private imageDetailDTO img_name;
 	
-	public int getPdt_code() {
-		return pdt_code;
+	public int getPm_no() {
+		return pm_no;
 	}
-	public void setPdt_code(int pdt_code) {
-		this.pdt_code = pdt_code;
+	public void setPm_no(int pm_no) {
+		this.pm_no = pm_no;
 	}
-	public String getPdt_pick() {
-		return pdt_pick;
+	public int getPdt_no() {
+		return pdt_no;
 	}
-	public void setPdt_pick(String pdt_pick) {
-		this.pdt_pick = pdt_pick;
+	public void setPdt_no(int pdt_no) {
+		this.pdt_no = pdt_no;
+	}
+	public pdtDTO getPdt_name() {
+		return pdt_name;
+	}
+	public void setPdt_name(pdtDTO pdt_name) {
+		this.pdt_name = pdt_name;
+	}
+	public imageDetailDTO getImg_name() {
+		return img_name;
+	}
+	public void setImg_name(imageDetailDTO img_name) {
+		this.img_name = img_name;
 	}
 	@Override
 	public String toString() {
-		return "bookmarkDTO [pdt_code=" + pdt_code + ", pdt_pick=" + pdt_pick + "]";
+		return "bookmarkDTO [pm_no=" + pm_no + ", pdt_no=" + pdt_no + ", pdt_name=" + pdt_name + ", img_name="
+				+ img_name + "]";
 	}
-	
-	
 }

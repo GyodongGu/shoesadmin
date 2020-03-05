@@ -1,6 +1,7 @@
 package admin.shoes.app.dto;
 
 import java.sql.Date;
+import java.util.List;
 
 public class pdtDTO {
 	private int pdt_no;
@@ -12,7 +13,37 @@ public class pdtDTO {
 	private int pdt_price;
 	private String pdt_stat_cd;
 	private Date pdt_date;
+	private List<imageDetailDTO> img_name;
+	private List<optDTO> optlist;
+	private bookmarkDTO bookmark;
 	
+	
+	
+	
+	public bookmarkDTO getBookmark() {
+		return bookmark;
+	}
+	public void setBookmark(bookmarkDTO bookmark) {
+		this.bookmark = bookmark;
+	}
+	public List<optDTO> getOptlist() {
+		return optlist;
+	}
+	public void setOptlist(List<optDTO> optlist) {
+		this.optlist = optlist;
+	}
+	public List<imageDetailDTO> getImg_name() {
+		return img_name;
+	}
+	public void setImg_name(List<imageDetailDTO> img_name) {
+		this.img_name = img_name;
+	}
+	public String getPdt_name() {
+		return pdt_name;
+	}
+	public void setPdt_name(String pdt_name) {
+		this.pdt_name = pdt_name;
+	}
 	public int getPdt_no() {
 		return pdt_no;
 	}
@@ -25,18 +56,13 @@ public class pdtDTO {
 	public void setSm_id(String sm_id) {
 		this.sm_id = sm_id;
 	}
-	public String getPdt_name() {
-		return pdt_name;
-	}
-	public void setPdt_name(String pdt_name) {
-		this.pdt_name = pdt_name;
-	}
 	public String getPdt_type_cd() {
 		return pdt_type_cd;
 	}
 	public void setPdt_type_cd(String pdt_type_cd) {
 		this.pdt_type_cd = pdt_type_cd;
 	}
+
 	public String getPdt_kind_cd() {
 		return pdt_kind_cd;
 	}
@@ -74,8 +100,5 @@ public class pdtDTO {
 				+ ", pdt_stat_cd=" + pdt_stat_cd + ", pdt_date=" + pdt_date + "]";
 	}
 	
-	
-	
-	
-		
+
 }

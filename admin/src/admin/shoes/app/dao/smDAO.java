@@ -121,4 +121,76 @@ public class smDAO extends DAO {
 		}
 		return p;
 	}
+	
+	public smDTO smSelectOne(String smid) {		//판매회원 단건조회
+		smDTO smdto = new smDTO();
+		
+		String sql = "select * from sales_member where sm_id=?";
+		try {
+			psmt=conn.prepareStatement(sql);
+			psmt.setString(1, smid);
+			rs = psmt.executeQuery();
+			
+			while(rs.next()) {
+				smdto.setSm_id(rs.getString("sm_id"));
+				smdto.setShop_name(rs.getString("shop_name"));
+				smdto.setSm_pw(rs.getString("sm_pw"));
+				smdto.setSm_name(rs.getString("sm_name"));
+				smdto.setSm_tell(rs.getString("sm_tell"));
+				smdto.setBusiness_no(rs.getInt("business_no"));
+				smdto.setSm_date(rs.getDate("sm_date"));
+				smdto.setSm_post(rs.getString("sm_post"));
+				smdto.setSm_addr1(rs.getString("sm_addr1"));
+				smdto.setSm_addr2(rs.getString("sm_addr2"));
+				smdto.setSm_addr3(rs.getString("sm_addr3"));
+				smdto.setSm_stat_cd(rs.getString("sm_stat_cd"));
+				smdto.setMgr_auth_cd(rs.getString("mgr_auth_cd"));
+				smdto.setSm_remark(rs.getString("sm_remark"));
+				smdto.setSm_time(rs.getString("sm_time"));
+				smdto.setSm_rest(rs.getString("sm_rest"));
+				
+			}
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		
+		return smdto;
+	}
+	
+	public int updateShop(smDTO sdto) {
+		int result = 0;
+		
+		String sql ="update sales_member set "
+				+" shop_name = ?, sm_pw=?, sm_name=?, sm_tell=?, sm_post=?, "
+				+" sm_addr1=?, sm_addr2=?, sm_addr3=?, sm_remark=?, sm_time=?, sm_rest=? where sm_id=?";
+		
+		//shopname, pw, name, tell, post, addr123,remark, time, rest, id
+		try {
+			psmt=conn.prepareStatement(sql);
+			psmt.setString(1, sdto.getShop_name());
+			psmt.setString(2, sdto.getSm_pw());
+			psmt.setString(3, sdto.getSm_name());
+			psmt.setString(4, sdto.getSm_tell());
+			psmt.setString(5, sdto.getSm_post());
+			psmt.setString(6, sdto.getSm_addr1());
+			psmt.setString(7, sdto.getSm_addr2());
+			psmt.setString(8, sdto.getSm_addr3());
+			psmt.setString(9, sdto.getSm_remark());
+			psmt.setString(10, sdto.getSm_time());
+			psmt.setString(11, sdto.getSm_rest());
+			psmt.setString(12, sdto.getSm_id());
+			
+			result = psmt.executeUpdate();
+			System.out.println("상점 정보가 "+result+"건 변경되었습니다.");
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} finally {
+			close();
+		}
+		
+		return result;
+	}
+	
 }

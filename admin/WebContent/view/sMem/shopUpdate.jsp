@@ -12,14 +12,90 @@ form {
 </style>
 </head>
 <body>
-	<div>
-		<form method="post" enctype="multipart/form-data" action="../FileUpload.do">
-			<!-- 파일첨부는 form method을 post로만 해야 한다. -->
-			<input type="file" name="uploadfile"> <input type="text" name="desc">
-			<button type="button">등록</button>
-		</form>
+	<div class="card mb-4">
+		<div class="card-header">상점정보
+			<span style="float: right"><button type="button" onclick="location.href='${pageContext.request.contextPath}/shopUpdateForm.do'">정보 수정</button></span>
+		</div>
+		<div class="card-body">
+			<div class="form-row">
+				<div class="col-md-6">
+					<div class="form-group">
+						<label class="small mb-1" for="shop_name">상점이름</label>
+						<input class="form-control py-4" id="shop_name" name="shop_name" type="text"
+							value="${smdto.shop_name }" readonly />
+					</div>
+				</div>
+				<div class="col-md-6">
+					<div class="form-group">
+						<label class="small mb-1" for="sm_name">사장 이름</label><input
+							class="form-control py-4" id="sm_name" name="sm_name" type="text"
+							value="${smdto.sm_name }" readonly />
+					</div>
+				</div>
+			</div>
+			<div class="form-row">
+				<div class="col-md-6">
+					<div class="form-group">
+						<label class="small mb-1" for="sm_tell">전화번호</label><input
+							class="form-control py-4" id="sm_tell" name="sm_tell" type="text"
+							value="${smdto.sm_tell }" readonly />
+					</div>
+				</div>
+				<div class="col-md-6">
+					<div class="form-group">
+						<label class="small mb-1" for="business_no">사업자번호</label><input
+							class="form-control py-4" id="business_no" name="business_no" type="text"
+							value="${smdto.business_no }" readonly />
+					</div>
+				</div>
+			</div>
+			<div class="form-row">
+				<div class="col-md-6">
+					<div class="form-group">
+						<label class="small mb-1" for="sm_post">우편번호</label><input
+							class="form-control py-4" id="sm_post" name="sm_post" type="text"
+							value="${smdto.sm_post }" readonly />
+					</div>
+				</div>
+				
+			</div>
+			<div class="form-group">
+				<label class="small mb-1" for="sm_addr1">주소</label><input
+					class="form-control py-4" id="sm_addr1" name="sm_addr1" type="text"
+					value="${smdto.sm_addr1 }" readonly />
+					<label class="small mb-1" for="sm_addr2">상세주소</label><input
+					class="form-control py-4" id="sm_addr2" name="sm_addr2" type="text"
+					value="${smdto.sm_addr2 }" readonly />
+					<label class="small mb-1" for="sm_addr3">상세주소</label><input
+					class="form-control py-4" id="sm_addr3" name="sm_addr3" type="text"
+					value="${smdto.sm_addr3 }" readonly />
+			</div>
+			
+			<div class="form-group">
+				<label class="small mb-1" for="sm_remark">상점소개글</label><input
+					class="form-control py-4" id="sm_remark" name="sm_remark" type="text"
+					value="${smdto.sm_remark }" readonly />
+			</div>
+			<div class="form-row">
+				<div class="col-md-6">
+					<div class="form-group">
+						<label class="small mb-1" for="sm_time">운영시간</label><input
+							class="form-control py-4" id="sm_time" name="sm_time" type="text"
+							value="${smdto.sm_time }" readonly />
+					</div>
+				</div>
+				<div class="col-md-6">
+					<div class="form-group">
+						<label class="small mb-1" for="sm_rest">정기휴일</label><input
+							class="form-control py-4" id="sm_rest" name="sm_rest" type="text"
+							value="${smdto.sm_rest }" readonly />
+					</div>
+				</div>
+			</div>
+		</div>
 	</div>
 
+	<!-- 제품리스트 -->
 	<div class="card mb-4">
 		<div class="card-header">
 			<i class="fas fa-table mr-1"></i>제품 리스트

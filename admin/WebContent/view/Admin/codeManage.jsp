@@ -18,15 +18,26 @@
 			</tr>
 		</thead>
 		<tbody>
-			<c:forEach items="${codeList}" var="CodeList">
-			<tr>
-				<th scope="row">${CodeList.code_id}</th>
-				<td>${CodeList.code_type}</td>
-				<td>${CodeList.code_name}</td>
-				<td>${CodeList.code_use}</td>
-				<td>${CodeList.code_explain}</td>
-			</tr>
-			</c:forEach>
+			<c:choose>
+				<c:when test="${codeList == null }">
+					<tr>
+						<td colspan="5">
+							<b>등록된 거래내역이 없습니다.</b>
+						</td>
+					</tr>
+				</c:when>
+				<c:when test="${codeList != null }">
+					<c:forEach items="${codeList}" var="CodeList">
+						<tr>
+							<th scope="row">${CodeList.code_id}</th>
+							<td>${CodeList.code_type}</td>
+							<td>${CodeList.code_name}</td>
+							<td>${CodeList.code_use}</td>
+							<td>${CodeList.code_explain}</td>
+						</tr>
+					</c:forEach>
+				</c:when>
+			</c:choose>
 		</tbody>
 	</table>
 </body>

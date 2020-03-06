@@ -10,48 +10,23 @@
 <body>
 	<br>
 	<div>
-		<div class="card text-center" style="width: 500px; margin: 0 auto;">
-			<div class="card-header">판매회원 정보 수정 등록</div>
+		<div class="card text-center">
+			<div class="card-header">${smUpdate.sm_id}판매회원 정보 수정 등록</div>
 			<div class="card-body">
-				<form method="post" action="${contextPath}/view/Admin/sMemManage.do?id=${sMemInfo.id}">
-					<table style="width: 450px;">
-						<tr>
-							<td>판매자 ID</td>
-							<td>
-								<input type="text" id="extraaddr1" class="form-control" value="${sMemInfo.id}" disabled>
-							</td>
-						</tr>
-						<tr>
-							<td>가게 이름</td>
-							<td>
-								<input type="text" id="extraaddr1" class="form-control" value="${sMemInfo.id}" >
-							</td>
-						</tr>
-						<tr>
-							<td>판매자 이름</td>
-							<td>
-								<input type="text" id="extraaddr1" class="form-control" value="${sMemInfo.id}" disabled>
-							</td>
-						</tr>
-						<tr>
-							<td>판매자 전화번호</td>
-							<td>
-								<input type="text" id="extraaddr1" class="form-control" value="${sMemInfo.id}">
-							</td>
-						</tr>
-						<tr>
-							<td>사업자 번호</td>
-							<td>
-								<input type="text" id="extraaddr1" class="form-control" value="${sMemInfo.id}">
-							</td>
-						</tr>
-						<tr>
-							<td>판매자 우편번호</td>
-							<td>
-								<input type="text" id="extraaddr1" class="form-control" value="${sMemInfo.id}">
-							</td>
-						</tr>
-					</table>
+				<form method="post" action="${contextPath}/sMemManage.do?id=${smUpdate.sm_id}">
+					<input type="text" id="UpdateShopName" class="form-control" value="${smUpdate.shop_name}">
+					<br>
+					<input type="text" id="UpdateSmPw" class="form-control" value="${smUpdate.sm_pw}">
+					<br>
+					<input type="text" id="UpdateSmTell" class="form-control" value="${smUpdate.sm_tell}">
+					<br>
+					<input type="text" id="UpdateBusinessNo" class="form-control" value="${smUpdate.business_no}">
+					<br>
+					<input type="text" id="UpdatePost" class="form-control" value="${smUpdate.sm_post}">
+					<br>
+					<input type="text" id="UpdateAddr2" class="form-control" value="${smUpdate.sm_addr1}">
+					<br>
+					<input type="text" id="UpdateAddr2" class="form-control" value="${smUpdate.sm_addr2}">
 					<br>
 					<button type="submit" class="btn btn-primary btn-lg btn-block">등록</button>
 				</form>

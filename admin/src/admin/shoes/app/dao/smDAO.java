@@ -8,8 +8,11 @@ import admin.shoes.app.dto.smDTO;
 
 /**
  * 
- * @author 유승우 1. 판매회원 전체조회 smSelect() 2. 판매회원 등록 smInsert() 3. 판매회원 수정
- *         smUpdate() 4. 판매회원 삭제 smDelete()
+ * @author 유승우 
+ * 1. 판매회원 전체조회 smSelect() 
+ * 2. 판매회원 등록 smInsert() 
+ * 3. 판매회원 수정 smUpdate() 
+ * 4. 판매회원 삭제 smDelete()
  *
  */
 
@@ -81,7 +84,8 @@ public class smDAO extends DAO {
 	public int smUpdate(smDTO smDTO) {
 		int p = 0;
 		try {
-			String sql = "update sales_member set shop_name = ?, sm_pw = ?, sm_tell = ?, business_no = ?, sm_post = ?, sm_addr1 = ?, sm_addr2 = ?";
+			String sql = "update sales_member set shop_name = ?, sm_pw = ?, sm_tell = ?, business_no = ?, sm_post = ?, sm_addr1 = ?, sm_addr2 = ?"
+					   + "where sm_id = ?";
 			System.out.print(sql);
 			psmt = conn.prepareStatement(sql);
 			psmt.setString(1, smDTO.getShop_name());
@@ -91,6 +95,7 @@ public class smDAO extends DAO {
 			psmt.setString(5, smDTO.getSm_post());
 			psmt.setString(6, smDTO.getSm_addr1());
 			psmt.setString(7, smDTO.getSm_addr2());
+			psmt.setString(8, smDTO.getSm_id());
 			p = psmt.executeUpdate();
 		} catch (SQLException e) {
 			e.printStackTrace();

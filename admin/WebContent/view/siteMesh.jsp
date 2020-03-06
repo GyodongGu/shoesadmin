@@ -1,5 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <%@ taglib uri="http://www.opensymphony.com/sitemesh/decorator" prefix="decorator"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
+<c:set var="contextPath" value="${pageContext.request.contextPath}" />
 <!DOCTYPE html>
 <html>
 <head>
@@ -9,19 +11,19 @@
 <meta name="description" content="" />
 <meta name="author" content="" />
 <title>YouShoes</title>
-<link href="${pageContext.request.contextPath}/view/css/styles.css" rel="stylesheet" />
-<link href="https://cdn.datatables.net/1.10.20/css/dataTables.bootstrap4.min.css" rel="stylesheet" crossorigin="anonymous" />
-<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
-<script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.11.2/js/all.min.js" crossorigin="anonymous"></script>
-<script src="https://code.jquery.com/jquery-3.4.1.min.js" crossorigin="anonymous"></script>
-<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.bundle.min.js" crossorigin="anonymous"></script>
+<link href="${contextPath}/view/css/styles.css" rel="stylesheet" />
+<link href="https://cdn.datatables.net/1.10.20/css/dataTables.bootstrap4.min.css" rel="stylesheet" />
+<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css">
+<script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.11.2/js/all.min.js"></script>
+<script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.bundle.min.js"></script>
 <!-- charts.jsp -->
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
 <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.8.0/Chart.min.js" crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.8.0/Chart.min.js"></script>
 <!--  eventInsert.jsp -->
-<link href="https://cdn.datatables.net/1.10.20/css/dataTables.bootstrap4.min.css" rel="stylesheet" crossorigin="anonymous" />
-<script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.11.2/js/all.min.js" crossorigin="anonymous"></script>
+<link href="https://cdn.datatables.net/1.10.20/css/dataTables.bootstrap4.min.css" rel="stylesheet" />
+<script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.11.2/js/all.min.js"></script>
 <decorator:head />
 </head>
 <body class="sb-nav-fixed">
@@ -48,7 +50,7 @@
 		<ul class="navbar-nav ml-auto ml-md-0">
 			<li class="nav-item dropdown"><a class="nav-link dropdown-toggle" id="userDropdown" href="${pageContext.request.contextPath}/view/sMem/sMem.jsp" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"> </a>
 				<div class="dropdown-menu dropdown-menu-right" aria-labelledby="userDropdown">
-					<a class="dropdown-item" href="${pageContext.request.contextPath}/view/Admin/logout.jsp">로그아웃</a>
+					<a class="dropdown-item" href="${contextPath}/view/Admin/logout.jsp">로그아웃</a>
 				</div></li>
 		</ul>
 		<!-- 상단 메뉴바 프로필 설정 부분 -->
@@ -62,24 +64,24 @@
 					<div class="nav">
 						<div class="sb-sidenav-menu-heading"></div>
 						<!-- 사이드바 기본 메뉴들 -->
-						<a class="nav-link" href="${pageContext.request.contextPath}/view/sMem/sMem.jsp"> 홈 </a>
-						<a class="nav-link" href="${pageContext.request.contextPath}/eventManage.do">공지사항 </a>
+						<a class="nav-link" href="${contextPath}/sMem.do"> 홈 </a>
+						<a class="nav-link" href="${contextPath}/eventManage.do">공지사항 </a>
 						<!-- // 사이드바 기본 메뉴들 -->
 						<div class="sb-sidenav-menu-heading"></div>
 						<!-- // 관리자 메뉴 -->
-						<a class="nav-link" href="${pageContext.request.contextPath}/sMemManage.do"> 판매 회원 관리 </a>
-						<a class="nav-link" href="${pageContext.request.contextPath}/view/Admin/backup.jsp"> 구매 회원 탈퇴 후 백업 거래 내역 </a>
-						<a class="nav-link" href="${pageContext.request.contextPath}/view/Admin/codeManage.jsp"> 코드ID </a>
-						<a class="nav-link" href="${pageContext.request.contextPath}/view/Admin/adminCharts.jsp"> 매출 </a>
-						<a class="nav-link" href="${pageContext.request.contextPath}/allGuest.do"> 전체고객리스트 </a>
+						<a class="nav-link" href="${contextPath}/sMemManage.do"> 판매 회원 관리 </a>
+						<a class="nav-link" href="${contextPath}/allGuest.do"> 구매회원 목록 </a>
+						<a class="nav-link" href="${contextPath}/backup.do">백업 거래 내역 </a>
+						<a class="nav-link" href="${contextPath}/codeManage.do"> 코드ID </a>
+						<a class="nav-link" href="${contextPath}/view/Admin/adminCharts.jsp">총 매출 </a>
 						<!-- // 관리자 메뉴 -->
 						<!-- 판매자 메뉴  -->
-						<a class="nav-link" href="${pageContext.request.contextPath}/shopManage.do"> 매장관리 </a>
-						<a class="nav-link" href="${pageContext.request.contextPath}/productInsertForm.do"> 상품 </a>
-						<a class="nav-link" href="${pageContext.request.contextPath}/view/sMem/callendar.jsp"> 일정관리 </a>
-						<a class="nav-link" href="${pageContext.request.contextPath}/view/sMem/charts.jsp"> 매출 </a>
-						<a class="nav-link" href="${pageContext.request.contextPath}/view/sMem/guestList.jsp"> 고객관리 </a>
-						<a class="nav-link" href="${pageContext.request.contextPath}/view/sMem/delivery.jsp"> 배송등록 </a>
+						<a class="nav-link" href="${contextPath}/shopManage.do"> 매장관리 </a>
+						<a class="nav-link" href="${contextPath}/productInsertForm.do"> 상품 </a>
+						<a class="nav-link" href="${contextPath}/view/sMem/callendar.jsp"> 일정관리 </a>
+						<a class="nav-link" href="${contextPath}/view/sMem/charts.jsp"> 매출 </a>
+						<a class="nav-link" href="${contextPath}/view/sMem/guestList.jsp"> 고객관리 </a>
+						<a class="nav-link" href="${contextPath}/view/sMem/delivery.jsp"> 배송등록 </a>
 						<!-- 판매자 메뉴  -->
 					</div>
 				</div>
@@ -91,12 +93,12 @@
 			</div>
 		</div>
 	</div>
-	<script src="${pageContext.request.contextPath}/view/js/scripts.js"></script>
+	<script src="${contextPath}/view/js/scripts.js"></script>
 	<script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.8.0/Chart.min.js" crossorigin="anonymous"></script>
-	<script src="${pageContext.request.contextPath}/view/assets/demo/chart-area-demo.js"></script>
-	<script src="${pageContext.request.contextPath}/view/assets/demo/chart-bar-demo.js"></script>
+	<script src="${contextPath}/view/assets/demo/chart-area-demo.js"></script>
+	<script src="${contextPath}/view/assets/demo/chart-bar-demo.js"></script>
 	<script src="https://cdn.datatables.net/1.10.20/js/jquery.dataTables.min.js" crossorigin="anonymous"></script>
 	<script src="https://cdn.datatables.net/1.10.20/js/dataTables.bootstrap4.min.js" crossorigin="anonymous"></script>
-	<script src="${pageContext.request.contextPath}/view/assets/demo/datatables-demo.js"></script>
+	<script src="${contextPath}/view/assets/demo/datatables-demo.js"></script>
 </body>
 </html>

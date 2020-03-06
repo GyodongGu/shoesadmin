@@ -14,12 +14,11 @@ import admin.shoes.app.dto.codeDTO;
 public class codeManageCommand implements Command {
 
 	@Override
-	public String execute(HttpServletRequest request, HttpServletResponse response)
-			throws IOException, ServletException {
+	public String execute(HttpServletRequest request, HttpServletResponse response) throws IOException, ServletException {
 		CodeDAO cdao = new CodeDAO();
 		List<codeDTO> codeList = cdao.codeSelect();
 		request.setAttribute("codeList", codeList);
-		
+
 		return "/view/Admin/codeManage.jsp";
 	}
 

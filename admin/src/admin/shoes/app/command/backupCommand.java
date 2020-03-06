@@ -14,12 +14,11 @@ import admin.shoes.app.dto.backupDTO;
 public class backupCommand implements Command {
 
 	@Override
-	public String execute(HttpServletRequest request, HttpServletResponse response)
-			throws IOException, ServletException {
+	public String execute(HttpServletRequest request, HttpServletResponse response) throws IOException, ServletException {
 		backupDAO bdao = new backupDAO();
 		List<backupDTO> backupList = bdao.backupSelect();
 		request.setAttribute("backupList", backupList);
-		
+
 		return "/view/Admin/backup.jsp";
 	}
 

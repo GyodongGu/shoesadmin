@@ -19,8 +19,6 @@ public class InsertEventCommand implements Command {
 		HttpSession httpsession = request.getSession();
 		String nid = (String) httpsession.getServletContext().getContext("/youshoes").getAttribute("nid");
 		
-		
-		
 		noticeDAO ndao = new noticeDAO();
 		noticeDTO ndto = new noticeDTO();
 		

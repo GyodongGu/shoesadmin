@@ -1,8 +1,6 @@
 package admin.shoes.app.command;
 
 import java.io.IOException;
-import java.util.ArrayList;
-import java.util.List;
 
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServletRequest;
@@ -10,12 +8,10 @@ import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
 import admin.shoes.app.common.Command;
-import admin.shoes.app.dao.ProductDAO;
 import admin.shoes.app.dao.smDAO;
-import admin.shoes.app.dto.pdtDTO;
 import admin.shoes.app.dto.smDTO;
 
-public class ShopManageCommand implements Command {
+public class ShopUpdateFormCommand implements Command {
 
 	@Override
 	public String execute(HttpServletRequest request, HttpServletResponse response)
@@ -28,18 +24,14 @@ public class ShopManageCommand implements Command {
 				
 		request.setAttribute("nid", nid);
 		
-		ProductDAO pdao = new ProductDAO();
-		List<pdtDTO> list = new ArrayList<pdtDTO>();
-		list = pdao.productList(nid);
-		
 		smDAO smdao = new smDAO();
 		smDTO smdto = new smDTO();
 		smdto = smdao.smSelectOne(nid);
 		
-		request.setAttribute("plist", list);
 		request.setAttribute("smdto", smdto);
 		
-		return "/view/sMem/shopUpdate.jsp";
+		
+		return "/view/sMem/shopUpdateForm.jsp";
 	}
 
 }

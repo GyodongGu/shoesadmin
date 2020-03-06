@@ -12,7 +12,6 @@ import javax.servlet.http.HttpServletResponse;
 
 import admin.shoes.app.command.DelHoliday;
 import admin.shoes.app.command.DeleteSmemCommand;
-import admin.shoes.app.command.GetHoliday;
 import admin.shoes.app.command.InsertEventCommand;
 import admin.shoes.app.command.InsertProductCommand;
 import admin.shoes.app.command.InsertSmemCommand;
@@ -20,6 +19,8 @@ import admin.shoes.app.command.ProductInsertFormCommand;
 import admin.shoes.app.command.SMemCommand;
 import admin.shoes.app.command.SetHoliday;
 import admin.shoes.app.command.ShopManageCommand;
+import admin.shoes.app.command.ShopUpdateCommand;
+import admin.shoes.app.command.ShopUpdateFormCommand;
 import admin.shoes.app.command.UpdateSmemCommand;
 import admin.shoes.app.command.allGuestCommand;
 import admin.shoes.app.command.backupCommand;
@@ -66,7 +67,9 @@ public class FrontController extends HttpServlet {
 
 		/* 판매자 */
 		// 매장 수정
-		cont.put("/shopManage.do", new ShopManageCommand());   // 매장 수정
+		cont.put("/shopManage.do", new ShopManageCommand());   // 매장 관리
+		cont.put("/shopUpdateForm.do", new ShopUpdateFormCommand());	//매장(판매자)업데이트 페이지
+		cont.put("/shopUpdate.do", new ShopUpdateCommand());	//매장(판매자)정보 업데이트
 
 		// 상품 등록
 		cont.put("/productInsertForm.do", new ProductInsertFormCommand()); //상품등록페이지

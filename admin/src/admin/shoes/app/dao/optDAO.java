@@ -26,5 +26,43 @@ public class optDAO extends DAO{
 		
 		return result;
 	}
+	
+	public int deleteOpt(int pdtno, int pdtsize) {
+		int result=0;
+		String sql="delete from opt where pdt_no=? and pdt_size_cd=?";
+		
+		try {
+			psmt=conn.prepareStatement(sql);
+			psmt.setInt(1, pdtno);
+			psmt.setInt(2, pdtsize);
+			result=psmt.executeUpdate();
+			System.out.println("opt "+result+"건 삭제되었습니다.");
+			
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		
+		return result;
+	}
+	public int countOpt(int pdtno) {
+		int count=0;
+		
+		String sql="select count(pdt_no) pdt_no from opt where pdt_no=?";
+		
+		try {
+			psmt=conn.prepareStatement(sql);
+			psmt.setInt(1, pdtno);
+			rs=psmt.executeQuery();
+			if(rs.next()) {
+				count=rs.getInt("pdt_no");
+			}
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		
+		return count;
+	}
 
 }

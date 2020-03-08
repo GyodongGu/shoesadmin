@@ -97,5 +97,26 @@ public class ProductDAO extends DAO {
 		}
 		return list;
 	}
+	
+	public int deleteProduct(int pdtno) {
+		int result=0;
+		
+		String sql ="delete from product where pdt_no=?";
+		
+		try {
+			psmt=conn.prepareStatement(sql);
+			psmt.setInt(1, pdtno);
+			
+			result=psmt.executeUpdate();
+			
+			System.out.println("제품 "+result+"건 삭제되었습니다.");
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		
+		
+		return result;
+	}
 
 }

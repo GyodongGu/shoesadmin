@@ -11,6 +11,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import admin.shoes.app.command.DelHoliday;
+import admin.shoes.app.command.DeleteProductCommand;
 import admin.shoes.app.command.DeleteSmemCommand;
 import admin.shoes.app.command.InsertEventCommand;
 import admin.shoes.app.command.InsertProductCommand;
@@ -81,7 +82,7 @@ public class FrontController extends HttpServlet {
 		cont.put("/productInsertForm.do", new ProductInsertFormCommand()); //상품등록페이지
 		cont.put("/productInsert.do", new InsertProductCommand()); // 상품 등록
 		//		cont.put("/sMemManage.do", new sMemManageCommand());   // 상품 수정
-		//		cont.put("/sMemManage.do", new sMemManageCommand());   // 상품 삭제
+		cont.put("/ajax/deleteProd.do", new DeleteProductCommand());   // 상품 삭제
 
 		// 배송 관리 
 		//		cont.put("/sMemManage.do", new sMemManageCommand());   // delivery 테이블 수정

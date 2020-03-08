@@ -10,6 +10,46 @@ form {
 	width: 250px;
 }
 </style>
+<script type="text/javascript">
+	$(document).ready(function(){
+		
+		$('.deleteProd').on("click",function(){
+			var clickedRow = $(this).parent().parent();
+			var clickedSize= clickedRow.children('.pdtsize');
+			/* location.href="${pageContext.request.contextPath}/deleteProd.do?pdt_no="+clickedRow.attr('id');
+			clickedRow.remove(); */
+			var con = confirm('정말 삭제하시겠습니까?');
+			if(con){
+				$.ajax({
+					url:'${pageContext.request.contextPath}/ajax/deleteProd.do',
+					dataType:'json',
+					type:'POST',
+					data:{'pdt_no':clickedRow.attr('id'),'pdt_size_cd':clickedSize.attr('id')},
+					success:function(result){
+						if(result=='1'){
+							clickedRow.remove();
+							alert('삭제되었습니다.');
+						}
+						
+					},
+					error:function(request,status, error){
+						alert('code= '+request.status + " message= "+request.responseText+" error = "+error);
+					}
+					
+				})
+			}else{
+				return false;
+			}
+			
+			
+		})
+		
+	})
+
+</script>
+
+
+
 </head>
 <body>
 	<div class="card mb-4">
@@ -99,6 +139,7 @@ form {
 	<div class="card mb-4">
 		<div class="card-header">
 			<i class="fas fa-table mr-1"></i>제품 리스트
+			<span style="float: right"><button type="button" onclick="location.href='${pageContext.request.contextPath}/productInsertForm.do'">제품등록</button></span>
 		</div>
 		<div class="card-body">
 			<div class="table-responsive">
@@ -114,6 +155,8 @@ form {
 							<th>가격</th>
 							<th>사이즈</th>
 							<th>색상</th>
+							<th>수정</th>
+							<th>삭제</th>
 						</tr>
 					</thead>
 					<tfoot>
@@ -126,11 +169,13 @@ form {
 							<th>가격</th>
 							<th>사이즈</th>
 							<th>색상</th>
+							<th>수정</th>
+							<th>삭제</th>
 						</tr>
 					</tfoot>
 					<tbody>
 						<c:forEach var="pl" items="${plist }">
-							<tr>
+							<tr id="${pl.pdt_no }">
 								<td>
 								<img src="${request.getRequestURL().toString().replace(request.getRequestURI(),'')}/youshoes/view/img/${pl.img_name[0].img_name}"
 									alt="" height="50" width="50">
@@ -155,7 +200,7 @@ form {
 								<td>
 									${pl.pdt_price }
 								</td>
-								<td>
+								<td class="pdtsize" id="${pl.pdt_size_cd }">
 									<c:if test="${pl.pdt_size_cd=='0' }">
 										사이즈
 									</c:if>
@@ -170,6 +215,12 @@ form {
 									<c:if test="${!empty pl.pdt_color_cd }">
 										${pl.pdt_color_cd }
 									</c:if>
+								</td>
+								<td>
+									<button class="updateProd">수정</button>
+								</td>
+								<td>
+									<button class="deleteProd">삭제</button>
 								</td>
 							</tr>
 						</c:forEach>

@@ -59,7 +59,7 @@ public class InsertProductCommand implements Command {
 		String[] size = multi.getParameterValues("pdt_size_cd");
 		String[] color = multi.getParameterValues("pdt_color_cd");
 		System.out.println(size.length);
-		if (!size[0].equals("")) {
+		if (!size[0].equals("")&& multi.getParameter("pdt_type_cd").equals("P")) {
 			String resultcolor = StringUtils.join(color, ',');
 
 			for (int i = 0; i < size.length; i++) {

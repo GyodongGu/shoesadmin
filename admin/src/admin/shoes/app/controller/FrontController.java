@@ -20,6 +20,7 @@ import admin.shoes.app.command.InsertSmemCommand;
 import admin.shoes.app.command.ProductInsertFormCommand;
 import admin.shoes.app.command.SMemCommand;
 import admin.shoes.app.command.SetHoliday;
+import admin.shoes.app.command.ShopImageDeleteCommand;
 import admin.shoes.app.command.ShopManageCommand;
 import admin.shoes.app.command.ShopUpdateCommand;
 import admin.shoes.app.command.ShopUpdateFormCommand;
@@ -78,7 +79,7 @@ public class FrontController extends HttpServlet {
 		cont.put("/shopManage.do", new ShopManageCommand());   // 매장 관리
 		cont.put("/shopUpdateForm.do", new ShopUpdateFormCommand());	//매장(판매자)업데이트 페이지
 		cont.put("/shopUpdate.do", new ShopUpdateCommand());	//매장(판매자)정보 업데이트
-
+		cont.put("/ajax/deleteShopImage.do", new ShopImageDeleteCommand());//상점 이미지 삭제
 		// 상품 등록
 		cont.put("/productInsertForm.do", new ProductInsertFormCommand()); //상품등록페이지
 		cont.put("/productInsert.do", new InsertProductCommand()); // 상품 등록

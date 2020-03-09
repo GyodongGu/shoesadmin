@@ -53,13 +53,50 @@
             }
         }).open();
     }
+    
+    $(document).ready(function(){
+    	$('img').on("click",function(){
+        	var conf=confirm("이미지를 삭제하시겠습니까?");
+        	var shopimg=$(this);
+        	if(conf){
+        		$.ajax({
+    				url:'${pageContext.request.contextPath}/ajax/deleteShopImage.do',
+    				dataType:'json',
+    				type:'POST',
+    				data:{'img_no':$(this).attr('name')},
+    				success:function(result){
+    					if(result=='1'){
+    						shopimg.remove();
+    						alert('삭제되었습니다.');
+    					}
+    				},
+    				error:function(request,status, error){
+    					alert('code= '+request.status + " message= "+request.responseText+" error = "+error);
+    				}
+    				
+    			})
+        	}else{
+        		return false;
+        	}
+        })
+    })
+    
+
+    
 </script>
 </head>
 <body>
 	<div class="card mb-4">
 		<div class="card-header">상점정보</div>
 		<div class="card-body">
-			<form action="${pageContext.request.contextPath}/shopUpdate.do">
+			<form action="${pageContext.request.contextPath}/shopUpdate.do" method="POST">
+				<div class="form-group">
+				<c:forEach var="img" items="${smdto.img_name }">
+					<img alt="" width="200px" height="100px" class="shopimg" name="${img.img_no }"
+				src="${request.getRequestURL().toString().replace(request.getRequestURI(),'')}/youshoes/view/img/${img.img_name}">
+				</c:forEach>
+				
+				</div>
 				<div class="form-row">
 					<div class="col-md-6">
 						<div class="form-group">

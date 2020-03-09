@@ -13,6 +13,7 @@ import javax.servlet.http.HttpServletResponse;
 import admin.shoes.app.command.DelHoliday;
 import admin.shoes.app.command.DeleteProductCommand;
 import admin.shoes.app.command.DeleteSmemCommand;
+import admin.shoes.app.command.GetHoliday;
 import admin.shoes.app.command.InsertEventCommand;
 import admin.shoes.app.command.InsertProductCommand;
 import admin.shoes.app.command.InsertSmemCommand;
@@ -92,7 +93,7 @@ public class FrontController extends HttpServlet {
 
 		// 일정 등록
 		cont.put("/ajax/SetHoliday.do", new SetHoliday()); //일정 업로드
-		//		cont.put("/ajax/GetHoliday.do", new GetHoliday()); //휴일 가져오기
+		cont.put("/ajax/GetHoliday.do", new GetHoliday()); //휴일 가져오기
 		cont.put("/ajax/DelHoliday.do", new DelHoliday()); //휴일 삭제
 		cont.put("/ajax/getDeptCnt.do", new getDeptCnt()); //차트데이터
 

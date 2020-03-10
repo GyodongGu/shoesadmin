@@ -13,12 +13,15 @@ import javax.servlet.http.HttpServletResponse;
 import admin.shoes.app.command.DelHoliday;
 import admin.shoes.app.command.DeleteProductCommand;
 import admin.shoes.app.command.DeleteSmemCommand;
+import admin.shoes.app.command.GetHoliday;
 import admin.shoes.app.command.InsertEventCommand;
 import admin.shoes.app.command.InsertProductCommand;
 import admin.shoes.app.command.InsertSmemCommand;
 import admin.shoes.app.command.ProductInsertFormCommand;
 import admin.shoes.app.command.SMemCommand;
+import admin.shoes.app.command.SetDeliveryCommand;
 import admin.shoes.app.command.SetHoliday;
+import admin.shoes.app.command.ShopImageDeleteCommand;
 import admin.shoes.app.command.ShopManageCommand;
 import admin.shoes.app.command.ShopUpdateCommand;
 import admin.shoes.app.command.ShopUpdateFormCommand;
@@ -26,6 +29,7 @@ import admin.shoes.app.command.UpdateSmemCommand;
 import admin.shoes.app.command.allGuestCommand;
 import admin.shoes.app.command.backupCommand;
 import admin.shoes.app.command.codeManageCommand;
+import admin.shoes.app.command.DeliveryCommand;
 import admin.shoes.app.command.eventManageCommand;
 import admin.shoes.app.command.getDeptCnt;
 import admin.shoes.app.command.logoutCommand;
@@ -77,7 +81,7 @@ public class FrontController extends HttpServlet {
 		cont.put("/shopManage.do", new ShopManageCommand());   // 매장 관리
 		cont.put("/shopUpdateForm.do", new ShopUpdateFormCommand());	//매장(판매자)업데이트 페이지
 		cont.put("/shopUpdate.do", new ShopUpdateCommand());	//매장(판매자)정보 업데이트
-
+		cont.put("/ajax/deleteShopImage.do", new ShopImageDeleteCommand());//상점 이미지 삭제
 		// 상품 등록
 		cont.put("/productInsertForm.do", new ProductInsertFormCommand()); //상품등록페이지
 		cont.put("/productInsert.do", new InsertProductCommand()); // 상품 등록
@@ -85,14 +89,15 @@ public class FrontController extends HttpServlet {
 		cont.put("/ajax/deleteProd.do", new DeleteProductCommand());   // 상품 삭제
 
 		// 배송 관리 
-		//		cont.put("/sMemManage.do", new sMemManageCommand());   // delivery 테이블 수정
+		cont.put("/delivery.do", new DeliveryCommand()); // 딜리버리 조회
+		cont.put("/SetDelivery.do", new SetDeliveryCommand()); // 송장번호 수정
 
 		// 고객 관리
 		//		cont.put("/sMemManage.do", new sMemManageCommand());   // 구매한 구매회원 조회
 
 		// 일정 등록
 		cont.put("/ajax/SetHoliday.do", new SetHoliday()); //일정 업로드
-		//		cont.put("/ajax/GetHoliday.do", new GetHoliday()); //휴일 가져오기
+		cont.put("/ajax/GetHoliday.do", new GetHoliday()); //휴일 가져오기
 		cont.put("/ajax/DelHoliday.do", new DelHoliday()); //휴일 삭제
 		cont.put("/ajax/getDeptCnt.do", new getDeptCnt()); //차트데이터
 

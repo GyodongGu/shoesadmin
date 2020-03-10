@@ -13,6 +13,7 @@ import admin.shoes.app.dto.codeDTO;
  */
 
 public class CodeDAO extends DAO {
+	
 	public List<codeDTO> codeSelect() {
 		List<codeDTO> list = new ArrayList<codeDTO>();
 		String sql = "select * from code";
@@ -60,6 +61,29 @@ public class CodeDAO extends DAO {
 			e.printStackTrace();
 		}
 		return list;
+	}
+	
+	public String CodeidToCodename(String codeid) {
+		String result=null;
+		
+		String sql = "select code_name from code where code_id=?";
+		
+		try {
+			psmt=conn.prepareStatement(sql);
+			psmt.setString(1, codeid);
+			rs=psmt.executeQuery();
+			
+			if(rs.next()) {
+				result=rs.getString("code_name");
+			}
+			
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		
+		
+		return result;
 	}
 	
 }

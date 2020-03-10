@@ -1,9 +1,12 @@
 package admin.shoes.app.dao;
 
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
 
+import admin.shoes.app.dto.imageDetailDTO;
 import admin.shoes.app.dto.smDTO;
 
 /**
@@ -125,6 +128,11 @@ public class smDAO extends DAO {
 		smDTO smdto = new smDTO();
 		
 		String sql = "select * from sales_member where sm_id=?";
+		String sql1="select img_name, i.img_no from image i join image_detail d on i.img_no=d.img_no where section='I01' and section_no=?";
+		
+		PreparedStatement psmt1;
+		ResultSet rs1;
+		
 		try {
 			psmt=conn.prepareStatement(sql);
 			psmt.setString(1, smid);
@@ -147,6 +155,19 @@ public class smDAO extends DAO {
 				smdto.setSm_remark(rs.getString("sm_remark"));
 				smdto.setSm_time(rs.getString("sm_time"));
 				smdto.setSm_rest(rs.getString("sm_rest"));
+				
+				psmt1=conn.prepareStatement(sql1);
+				psmt1.setString(1, smid);
+				rs1=psmt1.executeQuery();
+				List<imageDetailDTO> imgList=new ArrayList<imageDetailDTO>();
+				
+				while(rs1.next()) {
+					imageDetailDTO imgDTO = new imageDetailDTO();
+					imgDTO.setImg_name(rs1.getString("img_name"));
+					imgDTO.setImg_no(rs1.getInt("img_no"));
+					imgList.add(imgDTO);
+				}
+				smdto.setImg_name(imgList);
 				
 			}
 		} catch (SQLException e) {

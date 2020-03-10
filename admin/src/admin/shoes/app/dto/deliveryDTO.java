@@ -4,6 +4,7 @@ import java.sql.Date;
 
 public class deliveryDTO {
 	
+	private int ord_no;
 	private String invoice_no;
 	private Date dlvy_date;
 	private String dlvy_name;
@@ -13,7 +14,7 @@ public class deliveryDTO {
 	private String dlvy_addr2;
 	private String dlvy_addr3;
 	private String dlvy_remark;
-	private int ord_no;
+	
 
 	
 	public int getOrd_no() {

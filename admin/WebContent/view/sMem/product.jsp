@@ -6,6 +6,34 @@
 <head>
 <meta charset="UTF-8">
 <title>Insert title here</title>
+<script>
+	function insertProduct(){
+		if(frm.pdt_name.value==""){
+			alert("제품 이름을 입력하세요");
+			frm.pdt_name.focus();
+			return false;
+		}
+		if($('input:radio[name=pdt_type_cd]').is(':checked')== false){
+			alert("제품 타입을 정해주세요");
+			return false;
+		}
+		if($('input:radio[name=pdt_kind_cd]').is(':checked')== false){
+			alert("제품 종류을 정해주세요");
+			return false;
+		}
+		if($('input:radio[name=gender_cd]').is(':checked')== false){
+			alert("제품 성별을 정해주세요");
+			return false;
+		}
+		if(frm.pdt_price.value==""){
+			alert("제품 가격을 입력하세요");
+			frm.pdt_price.focus();
+			return false;
+		}
+		window.alert("제품 등록되었습니다.");
+	}
+</script>
+
 </head>
 <body>
 	<div class="container">
@@ -17,7 +45,7 @@
 						<h3 class="text-center font-weight-light my-4">상품 등록</h3>
 					</div>
 					<div class="card-body">
-						<form name="" method="POST" action="${pageContext.request.contextPath}/productInsert.do" enctype="multipart/form-data">							
+						<form id="frm" name="frm" method="POST" action="${pageContext.request.contextPath}/productInsert.do" enctype="multipart/form-data" onsubmit="return insertProduct()">							
 							<div class="form-group">
 								<label class="small mb-1" for="productName">제품이름</label>
 								<input class="form-control py-4" id="productName" name="pdt_name" type="text" placeholder="제품 이름을 입력해주세요" />

@@ -35,7 +35,7 @@
 						<c:forEach var="dto" items="${list}"> 	
 							<tr>
 								<td>${dto.ord_no }</td>
-								<td><input type="text" class="invoice" id="${dto.ord_no }"  size="8" style="width=100%" placeholder="${dto.invoice_no }" /></td>
+								<td><input type="text" id="${dto.ord_no }"  size="8" style="width=100%" placeholder="${dto.invoice_no }" /></td>
 								<td>${dto.dlvy_date }</td>
 								<td>${dto.dlvy_name }</td>
 								<td>${dto.dlvy_tell }</td> 

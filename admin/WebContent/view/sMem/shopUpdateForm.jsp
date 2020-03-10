@@ -55,6 +55,10 @@
     }
     
     $(document).ready(function(){
+    	var length=$('img').length;
+    	for(var i=0; i<3-length; i++){
+    		$('#shopimage').append('<br><input type="file" name="file'+i+'"/>');
+    	}
     	$('img').on("click",function(){
         	var conf=confirm("이미지를 삭제하시겠습니까?");
         	var shopimg=$(this);
@@ -68,6 +72,7 @@
     					if(result=='1'){
     						shopimg.remove();
     						alert('삭제되었습니다.');
+    						$('#shopimage').append('<br><input type="file"/>');
     					}
     				},
     				error:function(request,status, error){
@@ -81,7 +86,43 @@
         })
     })
     
-
+/*     function isSame(){
+    		if(document.getElementById('sm_pw').value !='' && document.getElementById('confirm_pw').value !=''){
+    			if(document.getElementById('sm_pw').value == document.getElementById('confirm_pw').value){
+    				document.getElementById('same').innerHTML = '비밀번호가 같습니다.';
+    				document.getElementById('same').style.color = 'blue';
+    				return true;
+    			}else{
+    				document.getElementById('same').innerHTML = '비밀번호가 다릅니다.'; 
+    				document.getElementById('same').style.color = 'red';
+    				return false;
+    			}
+    		}
+    	} */
+    
+    
+    function updateshop(){
+    	if(frm.sm_pw.value==""){
+    		alert("패스워드를 입력하세요.");
+    		frm.sm_pw.focus();
+    		return false;
+    	}
+    	if(frm.confirm_pw.value==""){
+    		alert("패스워드 중복확인 입력하세요.");
+    		frm.confirm_pw.focus();
+    		return false;
+    	}
+    	if(frm.sm_pw.value!="" && frm.confirm_pw.value!=""){
+    		if(frm.sm_pw.value != frm.confirm_pw.value){
+    			alert("패스워드가 일치하지 않습니다.");
+    			frm.confirm_pw.focus();
+    			document.getElementById('same').innerHTML = '비밀번호가 다릅니다.'; 
+				document.getElementById('same').style.color = 'red';
+    			return false;
+    		}
+    	}
+    	window.alert("상점 정보가 변경되었습니다.");
+    }
     
 </script>
 </head>
@@ -89,8 +130,8 @@
 	<div class="card mb-4">
 		<div class="card-header">상점정보</div>
 		<div class="card-body">
-			<form action="${pageContext.request.contextPath}/shopUpdate.do" method="POST">
-				<div class="form-group">
+			<form id="frm" name="frm" action="${pageContext.request.contextPath}/shopUpdate.do" method="POST" enctype="multipart/form-data" onsubmit="return updateshop()">
+				<div class="form-group" id="shopimage">
 				<c:forEach var="img" items="${smdto.img_name }">
 					<img alt="" width="200px" height="100px" class="shopimg" name="${img.img_no }"
 				src="${request.getRequestURL().toString().replace(request.getRequestURI(),'')}/youshoes/view/img/${img.img_name}">
@@ -133,7 +174,7 @@
 					<div class="col-md-6">
 						<div class="form-group">
 							<label class="small mb-1" for="confirm_pw">Confirm
-								Password</label><input class="form-control py-4"
+								Password&nbsp;<span id="same"></span></label><input class="form-control py-4"
 								id="confirm_pw" name="confirm_pw" type="password"
 								placeholder="Confirm password" />
 						</div>

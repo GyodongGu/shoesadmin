@@ -54,5 +54,35 @@ public class imageDAO extends DAO{
 		}
 		return result;
 	}
+	
+	public int insertShopImage(imageDetailDTO iddto, String smid) {
+		int result=0;
+		int result1=0;
+		String sql = "insert into image values((select max(img_no)+1 from image),'I01',?)";
+		String sql1= "insert into image_detail values((select max(img_no)+1 from image_detail),?,sysdate,?,'Y')";
+		
+		PreparedStatement psmt1;
+		
+		try {
+			psmt=conn.prepareStatement(sql);
+			psmt.setString(1, smid);
+			result = psmt.executeUpdate();
+			System.out.println("image 테이블에 "+result+"건 입력되었습니다.");
+			
+			psmt1=conn.prepareStatement(sql1);
+			psmt1.setString(1, iddto.getImg_name());
+			psmt1.setInt(2, iddto.getImg_size());
+			result1 = psmt1.executeUpdate();
+			System.out.println("image_detail 테이블에 "+result1+"건 입력되었습니다.");
+			
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} finally {
+			close();
+		}
+		
+		return result1+result;
+	}
 
 }

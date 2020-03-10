@@ -1,14 +1,21 @@
 package admin.shoes.app.command;
 
+import java.io.File;
 import java.io.IOException;
+import java.util.Enumeration;
 
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
+import com.oreilly.servlet.MultipartRequest;
+import com.oreilly.servlet.multipart.DefaultFileRenamePolicy;
+
 import admin.shoes.app.common.Command;
+import admin.shoes.app.dao.imageDAO;
 import admin.shoes.app.dao.smDAO;
+import admin.shoes.app.dto.imageDetailDTO;
 import admin.shoes.app.dto.smDTO;
 
 public class ShopUpdateCommand implements Command {
@@ -18,24 +25,57 @@ public class ShopUpdateCommand implements Command {
 			throws IOException, ServletException {
 		// TODO Auto-generated method stub
 		
-		HttpSession httpsession = request.getSession();
+		String directory = "C:/Users/교동/git/youshoes/youshoes/WebContent/view/img/";
+		int maxsize = 1024 * 1024 * 100;
+		String encoding = "UTF-8";
+		
+		MultipartRequest multi = new MultipartRequest(request, directory, maxsize, encoding, new DefaultFileRenamePolicy());
 
+		
+		//세션처리
+		HttpSession httpsession = request.getSession();
 		String nid = (String) httpsession.getServletContext().getContext("/youshoes").getAttribute("nid");
-				
 		request.setAttribute("nid", nid);
 		
-		String smpw = request.getParameter("sm_pw");
-		String shopname=request.getParameter("shop_name");
-		String smname=request.getParameter("sm_name");
-		String smtell=request.getParameter("sm_tell");
-		String businessno=request.getParameter("business_no");
-		String smpost=request.getParameter("sm_post");
-		String smaddr1=request.getParameter("sm_addr1");
-		String smaddr2=request.getParameter("sm_addr2");
-		String smaddr3=request.getParameter("sm_addr3");
-		String smremark=request.getParameter("sm_remark");
-		String smtime=request.getParameter("sm_time");
-		String smrest=request.getParameter("sm_rest");
+		//상점 이미지 등록
+		Enumeration fileNames = multi.getFileNames();
+		while (fileNames.hasMoreElements()) {
+			String parameter = (String) fileNames.nextElement();
+			String fileName = multi.getOriginalFileName(parameter);
+			String fileRealName = multi.getFilesystemName(parameter);
+
+			if (fileName == null)
+				continue;
+
+			if (!fileName.endsWith(".jpg") && !fileName.endsWith(".png")) {
+				File file = new File(directory + fileRealName);
+				file.delete();
+
+			} else {
+				imageDAO idao = new imageDAO();
+				imageDetailDTO iddto = new imageDetailDTO();
+
+				iddto.setImg_name(fileRealName);
+				iddto.setImg_size(10);
+				idao.insertShopImage(iddto, nid);
+			}
+		}
+		
+		
+		
+		//상점정보 업데이트
+		String smpw = multi.getParameter("sm_pw");
+		String shopname=multi.getParameter("shop_name");
+		String smname=multi.getParameter("sm_name");
+		String smtell=multi.getParameter("sm_tell");
+		String businessno=multi.getParameter("business_no");
+		String smpost=multi.getParameter("sm_post");
+		String smaddr1=multi.getParameter("sm_addr1");
+		String smaddr2=multi.getParameter("sm_addr2");
+		String smaddr3=multi.getParameter("sm_addr3");
+		String smremark=multi.getParameter("sm_remark");
+		String smtime=multi.getParameter("sm_time");
+		String smrest=multi.getParameter("sm_rest");
 		
 		smDAO smdao = new smDAO();
 		smDTO smdto = new smDTO();

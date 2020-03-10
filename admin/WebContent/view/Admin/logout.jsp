@@ -13,7 +13,7 @@
 	%>
 	<script>
 		alert('로그아웃되었습니다.');
-		location.href = 'youshoes/view/login.jsp';
+		location.href = '${request.getRequestURL().toString().replace(request.getRequestURI(),'')}/youshoes/view/login.jsp';
 	</script>
 </body>
 </html>

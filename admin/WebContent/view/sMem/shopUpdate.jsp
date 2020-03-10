@@ -57,6 +57,13 @@ form {
 			<span style="float: right"><button type="button" onclick="location.href='${pageContext.request.contextPath}/shopUpdateForm.do'">정보 수정</button></span>
 		</div>
 		<div class="card-body">
+			<div class="form-group">
+				<c:forEach var="img" items="${smdto.img_name }">
+					<img alt="" width="200px" height="100px"
+				src="${request.getRequestURL().toString().replace(request.getRequestURI(),'')}/youshoes/view/img/${img.img_name}">
+				</c:forEach>
+				
+			</div>
 			<div class="form-row">
 				<div class="col-md-6">
 					<div class="form-group">
@@ -155,7 +162,7 @@ form {
 							<th>가격</th>
 							<th>사이즈</th>
 							<th>색상</th>
-							<th>수정</th>
+							
 							<th>삭제</th>
 						</tr>
 					</thead>
@@ -169,7 +176,7 @@ form {
 							<th>가격</th>
 							<th>사이즈</th>
 							<th>색상</th>
-							<th>수정</th>
+							
 							<th>삭제</th>
 						</tr>
 					</tfoot>
@@ -216,9 +223,7 @@ form {
 										${pl.pdt_color_cd }
 									</c:if>
 								</td>
-								<td>
-									<button class="updateProd">수정</button>
-								</td>
+								
 								<td>
 									<button class="deleteProd">삭제</button>
 								</td>

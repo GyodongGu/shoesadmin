@@ -63,4 +63,27 @@ public class CodeDAO extends DAO {
 		return list;
 	}
 	
+	public String CodeidToCodename(String codeid) {
+		String result=null;
+		
+		String sql = "select code_name from code where code_id=?";
+		
+		try {
+			psmt=conn.prepareStatement(sql);
+			psmt.setString(1, codeid);
+			rs=psmt.executeQuery();
+			
+			if(rs.next()) {
+				result=rs.getString("code_name");
+			}
+			
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		
+		
+		return result;
+	}
+	
 }

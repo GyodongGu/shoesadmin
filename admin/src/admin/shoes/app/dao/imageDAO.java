@@ -35,5 +35,24 @@ public class imageDAO extends DAO{
 		
 		return result1+result;
 	}
+	
+	public int deleteShopImage(int imgno) {
+		int result=0;
+		
+		String sql ="delete from image where img_no=?";
+		
+		try {
+			psmt=conn.prepareStatement(sql);
+			psmt.setInt(1, imgno);
+			
+			result=psmt.executeUpdate();
+			System.out.println("이미지 "+result+"건 삭제되었습니다.");
+			
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		return result;
+	}
 
 }

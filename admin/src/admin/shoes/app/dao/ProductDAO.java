@@ -6,6 +6,8 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
 
+import org.apache.commons.lang.StringUtils;
+
 import admin.shoes.app.dto.imageDetailDTO;
 import admin.shoes.app.dto.pdtDTO;
 
@@ -68,7 +70,21 @@ public class ProductDAO extends DAO {
 				pdto.setPdt_stat_cd(rs.getString("pdt_stat_cd"));
 				pdto.setPdt_date(rs.getDate("pdt_date"));
 				pdto.setPdt_size_cd(rs.getInt("pdt_size_cd"));
-				pdto.setPdt_color_cd(rs.getString("pdt_color_cd"));
+				//pdto.setPdt_color_cd(rs.getString("pdt_color_cd"));
+				String temp=rs.getString("pdt_color_cd");
+				if(temp!=null) {
+					String[] color=temp.split(",");
+					String[] colorname=new String[color.length];
+					for(int i=0; i<color.length; i++) {
+						CodeDAO cdao = new CodeDAO();
+						colorname[i]=cdao.CodeidToCodename(color[i]);	
+					}
+					String cname=StringUtils.join(colorname, ',');
+					pdto.setPdt_color_cd(cname);
+				}else {
+					pdto.setPdt_color_cd(rs.getString("pdt_color_cd"));
+				}
+				
 
 				psmt1 = conn.prepareStatement(sql1);
 				psmt1.setInt(1, rs.getInt("pdt_no"));

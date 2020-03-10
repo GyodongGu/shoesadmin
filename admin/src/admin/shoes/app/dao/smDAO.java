@@ -81,21 +81,20 @@ public class smDAO extends DAO {
 	}
 
 	// 3. 판매회원 수정    smUpdate()
-	public int smUpdate(smDTO smDTO) {
+	public int smUpdate(smDTO smDTO, String smId) {
 		int p = 0;
 		try {
-			String sql = "update sales_member set shop_name = ?, sm_pw = ?, sm_tell = ?, business_no = ?, sm_post = ?, sm_addr1 = ?, sm_addr2 = ?"
-					   + "where sm_id = ?";
+			String sql = "update sales_member set shop_name = ?, sm_pw = ?, sm_tell = ?,"
+					   + " sm_post = ?, sm_addr1 = ?, sm_addr2 = ? where sm_id = ?";
 			System.out.print(sql);
 			psmt = conn.prepareStatement(sql);
 			psmt.setString(1, smDTO.getShop_name());
 			psmt.setString(2, smDTO.getSm_pw());
 			psmt.setString(3, smDTO.getSm_tell());
-			psmt.setInt(4, smDTO.getBusiness_no());
-			psmt.setString(5, smDTO.getSm_post());
-			psmt.setString(6, smDTO.getSm_addr1());
-			psmt.setString(7, smDTO.getSm_addr2());
-			psmt.setString(8, smDTO.getSm_id());
+			psmt.setString(4, smDTO.getSm_post());
+			psmt.setString(5, smDTO.getSm_addr1());
+			psmt.setString(6, smDTO.getSm_addr2());
+			psmt.setString(7, smId);
 			p = psmt.executeUpdate();
 		} catch (SQLException e) {
 			e.printStackTrace();

@@ -19,6 +19,7 @@ import admin.shoes.app.command.InsertProductCommand;
 import admin.shoes.app.command.InsertSmemCommand;
 import admin.shoes.app.command.ProductInsertFormCommand;
 import admin.shoes.app.command.SMemCommand;
+import admin.shoes.app.command.SetDeliveryCommand;
 import admin.shoes.app.command.SetHoliday;
 import admin.shoes.app.command.ShopManageCommand;
 import admin.shoes.app.command.ShopUpdateCommand;
@@ -27,6 +28,7 @@ import admin.shoes.app.command.UpdateSmemCommand;
 import admin.shoes.app.command.allGuestCommand;
 import admin.shoes.app.command.backupCommand;
 import admin.shoes.app.command.codeManageCommand;
+import admin.shoes.app.command.DeliveryCommand;
 import admin.shoes.app.command.eventManageCommand;
 import admin.shoes.app.command.getDeptCnt;
 import admin.shoes.app.command.logoutCommand;
@@ -86,7 +88,8 @@ public class FrontController extends HttpServlet {
 		cont.put("/ajax/deleteProd.do", new DeleteProductCommand());   // 상품 삭제
 
 		// 배송 관리 
-		//		cont.put("/sMemManage.do", new sMemManageCommand());   // delivery 테이블 수정
+		cont.put("/delivery.do", new DeliveryCommand()); // 딜리버리 조회
+		cont.put("/SetDelivery.do", new SetDeliveryCommand()); // 송장번호 수정
 
 		// 고객 관리
 		//		cont.put("/sMemManage.do", new sMemManageCommand());   // 구매한 구매회원 조회

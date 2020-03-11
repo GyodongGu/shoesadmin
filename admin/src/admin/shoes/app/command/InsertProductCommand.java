@@ -49,6 +49,7 @@ public class InsertProductCommand implements Command {
 		pdto.setPdt_kind_cd(multi.getParameter("pdt_kind_cd"));
 		pdto.setGender_cd(multi.getParameter("gender_cd"));
 		pdto.setPdt_price(Integer.parseInt(price));
+		pdto.setPdt_remark(multi.getParameter("pdt_remark"));
 
 		pdao.insertProduct(pdto);
 

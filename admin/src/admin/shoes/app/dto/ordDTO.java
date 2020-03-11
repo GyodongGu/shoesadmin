@@ -9,7 +9,15 @@ public class ordDTO {
 	private Date ord_date;
 	private int ord_point;
 	private String ord_stat_cd;
+	private pdtDTO pdto;
 	
+	
+	public pdtDTO getPdto() {
+		return pdto;
+	}
+	public void setPdto(pdtDTO pdto) {
+		this.pdto = pdto;
+	}
 	public int getOrd_no() {
 		return ord_no;
 	}

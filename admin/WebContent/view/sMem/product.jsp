@@ -78,6 +78,10 @@
 								<label class="small mb-1" for="pdt_price">가격</label>
 								<input class="form-control py-4" id="pdt_price" name="pdt_price" type="text" placeholder="가격을 입력해주세요" />
 							</div>
+							<div class="form-group">
+								<label class="small mb-1" for="pdt_remark">제품 설명</label>
+								<input class="form-control py-4" id="pdt_remark" name="pdt_remark" type="text" placeholder="제품을 설명해주세요" />
+							</div>
 							<div class="form-group addoption" style="display:none">
 								<button type="button" class="addselect">사이즈 추가</button><br><br>
 								<div class="selectsize">

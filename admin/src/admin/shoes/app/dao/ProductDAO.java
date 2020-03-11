@@ -16,7 +16,7 @@ public class ProductDAO extends DAO {
 	public int insertProduct(pdtDTO pdto) {
 		int result = 0;
 
-		String sql = "insert into product values((select max(pdt_no)+1 from product), ?,?,?,?,?,?,'I',sysdate )";
+		String sql = "insert into product values((select max(pdt_no)+1 from product), ?,?,?,?,?,?,'I',sysdate,? )";
 
 		try {
 			psmt = conn.prepareStatement(sql);
@@ -26,6 +26,7 @@ public class ProductDAO extends DAO {
 			psmt.setString(4, pdto.getPdt_kind_cd());
 			psmt.setString(5, pdto.getGender_cd());
 			psmt.setInt(6, pdto.getPdt_price());
+			psmt.setString(7, pdto.getPdt_remark());
 
 			result = psmt.executeUpdate();
 			System.out.println("제품 " + result + " 건 등록되었습니다.");
@@ -69,6 +70,7 @@ public class ProductDAO extends DAO {
 				pdto.setPdt_price(rs.getInt("pdt_price"));
 				pdto.setPdt_stat_cd(rs.getString("pdt_stat_cd"));
 				pdto.setPdt_date(rs.getDate("pdt_date"));
+				pdto.setPdt_remark(rs.getString("pdt_remark"));
 				pdto.setPdt_size_cd(rs.getInt("pdt_size_cd"));
 				//pdto.setPdt_color_cd(rs.getString("pdt_color_cd"));
 				String temp=rs.getString("pdt_color_cd");

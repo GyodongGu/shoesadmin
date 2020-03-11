@@ -13,10 +13,13 @@ import javax.servlet.http.HttpServletResponse;
 import admin.shoes.app.command.DelHoliday;
 import admin.shoes.app.command.DeleteProductCommand;
 import admin.shoes.app.command.DeleteSmemCommand;
+import admin.shoes.app.command.DeliveryCommand;
 import admin.shoes.app.command.GetHoliday;
+import admin.shoes.app.command.GuestOrdList;
 import admin.shoes.app.command.InsertEventCommand;
 import admin.shoes.app.command.InsertProductCommand;
 import admin.shoes.app.command.InsertSmemCommand;
+import admin.shoes.app.command.MyGuestListCommand;
 import admin.shoes.app.command.ProductInsertFormCommand;
 import admin.shoes.app.command.SMemCommand;
 import admin.shoes.app.command.SetDeliveryCommand;
@@ -29,7 +32,6 @@ import admin.shoes.app.command.UpdateSmemCommand;
 import admin.shoes.app.command.allGuestCommand;
 import admin.shoes.app.command.backupCommand;
 import admin.shoes.app.command.codeManageCommand;
-import admin.shoes.app.command.DeliveryCommand;
 import admin.shoes.app.command.eventManageCommand;
 import admin.shoes.app.command.getDeptCnt;
 import admin.shoes.app.command.logoutCommand;
@@ -93,7 +95,8 @@ public class FrontController extends HttpServlet {
 		cont.put("/SetDelivery.do", new SetDeliveryCommand()); // 송장번호 수정
 
 		// 고객 관리
-		//		cont.put("/sMemManage.do", new sMemManageCommand());   // 구매한 구매회원 조회
+		cont.put("/myGuestList.do", new MyGuestListCommand());   // 구매한 구매회원 조회
+		cont.put("/GuestOrdList.do", new GuestOrdList());	 // 구매한 구매회원의 구매내역조회
 
 		// 일정 등록
 		cont.put("/ajax/SetHoliday.do", new SetHoliday()); //일정 업로드

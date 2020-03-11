@@ -80,7 +80,7 @@
 						<a class="nav-link" href="${contextPath}/productInsertForm.do"> 상품 </a>
 						<a class="nav-link" href="${contextPath}/view/sMem/callendar.jsp"> 일정관리 </a>
 						<a class="nav-link" href="${contextPath}/view/sMem/charts.jsp"> 매출 </a>
-						<a class="nav-link" href="${contextPath}/view/sMem/guestList.jsp"> 고객관리 </a>
+						<a class="nav-link" href="${contextPath}/myGuestList.do"> 고객관리 </a>
 						<a class="nav-link" href="${contextPath}/delivery.do"> 배송등록 </a>
 						<!-- 판매자 메뉴  -->
 					</div>

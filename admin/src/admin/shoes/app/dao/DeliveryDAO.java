@@ -39,7 +39,7 @@ public class DeliveryDAO extends DAO{
 		return list;
 	}
 	
-	public int insert(int ord, String no) {
+	public int insert(String no, int ord) {
 		int result = 0;
 		try {
 			String sql = "update delivery set invoice_no = ? where ord_no = ?";

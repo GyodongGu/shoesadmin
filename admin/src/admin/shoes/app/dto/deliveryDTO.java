@@ -13,10 +13,17 @@ public class deliveryDTO {
 	private String dlvy_addr1;
 	private String dlvy_addr2;
 	private String dlvy_addr3;
+	private String dlvy_cd;
 	private String dlvy_remark;
 	
 
 	
+	public String getDlvy_cd() {
+		return dlvy_cd;
+	}
+	public void setDlvy_cd(String dlvy_cd) {
+		this.dlvy_cd = dlvy_cd;
+	}
 	public int getOrd_no() {
 		return ord_no;
 	}
@@ -80,11 +87,12 @@ public class deliveryDTO {
 	
 	@Override
 	public String toString() {
-		return "deliveryDTO [invoice_no=" + invoice_no + ", dlvy_date=" + dlvy_date + ", dlvy_name=" + dlvy_name
-				+ ", dlvy_tell=" + dlvy_tell + ", dlvy_post=" + dlvy_post + ", dlvy_addr1=" + dlvy_addr1
-				+ ", dlvy_addr2=" + dlvy_addr2 + ", dlvy_addr3=" + dlvy_addr3 + ", dlvy_remark=" + dlvy_remark
-				+ ", ord_no=" + ord_no + "]";
+		return "deliveryDTO [ord_no=" + ord_no + ", invoice_no=" + invoice_no + ", dlvy_date=" + dlvy_date
+				+ ", dlvy_name=" + dlvy_name + ", dlvy_tell=" + dlvy_tell + ", dlvy_post=" + dlvy_post + ", dlvy_addr1="
+				+ dlvy_addr1 + ", dlvy_addr2=" + dlvy_addr2 + ", dlvy_addr3=" + dlvy_addr3 + ", dlvy_cd=" + dlvy_cd
+				+ ", dlvy_remark=" + dlvy_remark + "]";
 	}
+	
 
 	
 	

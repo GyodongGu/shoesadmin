@@ -17,10 +17,17 @@ public class pdtDTO {
 	private String pdt_kind_name;
 	private int pdt_size_cd;
 	private String pdt_color_cd;
+	private String pdt_remark;
 	
 	
 	
 	
+	public String getPdt_remark() {
+		return pdt_remark;
+	}
+	public void setPdt_remark(String pdt_remark) {
+		this.pdt_remark = pdt_remark;
+	}
 	public int getPdt_size_cd() {
 		return pdt_size_cd;
 	}
@@ -103,12 +110,11 @@ public class pdtDTO {
 	public String toString() {
 		return "pdtDTO [pdt_no=" + pdt_no + ", sm_id=" + sm_id + ", pdt_name=" + pdt_name + ", pdt_type_cd="
 				+ pdt_type_cd + ", pdt_kind_cd=" + pdt_kind_cd + ", gender_cd=" + gender_cd + ", pdt_price=" + pdt_price
-				+ ", pdt_stat_cd=" + pdt_stat_cd + ", pdt_date=" + pdt_date + "]";
+				+ ", pdt_stat_cd=" + pdt_stat_cd + ", pdt_date=" + pdt_date + ", img_name=" + img_name
+				+ ", pdt_kind_name=" + pdt_kind_name + ", pdt_size_cd=" + pdt_size_cd + ", pdt_color_cd=" + pdt_color_cd
+				+ ", pdt_remark=" + pdt_remark + "]";
 	}
-	
-	
-	
-	
+
 		
 }
 

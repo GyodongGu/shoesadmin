@@ -38,7 +38,7 @@ var event;
 		var calendar = new FullCalendar.Calendar(calendarEl, {
 			plugins : [ 'interaction' ,'dayGrid' ],
 			views: { dayGridMonth: { titleFormat: {year: 'numeric', month: 'short' } } }, 
-			eventSources: ['${pageContext.request.contextPath}/ajax/GetHoliday.do'],
+			eventSources: ['${pageContext.request.contextPath}/ajax/GetHoliday.do', '${pageContext.request.contextPath}/ajax/GetReserv.do'],
 			defaultView : 'dayGridMonth',
 		   	eventColor: '#964B00',
 			eventTextColor: 'white',
@@ -88,7 +88,10 @@ var event;
 			eventClick : function (info) { 
 				var del = confirm("이 휴일 일정을 삭제 할까요?");
 				var dhul = {"rest_date" : Tdate2(info.event.start)};
-				if(del == true) {
+				if(info.event.title == '예약'){
+					alert("이 이일정은 고객의 예약일정입니다. 휴일일정을 선택해주세요.");
+					
+				}else if(del == true) {
 					$.ajax({
 						url: "${pageContext.request.contextPath}/ajax/DelHoliday.do", 
 						type : 'GET',
@@ -111,7 +114,7 @@ var event;
 <br>
 	<div class="card mb-4">
 		<div class="card-header">
-			<i class="fas fa-table mr-1"></i>휴일일정 등록 페이지
+			<i class="fas fa-table mr-1"></i>휴일일정 등록 및 고객 예약일정 내역 페이지
 		</div>
 		<div class="card-body">
 			<div id="calendar" align="center">원하시는 날짜를 클릭하시면 휴일을 지정 할 수 있습니다.</div>

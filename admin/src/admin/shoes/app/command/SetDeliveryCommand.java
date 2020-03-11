@@ -20,7 +20,7 @@ public class SetDeliveryCommand implements Command  {
 			String invoiceno = request.getParameter("invoiceno");
 			DeliveryDAO dao = new DeliveryDAO();
 			
-			dao.insert(ordno, invoiceno);
+			dao.insert(invoiceno, ordno);
 			
 		return null;
 	}

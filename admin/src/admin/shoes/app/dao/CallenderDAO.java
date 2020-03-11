@@ -65,4 +65,28 @@ public class CallenderDAO extends DAO{
 		}
 		return result;
 	}
+	
+	//예약 일정 뷰
+		public List<Map<String, Object>> selectReserv(String id) {
+			List<Map<String, Object>> list = new ArrayList<Map<String, Object>>();
+			try {
+				String sql = "select to_char(res_date, 'yyyy-mm-dd')||'T'||to_char(res_date, 'hh24:mi:ss') res_date, res_no from reservation where sm_id = ?";
+				psmt = conn.prepareStatement(sql);
+				psmt.setString(1, id);
+				rs = psmt.executeQuery();
+				while(rs.next()) {
+					Map<String, Object> map = new HashMap<String, Object>();
+					map.put("title", "예약");
+					map.put("start", rs.getString("res_date"));
+					map.put("id", rs.getInt("res_no"));
+					list.add(map);
+					
+				}
+			} catch (Exception e) {
+				e.printStackTrace();
+			}finally {
+				close();
+			}
+			return list;
+		}
 }

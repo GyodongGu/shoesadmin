@@ -182,7 +182,8 @@ form {
 					</tfoot>
 					<tbody>
 						<c:forEach var="pl" items="${plist }">
-							<tr id="${pl.pdt_no }">
+							<tr id="${pl.pdt_no }" onmouseover="this.style.backgroundColor='#FFFF00'"
+					onmouseout="this.style.backgroundColor=''">
 								<td>
 								<img src="${request.getRequestURL().toString().replace(request.getRequestURI(),'')}/youshoes/view/img/${pl.img_name[0].img_name}"
 									alt="" height="50" width="50">

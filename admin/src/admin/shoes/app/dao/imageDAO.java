@@ -2,6 +2,8 @@ package admin.shoes.app.dao;
 
 import java.sql.PreparedStatement;
 import java.sql.SQLException;
+import java.util.ArrayList;
+import java.util.List;
 
 import admin.shoes.app.dto.imageDetailDTO;
 
@@ -84,5 +86,46 @@ public class imageDAO extends DAO{
 		
 		return result1+result;
 	}
+	public int deleteProdImage(String sectionno) {
+		int result=0;
+		
+		String sql="delete from image where section_no=?";
+		try {
+			psmt=conn.prepareStatement(sql);
+			psmt.setString(1, sectionno);
+			result = psmt.executeUpdate();
+			System.out.println("이미지가 "+result+"건 삭제되었습니다.");
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		return result;
+	}
+	
+	public List<imageDetailDTO> prodImageName(int sectionno) {
+		List<imageDetailDTO> list = new ArrayList<imageDetailDTO>();
+		
+		String sql = "select * from image i join image_detail d on i.img_no=d.img_no where section='I02' and section_no=?";
+		
+		try {
+			psmt=conn.prepareStatement(sql);
+			psmt.setInt(1, sectionno);
+			
+			rs=psmt.executeQuery();
+			while(rs.next()) {
+				imageDetailDTO iddto = new imageDetailDTO();
+				iddto.setImg_name(rs.getString("img_name"));
+				iddto.setImg_no(rs.getInt("img_no"));
+				list.add(iddto);
+			}
+			
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		
+		return list;
+	}
+	
 
 }

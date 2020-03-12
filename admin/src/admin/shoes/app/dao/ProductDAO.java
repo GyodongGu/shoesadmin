@@ -136,5 +136,27 @@ public class ProductDAO extends DAO {
 		
 		return result;
 	}
+	
+	public int pdtno(String pdtname) {
+		int result = 0;
+		
+		String sql = "select pdt_no from product where pdt_name=?";
+		
+		try {
+			psmt=conn.prepareStatement(sql);
+			psmt.setString(1, pdtname);
+			
+			rs=psmt.executeQuery();
+			if(rs.next()) {
+				result=rs.getInt("pdt_no");
+			}
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		
+		
+		return result;
+	}
 
 }

@@ -226,7 +226,7 @@ form {
 								</td>
 								
 								<td>
-									<button class="deleteProd">삭제</button>
+									<button class="deleteProd btn btn-primary">삭제</button>
 								</td>
 							</tr>
 						</c:forEach>

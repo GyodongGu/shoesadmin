@@ -76,7 +76,7 @@
 							<td>${glist.pm_tell }</td>
 							<td>${glist.pm_addr1 }</td>
 							<td>
-								<button class="ord">구매이력</button>
+								<button class="ord btn btn-primary">구매이력</button>
 							</td>
 						</tr>
 					</c:forEach>

@@ -39,20 +39,23 @@ public class InsertProductCommand implements Command {
 		HttpSession httpsession = request.getSession();
 		String nid = (String) httpsession.getServletContext().getContext("/youshoes").getAttribute("nid");
 		request.setAttribute("nid", nid);
+		
+		int pdtno = pdao.pdtno(multi.getParameter("pdt_name"));
+		if(pdtno==0) {
+			//제품등록
+			String price = multi.getParameter("pdt_price");
 
-		//제품등록
-		String price = multi.getParameter("pdt_price");
+			pdto.setPdt_name(multi.getParameter("pdt_name"));
+			pdto.setSm_id(nid);
+			pdto.setPdt_type_cd(multi.getParameter("pdt_type_cd"));
+			pdto.setPdt_kind_cd(multi.getParameter("pdt_kind_cd"));
+			pdto.setGender_cd(multi.getParameter("gender_cd"));
+			pdto.setPdt_price(Integer.parseInt(price));
+			pdto.setPdt_remark(multi.getParameter("pdt_remark"));
 
-		pdto.setPdt_name(multi.getParameter("pdt_name"));
-		pdto.setSm_id(nid);
-		pdto.setPdt_type_cd(multi.getParameter("pdt_type_cd"));
-		pdto.setPdt_kind_cd(multi.getParameter("pdt_kind_cd"));
-		pdto.setGender_cd(multi.getParameter("gender_cd"));
-		pdto.setPdt_price(Integer.parseInt(price));
-		pdto.setPdt_remark(multi.getParameter("pdt_remark"));
-
-		pdao.insertProduct(pdto);
-
+			pdao.insertProduct(pdto);
+		}
+		
 		//제품옵션추가
 		optDAO odao = new optDAO();
 		optDTO odto = new optDTO();
@@ -64,7 +67,8 @@ public class InsertProductCommand implements Command {
 			String resultcolor = StringUtils.join(color, ',');
 
 			for (int i = 0; i < size.length; i++) {
-
+				
+				odto.setPdt_no(pdtno);
 				odto.setPdt_size_cd(Integer.parseInt(size[i]));
 				odto.setPdt_color_cd(resultcolor);
 				odao.insertOpt(odto);

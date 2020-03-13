@@ -84,6 +84,7 @@
 							</div>
 							<div class="form-group addoption" style="display:none">
 								<button type="button" class="addselect">사이즈 추가</button><br><br>
+								<input type="hidden" name="count" id="count"/>
 								<div class="selectsize">
 								<label class="small mb-1" for="pdt_size_cd">사이즈</label>
 								<select id="pdt_size_cd" name="pdt_size_cd">
@@ -93,7 +94,7 @@
 									</c:forEach>
 								</select><br>
 								<c:forEach var="color" items="${clist }">
-									<input type="checkbox" name="pdt_color_cd" value="${color.code_id }" class="checkSelect" />${color.code_name }
+									<input type="checkbox" name="pdt_color_cd1" value="${color.code_id }" class="checkSelect" />${color.code_name }
 								</c:forEach>
 								<input type="hidden" name="chkselect" class="chkselect"/>
 								</div>
@@ -119,11 +120,14 @@
 				$('.addoption').css('display','none');
 			}
 		})
-		
+		var cnt=1;
 		$('.addselect').on('click',function(){
+			cnt++;
+			$('#count').val(cnt);
 			var newbox = $('.selectsize').eq(0).clone();
-			
+			newbox.find('.checkSelect').attr('name','pdt_color_cd'+cnt);
 			newbox.appendTo('.addoption');
+			
 		})
 		
 		var i = 2;

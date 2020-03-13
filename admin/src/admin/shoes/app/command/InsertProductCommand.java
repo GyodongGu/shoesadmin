@@ -57,20 +57,32 @@ public class InsertProductCommand implements Command {
 		}
 		
 		//제품옵션추가
+		String cnt = multi.getParameter("count");
+		
 		optDAO odao = new optDAO();
 		optDTO odto = new optDTO();
+		
 
 		String[] size = multi.getParameterValues("pdt_size_cd");
-		String[] color = multi.getParameterValues("pdt_color_cd");
+		
+		
 		System.out.println(size.length);
+		
 		if (!size[0].equals("")&& multi.getParameter("pdt_type_cd").equals("P")) {
-			String resultcolor = StringUtils.join(color, ',');
+			String[] rescolor=new String[Integer.parseInt(cnt)];
+			for(int c =1; c<=Integer.parseInt(cnt); c++) {
+				String[] color = multi.getParameterValues("pdt_color_cd"+c);
+				
+				rescolor[c-1]=StringUtils.join(color, ',');
+			}
+			
+			//String resultcolor = StringUtils.join(color, ',');
 
 			for (int i = 0; i < size.length; i++) {
 				
 				odto.setPdt_no(pdtno);
 				odto.setPdt_size_cd(Integer.parseInt(size[i]));
-				odto.setPdt_color_cd(resultcolor);
+				odto.setPdt_color_cd(rescolor[i]);
 				odao.insertOpt(odto);
 			}
 		}

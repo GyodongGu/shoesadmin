@@ -15,11 +15,8 @@ import admin.shoes.app.command.DeleteProductCommand;
 import admin.shoes.app.command.DeleteSmemCommand;
 import admin.shoes.app.command.DeliveryCommand;
 import admin.shoes.app.command.GetHoliday;
-
-import admin.shoes.app.command.GuestOrdList;
-
 import admin.shoes.app.command.GetReservCommand;
-
+import admin.shoes.app.command.GuestOrdList;
 import admin.shoes.app.command.InsertEventCommand;
 import admin.shoes.app.command.InsertProductCommand;
 import admin.shoes.app.command.InsertSmemCommand;
@@ -32,6 +29,7 @@ import admin.shoes.app.command.ShopImageDeleteCommand;
 import admin.shoes.app.command.ShopManageCommand;
 import admin.shoes.app.command.ShopUpdateCommand;
 import admin.shoes.app.command.ShopUpdateFormCommand;
+import admin.shoes.app.command.SiteMeshCommand;
 import admin.shoes.app.command.UpdateSmemCommand;
 import admin.shoes.app.command.allGuestCommand;
 import admin.shoes.app.command.backupCommand;
@@ -58,7 +56,7 @@ public class FrontController extends HttpServlet {
 
 		// 메인 페이지
 		cont.put("/sMem.do", new SMemCommand());             //main페이지
-		
+		cont.put("/siteMesh.do", new SiteMeshCommand());
 		
 		
 		/* 관리자 */

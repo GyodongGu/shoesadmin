@@ -1,6 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
-	pageEncoding="UTF-8"%>
-	<%@ taglib uri="http://www.opensymphony.com/sitemesh/decorator" prefix="decorator"%>
+    pageEncoding="UTF-8"%>
+    <%@ taglib uri="http://www.opensymphony.com/sitemesh/decorator" prefix="decorator"%>
 <!DOCTYPE html>
 <html>
 <head>
@@ -25,7 +25,7 @@
     
     function drawChart1() {
   	// Set chart options
-        var options = {'title':'년도별 가게1의 매출',
+        var options = {'title':'년도별 모든 가게의 총 매출',
                        'width':400, 
                        'height':400};
       // Create the data table. 
@@ -48,7 +48,7 @@
     
     function drawChart2() {
       	// Set chart options
-            var options = {'title':'월별 가게1의 매출',
+            var options = {'title':'월별 모든 가게의 총 매출',
                            'width':400,
                            'height':400};
           // Create the data table.
@@ -71,7 +71,7 @@
     
     function drawChart3() {
       	// Set chart options
-            var options = {'title':'모든 기간 판매한 품목 비율',
+            var options = {'title':'모든 기간 모든 가게들의 판매한 품목 비율',
                            'width':400,
                            'height':400};
           // Create the data table.
@@ -94,7 +94,7 @@
     
     function drawChart4() {
       	// Set chart options
-            var options = {'title':'모든 기간 판매한 성별 비율',
+            var options = {'title':'모든 기간 모든 가게들의 판매한 성별 비율',
                            'width':400,
                            'height':400};
           // Create the data table.

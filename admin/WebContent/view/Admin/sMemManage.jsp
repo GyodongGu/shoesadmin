@@ -9,11 +9,6 @@
 <html>
 <head>
 <title>판매 회원 관리</title>
-<%-- <c:choose> --%>
-<%-- 	<c:when test =  --%>
-
-<%-- </c:choose> --%>
-
 </head>
 <body>
 	<br>
@@ -56,10 +51,10 @@
 										<td>${smem.business_no}</td>
 										<td>${smem.sm_post}</td>
 										<td>
-											<button id="uptBtn" class="btn btn-primary" onclick="location.href='${contextPath}/UpdateSmem.do?id=${nid}'">수정</button>
+											<button type="button" id="uptBtn" class="btn btn-primary" onclick="location.href='${contextPath}/UpdateSmem.do?id=${nid}'">수정</button>
 										</td>
 										<td>
-											<button id="delBtn" class="btn btn-primary" onclick="location.href='${contextPath}/DeleteSmem.do?id=${nid}'">삭제</button>
+											<button type="button" id="delBtn" class="btn btn-primary" onclick="location.href='${contextPath}/DeleteSmem.do?id=${nid}'">삭제</button>
 										</td>
 									</tr>
 								</c:forEach>

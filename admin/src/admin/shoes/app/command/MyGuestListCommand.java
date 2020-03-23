@@ -15,21 +15,19 @@ import admin.shoes.app.dto.pmDTO;
 public class MyGuestListCommand implements Command {
 
 	@Override
-	public String execute(HttpServletRequest request, HttpServletResponse response)
-			throws IOException, ServletException {
-		// TODO Auto-generated method stub
-		
-		//세션처리
+	public String execute(HttpServletRequest request, HttpServletResponse response) throws IOException, ServletException {
+
+		// 세션처리
 		HttpSession httpsession = request.getSession();
 		String nid = (String) httpsession.getServletContext().getContext("/youshoes").getAttribute("nid");
 		request.setAttribute("nid", nid);
-		
+
 		pmDAO pdao = new pmDAO();
 		ArrayList<pmDTO> list = new ArrayList<pmDTO>();
 		list = pdao.pmListOfSm(nid);
-		
+
 		request.setAttribute("list", list);
-		
+
 		return "/view/sMem/guestList.jsp";
 	}
 

@@ -5,20 +5,13 @@ import java.io.IOException;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-import javax.servlet.http.HttpSession;
 
 import admin.shoes.app.common.Command;
 
-public class SiteMeshCommand implements Command {
+public class InsertEventFormCommand implements Command {
 
 	@Override
 	public String execute(HttpServletRequest request, HttpServletResponse response) throws IOException, ServletException {
-		HttpSession httpsession = request.getSession();
-
-		String grant = (String) httpsession.getServletContext().getContext("/youshoes").getAttribute("ngrant");
-
-		request.setAttribute("grant", grant);
-
-		return "/view/siteMesh.jsp";
+		return "/view/Admin/InsertEvent.jsp";
 	}
 }

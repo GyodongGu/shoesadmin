@@ -9,7 +9,7 @@ public class smDTO {
 	private String sm_pw;
 	private String sm_name;
 	private String sm_tell;
-	private int business_no;
+	private String business_no;
 	private Date sm_date;
 	private String sm_post;
 	private String sm_addr1;
@@ -71,10 +71,10 @@ public class smDTO {
 	public void setSm_tell(String sm_tell) {
 		this.sm_tell = sm_tell;
 	}
-	public int getBusiness_no() {
+	public String getBusiness_no() {
 		return business_no;
 	}
-	public void setBusiness_no(int business_no) {
+	public void setBusiness_no(String business_no) {
 		this.business_no = business_no;
 	}
 	public Date getSm_date() {

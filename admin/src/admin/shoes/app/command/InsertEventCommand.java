@@ -14,20 +14,21 @@ import admin.shoes.app.dto.noticeDTO;
 public class InsertEventCommand implements Command {
 
 	@Override
-	public String execute(HttpServletRequest request, HttpServletResponse response)
-			throws IOException, ServletException {
-		HttpSession httpsession = request.getSession();
-		String nid = (String) httpsession.getServletContext().getContext("/youshoes").getAttribute("nid");
-		
+	public String execute(HttpServletRequest request, HttpServletResponse response) throws IOException, ServletException {
+
 		noticeDAO ndao = new noticeDAO();
 		noticeDTO ndto = new noticeDTO();
+
+		String varTitle = request.getParameter("title");
+		String varContent = request.getParameter("Content");
+
+		ndto.setNotice_title(varTitle);
+		ndto.setNotice_content(varContent);
+
+		ndao.noticeInsert(ndto);
+		request.setAttribute("msg", "noticeInsert");
 		
-		int noticeInset = ndao.noticeInsert(ndto);
-		
-		request.setAttribute("nid", nid);
-		request.setAttribute("noticeInset", noticeInset);
-		
-		return "/view/Admin/eventInsert.jsp";
+		return "/eventManage.do";
 	}
 
 }

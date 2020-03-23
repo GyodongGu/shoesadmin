@@ -85,7 +85,7 @@ public class ShopUpdateCommand implements Command {
 		smdto.setSm_name(smname);
 		smdto.setSm_pw(smpw);
 		smdto.setSm_tell(smtell);
-		smdto.setBusiness_no(Integer.parseInt(businessno));
+		smdto.setBusiness_no(businessno);
 		smdto.setSm_post(smpost);
 		smdto.setSm_addr1(smaddr1);
 		smdto.setSm_addr2(smaddr2);

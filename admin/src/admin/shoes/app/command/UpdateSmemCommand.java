@@ -38,7 +38,7 @@ public class UpdateSmemCommand implements Command {
 		
 		request.setAttribute("smUpdate", smUpdate);
 		
-		return "view/Admin/UpdateSmem.jsp";
+		return "/view/Admin/UpdateSmem.jsp";
 	}
 
 }

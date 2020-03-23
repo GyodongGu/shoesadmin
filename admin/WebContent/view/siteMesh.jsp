@@ -1,6 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <%@ taglib uri="http://www.opensymphony.com/sitemesh/decorator" prefix="decorator"%>
-<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
+<%@ taglib uri="http://java.sun.com/jstl/core_rt" prefix="c"%>
 <c:set var="contextPath" value="${pageContext.request.contextPath}" />
 <!DOCTYPE html>
 <html>
@@ -63,11 +63,11 @@
 				<div class="sb-sidenav-menu">
 					<div class="nav">
 						<div class="sb-sidenav-menu-heading"></div>
-						<!-- 사이드바 기본 메뉴들 -->
-						<a class="nav-link" href="${contextPath}/sMem.do"> 홈 </a>
-						<a class="nav-link" href="${contextPath}/eventManage.do">공지사항 </a>
-						<!-- // 사이드바 기본 메뉴들 -->
+						<!-- 사이드바 기본 메뉴 -->
+						<a class="nav-link" href="${contextPath}/sMem.do"> 홈 </a> 
+						<!-- // 사이드바 기본 메뉴 -->
 						<div class="sb-sidenav-menu-heading"></div>
+
 						<!-- // 관리자 메뉴 -->
 						
 						<%
@@ -89,9 +89,9 @@
 							<a class="nav-link" href="${contextPath}/view/sMem/charts.jsp"> 매출 </a>
 							<a class="nav-link" href="${contextPath}/myGuestList.do"> 고객관리 </a>
 							<a class="nav-link" href="${contextPath}/delivery.do"> 배송등록 </a>
-						
+
 						<%} %>
-						<!-- 판매자 메뉴  -->
+
 					</div>
 				</div>
 			</nav>

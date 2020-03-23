@@ -1,4 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
+<c:set var="contextPath" value="${pageContext.request.contextPath}" />
 <!DOCTYPE html>
 <html>
 <head>
@@ -11,31 +13,31 @@
 		<div class="card text-center" style="width: 500px; margin: 0 auto;">
 			<div class="card-header">이벤트 및 공지사항 수정</div>
 			<div class="card-body">
-				<form method="post" action="${contextPath}/view/Admin/sMemManage.do?id=${sMemInfo.id}">
+				<form method="post" action="${contextPath}/UpdateEvent.do">
 					<table style="width: 450px;">
 						<tr>
 							<td>공지사항 번호</td>
 							<td>
-								<input type="text" id="extraaddr1" class="form-control" value="${sMemInfo.id}" disabled>
+								<input type="text" id="UpdateNoticeNo" name="UpdateNoticeNo" class="form-control" value="${sMemInfo.notice_no}" readonly>
 							</td>
 						</tr>
 						<tr>
 							<td>공지사항 제목</td>
 							<td>
-								<input type="text" id="extraaddr1" class="form-control" value="${sMemInfo.id}">
+								<input type="text" id="UpdateNoticeTitle" name="UpdateNoticeTitle" class="form-control" value="${sMemInfo.notice_title}">
 							</td>
 						</tr>
 						<tr>
 							<td>공지사항 날짜</td>
 							<td>
-								<input type="text" id="extraaddr1" class="form-control" value="${sMemInfo.id}" disabled>
+								<input type="text" id="UpdateNoticeDate" name="UpdateNoticeDate" class="form-control" value="${sMemInfo.notice_date}" readonly>
 							</td>
 						</tr>
 						<tr>
 							<td>공지사항 내용</td>
 							<td>
-								<textarea class="form-control" id="exampleFormControlTextarea1" rows="15" cols="40">
-									${sMemInfo.id}
+								<textarea class="form-control" id="UpdateNoticeContent" name="UpdateNoticeContent" rows="15" cols="40">
+									${sMemInfo.notice_content}
 								</textarea>
 							</td>
 						</tr>

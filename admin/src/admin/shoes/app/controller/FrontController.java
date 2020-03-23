@@ -62,8 +62,6 @@ public class FrontController extends HttpServlet {
 
 		// 메인 페이지
 		cont.put("/sMem.do", new SMemCommand());             // main페이지
-		cont.put("/sMemEventSelect.do", new sMemEventSelectCommand()); // main페이지의 공지사항 조회
-		
 		cont.put("/siteMesh.do", new SiteMeshCommand());     // 로그인한 계정 종류에 따라 메뉴바 표시
 		
 		

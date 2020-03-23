@@ -6,12 +6,37 @@
 <head>
 <meta charset="UTF-8">
 <title>관리자 공지사항 등록</title>
+<c:choose>
+	<c:when test='${msg == "noticeInsert"}'>
+		<script>
+			window.onload = function() {
+				alert("공지사항을 등록했습니다.")
+			}
+		</script>
+	</c:when>
+	<c:when test='${msg == "noticeUpdate"}'>
+		<script>
+			window.onload = function() {
+				alert("공지사항을 수정했습니다.")
+			}
+		</script>
+	</c:when>
+	<c:when test='${msg == "noticeDelete"}'>
+		<script>
+			window.onload = function() {
+				alert("공지사항을 삭제했습니다.")
+			}
+		</script>
+	</c:when>
+</c:choose>
 </head>
 <body>
 	<br>
 	<div class="card mb-4">
 		<div class="card-header">
-			<i class="fas fa-table mr-1"></i>공지사항 및 이벤트
+			<i class="fas fa-table mr-1"></i>공지사항 및 이벤트 <span style="float: right">
+				<button type="button" class="btn btn-primary" onclick="location.href='${contextPath}/InsertEventForm.do'">공지사항 등록</button>
+			</span>
 		</div>
 		<div class="card-body">
 			<div class="table-responsive">
@@ -43,10 +68,10 @@
 										<td>${smNotice.notice_date}</td>
 										<td>${smNotice.notice_content}</td>
 										<td>
-											<button class="btn btn-primary" onclick="location.href='${contextPath}/view/Admin/UpdateEvent.jsp'">수정</button>
+											<button class="btn btn-primary" onclick="location.href='${contextPath}/UpdateEventForm.do?notice_no=${smNotice.notice_no}'">수정</button>
 										</td>
 										<td>
-											<button class="btn btn-primary" onclick="location.href='${contextPath}/view/Admin/DeleteEvent.jsp'">삭제</button>
+											<button class="btn btn-primary" onclick="location.href='${contextPath}/DeleteEvent.do?notice_no=${smNotice.notice_no}'">삭제</button>
 										</td>
 									</tr>
 								</c:forEach>
@@ -54,7 +79,6 @@
 						</c:choose>
 					<tbody>
 				</table>
-				<button type="button" class="btn btn-primary" onclick="location.href='${contextPath}/view/Admin/InsertEvent.jsp'">공지사항 등록</button>
 			</div>
 		</div>
 	</div>

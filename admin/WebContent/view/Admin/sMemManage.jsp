@@ -9,11 +9,6 @@
 <html>
 <head>
 <title>판매 회원 관리</title>
-<%-- <c:choose> --%>
-<%-- 	<c:when test =  --%>
-
-<%-- </c:choose> --%>
-
 </head>
 <body>
 	<br>

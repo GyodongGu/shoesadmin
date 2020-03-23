@@ -52,8 +52,8 @@
 							</div>
 							<div class="form-group productimg">
 								<p class="small mb-1">제품사진</p>
-								<button type="button" id="insertimg">사진추가</button><br>
-								<input type="file" name="file1"/>
+								<button type="button" class="btn btn-primary" id="insertimg">사진추가</button><br>
+								<input type="file"  name="file1"/>
 								<!-- <input type="file" name="file2"/>
 								<input type="file" name="file3"/> -->
 							</div>

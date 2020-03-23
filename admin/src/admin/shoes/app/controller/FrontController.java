@@ -17,7 +17,9 @@ import admin.shoes.app.command.DeliveryCommand;
 import admin.shoes.app.command.GetHoliday;
 import admin.shoes.app.command.GetReservCommand;
 import admin.shoes.app.command.GuestOrdList;
+import admin.shoes.app.command.IdOverlapCommand;
 import admin.shoes.app.command.InsertEventCommand;
+import admin.shoes.app.command.InsertOkCommand;
 import admin.shoes.app.command.InsertProductCommand;
 import admin.shoes.app.command.InsertSmemCommand;
 import admin.shoes.app.command.MyGuestListCommand;
@@ -72,6 +74,8 @@ public class FrontController extends HttpServlet {
 		// 판매자 관리
 		cont.put("/sMemManage.do", new sMemManageCommand()); //판매회원 조회
 		cont.put("/InsertSmem.do", new InsertSmemCommand()); //판매회원 등록
+		cont.put("/IdOverlap.do", new IdOverlapCommand()); //판매회원 등록
+		cont.put("/InsertOk.do", new InsertOkCommand()); //판매회원 등록
 		cont.put("/UpdateSmem.do", new UpdateSmemCommand()); //판매회원 수정
 		cont.put("/DeleteSmem.do", new DeleteSmemCommand()); //판매회원 삭제
 

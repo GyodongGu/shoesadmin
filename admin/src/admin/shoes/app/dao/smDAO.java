@@ -35,7 +35,7 @@ public class smDAO extends DAO {
 				smdto.setSm_pw(rs.getString("sm_pw"));
 				smdto.setSm_name(rs.getString("sm_name"));
 				smdto.setSm_tell(rs.getString("sm_tell"));
-				smdto.setBusiness_no(rs.getInt("business_no"));
+				smdto.setBusiness_no(rs.getString("business_no"));
 				smdto.setSm_date(rs.getDate("sm_date"));
 				smdto.setSm_post(rs.getString("sm_post"));
 				smdto.setSm_addr1(rs.getString("sm_addr1"));
@@ -59,7 +59,8 @@ public class smDAO extends DAO {
 	// 2. 판매회원 등록    smInsert()
 	public int smInsert(smDTO dto) {
 		int n = 0;
-		String sql = "insert into sales_member(sm_id, shop_name, sm_pw, sm_name, sm_tell, business_no, sm_date, sm_post, sm_addr1, sm_addr2, sm_stat_cd, mgr_auth_cd, sm_remark)" + "values(?, ?, ?, ?, ?, ?, sysdate, ? , ?,  ?, ?, ?, ?)";
+		String sql = "insert into sales_member(sm_id, shop_name, sm_pw, sm_name, sm_tell, business_no, sm_date, sm_post, sm_addr1, sm_addr2, sm_addr3, sm_stat_cd, mgr_auth_cd, sm_remark, sm_time, sm_rest)"
+				+ "values(?, ?, ?, ?, ?, ?, sysdate, ?, ?, ?, ?, 'ACT01', 'M02', ?, ?, ?)";
 		try {
 			psmt = conn.prepareStatement(sql);
 			psmt.setString(1, dto.getSm_id());
@@ -67,14 +68,15 @@ public class smDAO extends DAO {
 			psmt.setString(3, dto.getSm_pw());
 			psmt.setString(4, dto.getSm_name());
 			psmt.setString(5, dto.getSm_tell());
-			psmt.setInt(6, dto.getBusiness_no());
+			psmt.setString(6, dto.getBusiness_no());
 			psmt.setString(7, dto.getSm_post());
 			psmt.setString(8, dto.getSm_addr1());
 			psmt.setString(9, dto.getSm_addr2());
-			psmt.setString(10, dto.getSm_stat_cd());
-			psmt.setString(11, dto.getMgr_auth_cd());
-			psmt.setString(12, dto.getSm_remark());
-
+			psmt.setString(10, dto.getSm_addr3());
+			psmt.setString(11, dto.getSm_remark());
+			psmt.setString(12, dto.getSm_time());
+			psmt.setString(13, dto.getSm_rest());
+			n = psmt.executeUpdate();
 		} catch (SQLException e) {
 			e.printStackTrace();
 		} finally {
@@ -144,7 +146,7 @@ public class smDAO extends DAO {
 				smdto.setSm_pw(rs.getString("sm_pw"));
 				smdto.setSm_name(rs.getString("sm_name"));
 				smdto.setSm_tell(rs.getString("sm_tell"));
-				smdto.setBusiness_no(rs.getInt("business_no"));
+				smdto.setBusiness_no(rs.getString("business_no"));
 				smdto.setSm_date(rs.getDate("sm_date"));
 				smdto.setSm_post(rs.getString("sm_post"));
 				smdto.setSm_addr1(rs.getString("sm_addr1"));
@@ -211,6 +213,27 @@ public class smDAO extends DAO {
 		}
 		
 		return result;
+	}
+	
+	//판매회원 등록창에서 아이디 중복체크
+	public boolean IdOverlap(String id) {
+		boolean bol = true;
+		String sql = "select sm_id from sales_member where sm_id = ? ";
+		try {
+			psmt = conn.prepareStatement(sql);
+			psmt.setString(1, id);
+			rs = psmt.executeQuery();
+			if (rs.next()) {
+				if (rs.getString("sm_id") == null || rs.getString("sm_id") == "") {
+					bol = true;
+				} else {
+					bol = false;
+				}
+			}
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+		return bol;
 	}
 	
 }

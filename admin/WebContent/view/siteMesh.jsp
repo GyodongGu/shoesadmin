@@ -69,19 +69,20 @@
 						<!-- // 사이드바 기본 메뉴들 -->
 						<div class="sb-sidenav-menu-heading"></div>
 						<!-- // 관리자 메뉴 -->
-						<c:out value="${sessionScope.grant }"></c:out>
-						<c:if test="${sessionScope.grant eq 'M01' }">
-						</c:if>
+						
+						<%
+						String nid = (String) session.getServletContext().getContext("/youshoes").getAttribute("ngrant");
+						if(nid !=null && nid.equals("M01")){
+							%>
 							<a class="nav-link" href="${contextPath}/sMemManage.do"> 판매 회원 관리 </a>
 							<a class="nav-link" href="${contextPath}/allGuest.do"> 구매회원 목록 </a>
 							<a class="nav-link" href="${contextPath}/backup.do">백업 거래 내역 </a>
 							<a class="nav-link" href="${contextPath}/codeManage.do"> 코드ID </a>
 							<a class="nav-link" href="${contextPath}/view/Admin/adminCharts.jsp">총 매출 </a>
-						
+						<%}else if(nid !=null && nid.equals("M02")){
+							%>
 						<!-- // 관리자 메뉴 -->
 						<!-- 판매자 메뉴  -->
-						<c:if test="${ngrant eq 'M02' }">
-						</c:if>
 							<a class="nav-link" href="${contextPath}/shopManage.do"> 매장관리 </a>
 							<a class="nav-link" href="${contextPath}/productInsertForm.do"> 상품 </a>
 							<a class="nav-link" href="${contextPath}/view/sMem/callendar.jsp"> 일정관리 </a>
@@ -89,7 +90,7 @@
 							<a class="nav-link" href="${contextPath}/myGuestList.do"> 고객관리 </a>
 							<a class="nav-link" href="${contextPath}/delivery.do"> 배송등록 </a>
 						
-						
+						<%} %>
 						<!-- 판매자 메뉴  -->
 					</div>
 				</div>

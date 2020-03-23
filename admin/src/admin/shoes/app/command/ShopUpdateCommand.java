@@ -25,7 +25,7 @@ public class ShopUpdateCommand implements Command {
 			throws IOException, ServletException {
 		// TODO Auto-generated method stub
 		
-		String directory = "C:/Users/교동/git/youshoes/youshoes/WebContent/view/img/";
+		String directory = "C:/Users/user/git/youshoes/youshoes/WebContent/view/img/";
 		int maxsize = 1024 * 1024 * 100;
 		String encoding = "UTF-8";
 		
@@ -47,7 +47,7 @@ public class ShopUpdateCommand implements Command {
 			if (fileName == null)
 				continue;
 
-			if (!fileName.endsWith(".jpg") && !fileName.endsWith(".png")) {
+			if (!fileName.endsWith(".jpg") && !fileName.endsWith(".png") && !fileName.endsWith(".JPG")) {
 				File file = new File(directory + fileRealName);
 				file.delete();
 

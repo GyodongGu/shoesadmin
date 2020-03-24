@@ -41,54 +41,63 @@ var event;
 			eventSources: ['${pageContext.request.contextPath}/ajax/GetHoliday.do', '${pageContext.request.contextPath}/ajax/GetReserv.do'],
 			defaultView : 'dayGridMonth',
 		   	eventColor: '#964B00',
-			eventTextColor: 'white',
+			eventTextColor: 'white',  
 			displayEventTime : true, 
-			eventLimit: true,
 			contentHeight: 450,
 			eventTimeFormat: { hour: 'numeric', minute: '2-digit' }, 
 			defaultView : 'dayGridMonth',  
 			dateClick : function(date) {
+				var hc = confirm(date.dateStr+" 날짜로 휴일을 지정하시겠습니까?");
 				var ttdate = Tdate1(date.date);  
 				var today = Tdate1(new Date()); 
 				var events = calendar.getEvents();
-				$('input').attr('disabled', false);
-				for( var i = 0; i < events.length; i++){  
-					if (Tdate2(date.date) == Tdate2(events[i].start)) {
-						$('[value="'+Tdate3(events[i].start)+'"]').attr('disabled', 'disabled'); 
-						}	
-					} 
-				var ttoday = today.toString();   
+			 	var holiday = {"rest_date" : date.dateStr};
+				var ttoday = today.toString();
+				if (hc == false) {
+					return;
+				}
+				
+			 	for(var i=0; i < events.length; i++) {
+			   		if(Tdate1(events[i].start) == Tdate1(date.date) && events[i].title == '예약') {
+			   			alert("고객의 예약이 있는 날짜 입니다. 다시 한번 확인해 주세요."); 
+			   			return;
+			   		}
+			   		if(Tdate1(events[i].start) == Tdate1(date.date) && events[i].title == '휴일') {
+			   			alert("이미 휴일로 지정 된 날짜 입니다. 다시 한번 확인해 주세요.");
+			   			return;
+			   		}
+			   	}
+				
 				if(date.dateStr > ttoday) {
-				 	var hc = confirm(date.dateStr+" 날짜로 휴일을 지정하시겠습니까?");
-				 	var holiday = {"rest_date" : date.dateStr};
 				 	if(hc == true){
-				 		$.ajax({
+				 		$.ajax({ 
 					   	url: "${pageContext.request.contextPath}/ajax/SetHoliday.do",
 					   	type:'GET',
 					   	data:holiday,
 					   	success: function (result) {
 						var date = new Date(result + 'T00:00:00');
-					   		if (result =! null) {
+					   	
+						if (result =! null) {
 								calendar.addEvent({
-									title :'휴일',
-									start :date,
-									allDay : true
+									title: '휴일',
+									start: date,
+									allDay: true
+									
 								}); 
 								alert('휴일 입력이 완료 되었습니다!');
 							}
-						}
+						} 
 				 	})
 				 }
-					 	
-				 } else {
-					 alert("예약 할 수 없는 날짜 입니다. 다시 선택해주세요.");
 				 }
 			}, 
 			
 			eventClick : function (info) { 
 				var del = confirm("이 휴일 일정을 삭제 할까요?");
 				var dhul = {"rest_date" : Tdate2(info.event.start)};
-				if(info.event.title == '예약'){
+				if (del == false) {
+					return;
+				}else if(info.event.title == '예약'){
 					alert("이 이일정은 고객의 예약일정입니다. 휴일일정을 선택해주세요.");
 					
 				}else if(del == true) {

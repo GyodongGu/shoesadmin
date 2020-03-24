@@ -47,28 +47,32 @@ var event;
 			eventTimeFormat: { hour: 'numeric', minute: '2-digit' }, 
 			defaultView : 'dayGridMonth',  
 			dateClick : function(date) {
-				var hc = confirm(date.dateStr+" 날짜로 휴일을 지정하시겠습니까?");
 				var ttdate = Tdate1(date.date);  
 				var today = Tdate1(new Date()); 
 				var events = calendar.getEvents();
+				var ttoday = today.toString(); 
+			
 			 	var holiday = {"rest_date" : date.dateStr};
-				var ttoday = today.toString();
-				if (hc == false) {
-					return;
-				}
-				
+			 	if (hc == false) {
+			 		return;
+			 	} else if (date.dateStr < ttoday) {
+			 		 alert("지정 할 수 없는 날짜 입니다. 다시 선택해주세요.");
+			 		 return;
+			 	}
+			 	
 			 	for(var i=0; i < events.length; i++) {
-			   		if(Tdate1(events[i].start) == Tdate1(date.date) && events[i].title == '예약') {
-			   			alert("고객의 예약이 있는 날짜 입니다. 다시 한번 확인해 주세요."); 
-			   			return;
-			   		}
+				   	if(Tdate2(events[i].start) == Tdate2(date.date) && events[i].title == '예약') { 
+				   		alert("고객의 예약 일정이 지정 된 날짜 입니다. 다시 한번 확인해 주세요.");
+			   			return; 
+				   		}
 			   		if(Tdate1(events[i].start) == Tdate1(date.date) && events[i].title == '휴일') {
 			   			alert("이미 휴일로 지정 된 날짜 입니다. 다시 한번 확인해 주세요.");
 			   			return;
-			   		}
+			   		}   
 			   	}
 				
 				if(date.dateStr > ttoday) {
+					var hc = confirm(date.dateStr+" 날짜로 휴일을 지정하시겠습니까?");
 				 	if(hc == true){
 				 		$.ajax({ 
 					   	url: "${pageContext.request.contextPath}/ajax/SetHoliday.do",
@@ -76,7 +80,6 @@ var event;
 					   	data:holiday,
 					   	success: function (result) {
 						var date = new Date(result + 'T00:00:00');
-					   	
 						if (result =! null) {
 								calendar.addEvent({
 									title: '휴일',
@@ -86,10 +89,10 @@ var event;
 								}); 
 								alert('휴일 입력이 완료 되었습니다!');
 							}
-						} 
+						}
 				 	})
 				 }
-				 }
+				 } 
 			}, 
 			
 			eventClick : function (info) { 

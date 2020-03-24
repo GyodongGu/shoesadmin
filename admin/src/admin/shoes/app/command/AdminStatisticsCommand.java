@@ -9,9 +9,8 @@ import javax.servlet.http.HttpSession;
 
 import admin.shoes.app.common.Command;
 import admin.shoes.app.dao.ordDAO;
-import admin.shoes.app.dto.ordDTO;
 
-public class sMemStatisticsCommand implements Command {
+public class AdminStatisticsCommand implements Command {
 
 	@Override
 	public String execute(HttpServletRequest request, HttpServletResponse response) throws IOException, ServletException {
@@ -20,8 +19,7 @@ public class sMemStatisticsCommand implements Command {
 
 		request.setAttribute("nid", nid);
 
-
-		return "/view/sMem/statistics.jsp";
+		return "/view/Admin/adminCharts.jsp";
 	}
 
 }

@@ -6,12 +6,20 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
 
+import admin.shoes.app.dto.StatisticsDTO;
 import admin.shoes.app.dto.imageDetailDTO;
 import admin.shoes.app.dto.ordDTO;
 import admin.shoes.app.dto.pdtDTO;
 
+/**
+ * 
+ * @author 구교동, 유승우
+ * 1.
+ * 2. 관리자 YouShoes의 총 매출   YouShoesStatistics()
+ */
+
 public class ordDAO extends DAO{
-	
+	// 1.
 	public List<ordDTO> ordList(int pmno){
 		List<ordDTO> list = new ArrayList<ordDTO>();
 		
@@ -64,7 +72,6 @@ public class ordDAO extends DAO{
 			}
 			
 		} catch (SQLException e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
 		} finally {
 			close();
@@ -72,4 +79,34 @@ public class ordDAO extends DAO{
 		return list;
 	}
 
+	// 2. 관리자 YouShoes의 총 매출   YouShoesStatistics()
+	public List<StatisticsDTO> YouShoesStatistics() {
+		List<StatisticsDTO> list = new ArrayList<StatisticsDTO>();
+		
+		
+		String sql = "select to_char(ord_date, 'yyyy') y, sum(ord_point) as sumOrd " 
+				   + "from ord o join ord_detail od " 
+				   + "on o.ord_no = od.ord_no " 
+				   + "where add_months(sysdate, -60) < ord_date "
+				   + "group by to_char(ord_date, 'yyyy') "
+				   + "order by 1";
+		System.out.println(sql);
+		try {
+			psmt = conn.prepareStatement(sql);
+			rs = psmt.executeQuery();
+			
+			while(rs.next()) {
+				StatisticsDTO sdto = new StatisticsDTO();
+				sdto.setSumOrd(rs.getInt("sumOrd"));
+				sdto.setYear(rs.getString("y"));
+				
+				list.add(sdto);
+			}
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} finally {
+			close();
+		}
+		return list;
+	}
 }

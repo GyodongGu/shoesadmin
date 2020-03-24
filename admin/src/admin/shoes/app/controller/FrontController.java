@@ -10,6 +10,8 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import admin.shoes.app.command.AdminStatisticsCommand;
+import admin.shoes.app.command.AjaxAdminStatisticsCommand;
 import admin.shoes.app.command.DelHoliday;
 import admin.shoes.app.command.DeleteEventCommand;
 import admin.shoes.app.command.DeleteProductCommand;
@@ -130,9 +132,11 @@ public class FrontController extends HttpServlet {
 		cont.put("/ajax/getDeptCnt.do", new getDeptCnt()); // 차트데이터
 
 		// 매출 통계
-		cont.put("/AdminStatistics.do", new sMemStatisticsCommand()); // 관리자의 YouShoes 총 매출 메인 페이지
+		cont.put("/AdminStatistics.do", new AdminStatisticsCommand()); // 관리자의 YouShoes 총 매출 메인 페이지
+		cont.put("/ajax/AdminStatistics.do", new AjaxAdminStatisticsCommand()); // 관리자의 YouShoes 총 매출 메인 페이지
 		
 		cont.put("/sMemStatistics.do", new sMemStatisticsCommand()); // 판매자별 매출 메인 페이지
+		
 		cont.put("/sYearStatistics.do", new sYearStatisticsCommand()); // 판매자별 년매출
 		cont.put("/sMonthStatistics.do", new sMonthStatisticsCommand()); // 판매자별 월매출
 		cont.put("/sWeekStatistics.do", new sWeekStatisticsCommand()); // 판매자별 주매출

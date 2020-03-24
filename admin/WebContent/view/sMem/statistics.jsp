@@ -11,15 +11,19 @@
 	<h1 class="main" align="center">${nid}(판매회원)님의매출내역</h1>
 	<br>
 	<div align="center">
+		<h3>${nid}(판매회원)님의 년 매출</h3>
 		<div style="width: 800px">
 			<canvas id="myChartYear"></canvas>
 		</div>
+		<h3>${nid}(판매회원)님의 월 매출</h3>
 		<div style="width: 800px">
 			<canvas id="myChartMonth"></canvas>
 		</div>
+		<h3>${nid}(판매회원)님의 주 매출</h3>
 		<div style="width: 800px">
 			<canvas id="myChartWeek"></canvas>
 		</div>
+		<h3>${nid}(판매회원)님의 일 매출</h3>
 		<div style="width: 800px">
 			<canvas id="myChartDay"></canvas>
 		</div>

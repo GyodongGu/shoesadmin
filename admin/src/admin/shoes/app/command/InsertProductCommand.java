@@ -28,7 +28,7 @@ public class InsertProductCommand implements Command {
 
 	@Override
 	public String execute(HttpServletRequest request, HttpServletResponse response) throws IOException, ServletException {
-		String directory = "C:/Users/교동/git/youshoes/youshoes/WebContent/view/img/";
+		String directory = "C:/Users/user/git/youshoes/youshoes/WebContent/view/img/";
 		int maxsize = 1024 * 1024 * 100;
 		String encoding = "UTF-8";
 

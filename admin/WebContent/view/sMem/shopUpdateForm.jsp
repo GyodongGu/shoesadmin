@@ -138,6 +138,7 @@
 				</c:forEach>
 				
 				</div>
+				<p>(이미지 파일 확장자는 jpg, png만 가능합니다.)</p>
 				<div class="form-row">
 					<div class="col-md-6">
 						<div class="form-group">

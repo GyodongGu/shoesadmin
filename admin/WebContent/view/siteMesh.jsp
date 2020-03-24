@@ -67,31 +67,29 @@
 						<a class="nav-link" href="${contextPath}/sMem.do"> 홈 </a> 
 						<!-- // 사이드바 기본 메뉴 -->
 						<div class="sb-sidenav-menu-heading"></div>
-						<c:out value="${sessionScope.ngrant }"></c:out>
-						
-							<!-- 관리자 메뉴 -->
-							<c:if test="${sessionScope.ngrant == 'M01'}">
-							</c:if>
-								<a class="nav-link" href="${contextPath}/eventManage.do">공지사항 </a>
-								<a class="nav-link" href="${contextPath}/sMemManage.do"> 판매 회원 관리 </a>
-								<a class="nav-link" href="${contextPath}/allGuest.do"> 구매회원 목록 </a>
-								<a class="nav-link" href="${contextPath}/backup.do">백업 거래 내역 </a>
-								<a class="nav-link" href="${contextPath}/codeManage.do"> 코드ID </a>
-								<a class="nav-link" href="${contextPath}/AdminStatistics.do">총 매출 </a>
-							
-							<!-- // 관리자 메뉴 -->
-							<!-- 판매자 메뉴 --> 
-							<c:if test="${sessionScope.ngrant == 'M02'}">
-							</c:if>
-								<a class="nav-link" href="${contextPath}/shopManage.do"> 매장관리 </a>
-								<a class="nav-link" href="${contextPath}/productInsertForm.do"> 상품 </a>
-								<a class="nav-link" href="${contextPath}/view/sMem/callendar.jsp"> 일정관리 </a>
-								<a class="nav-link" href="${contextPath}/sMemStatistics.do"> 매출 </a>
-								<a class="nav-link" href="${contextPath}/myGuestList.do"> 고객관리 </a>
-								<a class="nav-link" href="${contextPath}/delivery.do"> 배송등록 </a>
-							
-							<!-- // 판매자 메뉴 -->  
-						
+
+						<!-- // 관리자 메뉴 -->
+						<%
+						String nid = (String) session.getServletContext().getContext("/youshoes").getAttribute("ngrant");
+						if(nid !=null && nid.equals("M01")){
+							%>
+							<a class="nav-link" href="${contextPath}/sMemManage.do"> 판매 회원 관리 </a>
+							<a class="nav-link" href="${contextPath}/allGuest.do"> 구매회원 목록 </a>
+							<a class="nav-link" href="${contextPath}/backup.do">백업 거래 내역 </a>
+							<a class="nav-link" href="${contextPath}/codeManage.do"> 코드ID </a>
+							<a class="nav-link" href="${contextPath}/view/Admin/adminCharts.jsp">총 매출 </a>
+						<%}else if(nid !=null && nid.equals("M02")){
+							%>
+						<!-- // 관리자 메뉴 -->
+						<!-- 판매자 메뉴  -->
+							<a class="nav-link" href="${contextPath}/shopManage.do"> 매장관리 </a>
+							<a class="nav-link" href="${contextPath}/productInsertForm.do"> 상품 </a>
+							<a class="nav-link" href="${contextPath}/view/sMem/callendar.jsp"> 일정관리 </a>
+							<a class="nav-link" href="${contextPath}/view/sMem/charts.jsp"> 매출 </a>
+							<a class="nav-link" href="${contextPath}/myGuestList.do"> 고객관리 </a>
+							<a class="nav-link" href="${contextPath}/delivery.do"> 배송등록 </a>
+
+						<%} %>
 					</div>
 				</div>
 			</nav>

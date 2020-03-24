@@ -27,7 +27,7 @@ public class InsertSmemCommand implements Command {
 		request.setAttribute("smInsert", smInsert);
 		request.setAttribute("nid", nid);
 
-		return "/InsertSmem.do";
+		return "/view/Admin/InsertSmem.jsp";
 	}
 
 }

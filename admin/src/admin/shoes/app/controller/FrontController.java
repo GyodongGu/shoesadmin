@@ -18,8 +18,10 @@ import admin.shoes.app.command.DeliveryCommand;
 import admin.shoes.app.command.GetHoliday;
 import admin.shoes.app.command.GetReservCommand;
 import admin.shoes.app.command.GuestOrdList;
+import admin.shoes.app.command.IdOverlapCommand;
 import admin.shoes.app.command.InsertEventCommand;
 import admin.shoes.app.command.InsertEventFormCommand;
+import admin.shoes.app.command.InsertOkCommand;
 import admin.shoes.app.command.InsertProductCommand;
 import admin.shoes.app.command.InsertSmemCommand;
 import admin.shoes.app.command.MyGuestListCommand;
@@ -34,7 +36,6 @@ import admin.shoes.app.command.ShopUpdateFormCommand;
 import admin.shoes.app.command.SiteMeshCommand;
 import admin.shoes.app.command.UpdateEventCommand;
 import admin.shoes.app.command.UpdateEventFormCommand;
-import admin.shoes.app.command.UpdateEventSelectCommand;
 import admin.shoes.app.command.UpdateSmemCommand;
 import admin.shoes.app.command.allGuestCommand;
 import admin.shoes.app.command.backupCommand;
@@ -43,7 +44,6 @@ import admin.shoes.app.command.eventManageCommand;
 import admin.shoes.app.command.getDeptCnt;
 import admin.shoes.app.command.logoutCommand;
 import admin.shoes.app.command.sDayStatisticsCommand;
-import admin.shoes.app.command.sMemEventSelectCommand;
 import admin.shoes.app.command.sMemManageCommand;
 import admin.shoes.app.command.sMemStatisticsCommand;
 import admin.shoes.app.command.sMonthStatisticsCommand;
@@ -66,9 +66,9 @@ public class FrontController extends HttpServlet {
 		charset = config.getInitParameter("charset");
 
 		// 메인 페이지
-		cont.put("/sMem.do", new SMemCommand()); // main페이지
-		cont.put("/siteMesh.do", new SiteMeshCommand()); // 로그인한 계정 종류에 따라 메뉴바 표시
-
+		cont.put("/sMem.do", new SMemCommand());             //main페이지
+		cont.put("/siteMesh.do", new SiteMeshCommand());     // 로그인한 계정 종류에 따라 메뉴바 표시
+		
 		/* 관리자 */
 		// 기타 테이블 조회
 		cont.put("/codeManage.do", new codeManageCommand()); // 코드ID 조회
@@ -76,22 +76,27 @@ public class FrontController extends HttpServlet {
 		cont.put("/backup.do", new backupCommand()); // 백업 거래내역 조회
 
 		// 공지사항
-		cont.put("/eventManage.do", new eventManageCommand()); // 공지사항 조회
-
-		cont.put("/InsertEvent.do", new InsertEventCommand()); // 공지사항 등록
-		cont.put("/InsertEventForm.do", new InsertEventFormCommand()); // 공지사항 등록 폼
-
-		cont.put("/UpdateEvent.do", new UpdateEventCommand()); // 공지사항 수정
-		cont.put("/UpdateEventForm.do", new UpdateEventFormCommand()); // 공지사항 수정 폼
-
-		cont.put("/DeleteEvent.do", new DeleteEventCommand()); // 공지사항 삭제
+		cont.put("/eventManage.do", new eventManageCommand()); //공지사항 조회
+		
+		cont.put("/InsertEvent.do", new InsertEventCommand()); //공지사항 등록
+		cont.put("/InsertEventForm.do", new InsertEventFormCommand()); //공지사항 등록 폼
+		
+		cont.put("/UpdateEvent.do", new UpdateEventCommand()); //공지사항 수정
+		cont.put("/UpdateEventForm.do", new UpdateEventFormCommand()); //공지사항 수정 폼
+		
+		cont.put("/DeleteEvent.do", new DeleteEventCommand()); //공지사항 삭제
 
 		// 판매자 관리
 		cont.put("/sMemManage.do", new sMemManageCommand()); // 판매회원 조회
 		cont.put("/InsertSmem.do", new InsertSmemCommand()); // 판매회원 등록
 		cont.put("/UpdateSmem.do", new UpdateSmemCommand()); // 판매회원 수정
 		cont.put("/DeleteSmem.do", new DeleteSmemCommand()); // 판매회원 삭제
-
+		cont.put("/sMemManage.do", new sMemManageCommand()); //판매회원 조회
+		cont.put("/InsertSmem.do", new InsertSmemCommand()); //판매회원 등록
+		cont.put("/IdOverlap.do", new IdOverlapCommand()); //판매회원 아이디 중복검사
+		cont.put("/InsertOk.do", new InsertOkCommand()); //판매회원 등록 확인
+		cont.put("/UpdateSmem.do", new UpdateSmemCommand()); //판매회원 수정
+		cont.put("/DeleteSmem.do", new DeleteSmemCommand()); //판매회원 삭제
 		cont.put("/logout.do", new logoutCommand()); // 로그아웃
 
 		// 매출 통계

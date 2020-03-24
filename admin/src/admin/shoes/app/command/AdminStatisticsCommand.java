@@ -8,28 +8,18 @@ import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
 import admin.shoes.app.common.Command;
-import admin.shoes.app.dao.smDAO;
-import admin.shoes.app.dto.smDTO;
+import admin.shoes.app.dao.ordDAO;
 
-public class DeleteSmemCommand implements Command {
+public class AdminStatisticsCommand implements Command {
 
 	@Override
 	public String execute(HttpServletRequest request, HttpServletResponse response) throws IOException, ServletException {
-		
 		HttpSession httpsession = request.getSession();
-		
-		smDAO sdao = new smDAO();
-		smDTO sdto = new smDTO();
-		
-		String smid = request.getParameter("sm_id");
-		System.out.println("삭제할 sm_id:"+smid);
-		sdto.setSm_id(smid);
-		
-		sdao.smDelete(sdto);
-		
-		request.setAttribute("smDelete", smid);
-		
-		return "/sMemManage.do";
+		String nid = (String) httpsession.getServletContext().getContext("/youshoes").getAttribute("nid");
+
+		request.setAttribute("nid", nid);
+
+		return "/view/Admin/adminCharts.jsp";
 	}
 
 }

@@ -42,8 +42,13 @@ import admin.shoes.app.command.codeManageCommand;
 import admin.shoes.app.command.eventManageCommand;
 import admin.shoes.app.command.getDeptCnt;
 import admin.shoes.app.command.logoutCommand;
+import admin.shoes.app.command.sDayStatisticsCommand;
 import admin.shoes.app.command.sMemEventSelectCommand;
 import admin.shoes.app.command.sMemManageCommand;
+import admin.shoes.app.command.sMemStatisticsCommand;
+import admin.shoes.app.command.sMonthStatisticsCommand;
+import admin.shoes.app.command.sWeekStatisticsCommand;
+import admin.shoes.app.command.sYearStatisticsCommand;
 import admin.shoes.app.common.Command;
 
 @WebServlet("*.do")
@@ -61,68 +66,72 @@ public class FrontController extends HttpServlet {
 		charset = config.getInitParameter("charset");
 
 		// 메인 페이지
-		cont.put("/sMem.do", new SMemCommand());             // main페이지
-		cont.put("/siteMesh.do", new SiteMeshCommand());     // 로그인한 계정 종류에 따라 메뉴바 표시
-		
-		
+		cont.put("/sMem.do", new SMemCommand()); // main페이지
+		cont.put("/siteMesh.do", new SiteMeshCommand()); // 로그인한 계정 종류에 따라 메뉴바 표시
+
 		/* 관리자 */
 		// 기타 테이블 조회
-		cont.put("/codeManage.do", new codeManageCommand()); //코드ID 조회
-		cont.put("/allGuest.do", new allGuestCommand());     //구매회원 목록
-		cont.put("/backup.do", new backupCommand());         //백업 거래내역 조회
+		cont.put("/codeManage.do", new codeManageCommand()); // 코드ID 조회
+		cont.put("/allGuest.do", new allGuestCommand()); // 구매회원 목록
+		cont.put("/backup.do", new backupCommand()); // 백업 거래내역 조회
 
 		// 공지사항
-		cont.put("/eventManage.do", new eventManageCommand()); //공지사항 조회
-		
-		cont.put("/InsertEvent.do", new InsertEventCommand()); //공지사항 등록
-		cont.put("/InsertEventForm.do", new InsertEventFormCommand()); //공지사항 등록 폼
-		
-		cont.put("/UpdateEvent.do", new UpdateEventCommand()); //공지사항 수정
-		cont.put("/UpdateEventForm.do", new UpdateEventFormCommand()); //공지사항 수정 폼
-		
-		cont.put("/DeleteEvent.do", new DeleteEventCommand()); //공지사항 삭제
-		
+		cont.put("/eventManage.do", new eventManageCommand()); // 공지사항 조회
+
+		cont.put("/InsertEvent.do", new InsertEventCommand()); // 공지사항 등록
+		cont.put("/InsertEventForm.do", new InsertEventFormCommand()); // 공지사항 등록 폼
+
+		cont.put("/UpdateEvent.do", new UpdateEventCommand()); // 공지사항 수정
+		cont.put("/UpdateEventForm.do", new UpdateEventFormCommand()); // 공지사항 수정 폼
+
+		cont.put("/DeleteEvent.do", new DeleteEventCommand()); // 공지사항 삭제
 
 		// 판매자 관리
-		cont.put("/sMemManage.do", new sMemManageCommand()); //판매회원 조회
-		cont.put("/InsertSmem.do", new InsertSmemCommand()); //판매회원 등록
-		cont.put("/UpdateSmem.do", new UpdateSmemCommand()); //판매회원 수정
-		cont.put("/DeleteSmem.do", new DeleteSmemCommand()); //판매회원 삭제
+		cont.put("/sMemManage.do", new sMemManageCommand()); // 판매회원 조회
+		cont.put("/InsertSmem.do", new InsertSmemCommand()); // 판매회원 등록
+		cont.put("/UpdateSmem.do", new UpdateSmemCommand()); // 판매회원 수정
+		cont.put("/DeleteSmem.do", new DeleteSmemCommand()); // 판매회원 삭제
 
-		cont.put("/logout.do", new logoutCommand()); // 로그아웃 
+		cont.put("/logout.do", new logoutCommand()); // 로그아웃
 
 		// 매출 통계
-		//		cont.put("/sMemManage.do", new sMemManageCommand());   // YouShoes의 총 매출
+		// cont.put("/sMemManage.do", new sMemManageCommand()); // YouShoes의 총 매출
 
 		/* 판매자 */
 		// 매장 수정
-		cont.put("/shopManage.do", new ShopManageCommand());   // 매장 관리
-		cont.put("/shopUpdateForm.do", new ShopUpdateFormCommand());	//매장(판매자)업데이트 페이지
-		cont.put("/shopUpdate.do", new ShopUpdateCommand());	//매장(판매자)정보 업데이트
-		cont.put("/ajax/deleteShopImage.do", new ShopImageDeleteCommand());//상점 이미지 삭제
+		cont.put("/shopManage.do", new ShopManageCommand()); // 매장 관리
+		cont.put("/shopUpdateForm.do", new ShopUpdateFormCommand()); // 매장(판매자)업데이트 페이지
+		cont.put("/shopUpdate.do", new ShopUpdateCommand()); // 매장(판매자)정보 업데이트
+		cont.put("/ajax/deleteShopImage.do", new ShopImageDeleteCommand());// 상점 이미지 삭제
 		// 상품 등록
-		cont.put("/productInsertForm.do", new ProductInsertFormCommand()); //상품등록페이지
+		cont.put("/productInsertForm.do", new ProductInsertFormCommand()); // 상품등록페이지
 		cont.put("/productInsert.do", new InsertProductCommand()); // 상품 등록
-		//		cont.put("/sMemManage.do", new sMemManageCommand());   // 상품 수정
-		cont.put("/ajax/deleteProd.do", new DeleteProductCommand());   // 상품 삭제
+		// cont.put("/sMemManage.do", new sMemManageCommand()); // 상품 수정
+		cont.put("/ajax/deleteProd.do", new DeleteProductCommand()); // 상품 삭제
 
-		// 배송 관리 
+		// 배송 관리
 		cont.put("/delivery.do", new DeliveryCommand()); // 딜리버리 조회
 		cont.put("/SetDelivery.do", new SetDeliveryCommand()); // 송장번호 수정
 
 		// 고객 관리
-		cont.put("/myGuestList.do", new MyGuestListCommand());   // 구매한 구매회원 조회
-		cont.put("/GuestOrdList.do", new GuestOrdList());	 // 구매한 구매회원의 구매내역조회
+		cont.put("/myGuestList.do", new MyGuestListCommand()); // 구매한 구매회원 조회
+		cont.put("/GuestOrdList.do", new GuestOrdList()); // 구매한 구매회원의 구매내역조회
 
 		// 일정 등록
-		cont.put("/ajax/SetHoliday.do", new SetHoliday()); //일정 업로드
-		cont.put("/ajax/GetHoliday.do", new GetHoliday()); //휴일 가져오기
-		cont.put("/ajax/DelHoliday.do", new DelHoliday()); //휴일 삭제
+		cont.put("/ajax/SetHoliday.do", new SetHoliday()); // 일정 업로드
+		cont.put("/ajax/GetHoliday.do", new GetHoliday()); // 휴일 가져오기
+		cont.put("/ajax/DelHoliday.do", new DelHoliday()); // 휴일 삭제
 		cont.put("/ajax/GetReserv.do", new GetReservCommand()); // 예약일정 가져오기
-		cont.put("/ajax/getDeptCnt.do", new getDeptCnt()); //차트데이터
+		cont.put("/ajax/getDeptCnt.do", new getDeptCnt()); // 차트데이터
 
 		// 매출 통계
-		//		cont.put("/sMemManage.do", new sMemManageCommand());   // 판매자별 총 매출
+		cont.put("/AdminStatistics.do", new sMemStatisticsCommand()); // 관리자의 YouShoes 총 매출 메인 페이지
+		
+		cont.put("/sMemStatistics.do", new sMemStatisticsCommand()); // 판매자별 매출 메인 페이지
+		cont.put("/sYearStatistics.do", new sYearStatisticsCommand()); // 판매자별 년매출
+		cont.put("/sMonthStatistics.do", new sMonthStatisticsCommand()); // 판매자별 월매출
+		cont.put("/sWeekStatistics.do", new sWeekStatisticsCommand()); // 판매자별 주매출
+		cont.put("/sDayStatistics.do", new sDayStatisticsCommand()); // 판매자별 월매출
 
 	}
 
@@ -134,7 +143,7 @@ public class FrontController extends HttpServlet {
 		String context = request.getContextPath();
 		String path = uri.substring(context.length());
 
-		Command commandImpl = cont.get(path); // 실행 클래스를 선택한다 
+		Command commandImpl = cont.get(path); // 실행 클래스를 선택한다
 
 		String page = null;
 
@@ -142,7 +151,7 @@ public class FrontController extends HttpServlet {
 
 		if (commandImpl != null) {
 			page = commandImpl.execute(request, response);
-			//System.out.println(page);
+			// System.out.println(page);
 			if (page != null && !page.isEmpty()) {
 				if (page.startsWith("redirect:")) {
 					String view = page.substring(9);

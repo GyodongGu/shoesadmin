@@ -1,169 +1,67 @@
-<%@ page language="java" contentType="text/html; charset=UTF-8"
-    pageEncoding="UTF-8"%>
-    <%@ taglib uri="http://www.opensymphony.com/sitemesh/decorator" prefix="decorator"%>
+<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
+<%@ taglib uri="http://www.opensymphony.com/sitemesh/decorator" prefix="decorator"%>
 <!DOCTYPE html>
 <html>
 <head>
-<script>
-    // Load the Visualization API and the corechart package.
-    google.charts.load('current', {'packages':['corechart']});
- 
-    // Set a callback to run when the Google Visualization API is loaded.
-    google.charts.setOnLoadCallback(callChart);
-
-    // Callback that creates and populates a data table,
-    // instantiates the pie chart, passes in the data and
-    // draws it.
-    function callChart() {
-		drawChart1();
-		drawChart2();
-		drawChart3();
-		drawChart4();
-		drawChart5();
-	}
-    
-    
-    function drawChart1() {
-  	// Set chart options
-        var options = {'title':'년도별 모든 가게의 총 매출',
-                       'width':400, 
-                       'height':400};
-      // Create the data table. 
-      var data = new google.visualization.DataTable();
-      data.addColumn('string', '부서명');
-      data.addColumn('number', '인원수');
-      //데이터를 ajax로 받기
-      $.ajax("../../ajax/getDeptCnt.do", { dataType:"json" })
-      .done(function (chartData) {
-      var arr = [];
-      for(i=0; i<chartData.length; i++) {
-      	arr.push([chartData[i].department_name, chartData[i].cnt]);
-      }
-      data.addRows(arr); 
-      // Instantiate and draw our chart, passing in some options.
-      var chart = new google.visualization.ColumnChart(document.getElementById('col-1'));
-      chart.draw(data, options);
-  	});
-    }
-    
-    function drawChart2() {
-      	// Set chart options
-            var options = {'title':'월별 모든 가게의 총 매출',
-                           'width':400,
-                           'height':400};
-          // Create the data table.
-          var data = new google.visualization.DataTable();
-          data.addColumn('string', '부서명');
-          data.addColumn('number', '인원수');
-          //데이터를 ajax로 받기
-          $.ajax("../../ajax/getDeptCnt.do", { dataType:"json" })
-          .done(function (chartData) {
-          var arr = [];
-          for(i=0; i<chartData.length; i++) {
-          	arr.push([chartData[i].department_name, chartData[i].cnt]);
-          }
-          data.addRows(arr);
-          // Instantiate and draw our chart, passing in some options.
-          var chart = new google.visualization.ColumnChart(document.getElementById('col-2'));
-          chart.draw(data, options);
-      	});
-        }
-    
-    function drawChart3() {
-      	// Set chart options
-            var options = {'title':'모든 기간 모든 가게들의 판매한 품목 비율',
-                           'width':400,
-                           'height':400};
-          // Create the data table.
-          var data = new google.visualization.DataTable();
-          data.addColumn('string', '부서명'); 
-          data.addColumn('number', '인원수');
-          //데이터를 ajax로 받기
-          $.ajax("../../ajax/getDeptCnt.do", { dataType:"json" })
-          .done(function (chartData) {
-          var arr = [];
-          for(i=0; i<chartData.length; i++) {
-          	arr.push([chartData[i].department_name, chartData[i].cnt]);
-          }
-          data.addRows(arr);
-          // Instantiate and draw our chart, passing in some options.
-          var chart = new google.visualization.PieChart(document.getElementById('col-3'));
-          chart.draw(data, options);
-      	});
-        }
-    
-    function drawChart4() {
-      	// Set chart options
-            var options = {'title':'모든 기간 모든 가게들의 판매한 성별 비율',
-                           'width':400,
-                           'height':400};
-          // Create the data table.
-          var data = new google.visualization.DataTable();
-          data.addColumn('string', '부서명');
-          data.addColumn('number', '인원수');
-          //데이터를 ajax로 받기
-          $.ajax("../../ajax/getDeptCnt.do", { dataType:"json" })
-          .done(function (chartData) {
-          var arr = [];
-          for(i=0; i<chartData.length; i++) {
-          	arr.push([chartData[i].department_name, chartData[i].cnt]);
-          }
-          data.addRows(arr);
-          // Instantiate and draw our chart, passing in some options.
-          var chart = new google.visualization.PieChart(document.getElementById('col-4'));
-          chart.draw(data, options);
-      	});
-        }
-    
-    function drawChart5() { 
-      	// Set chart options
-            var options = {'title':'여기에 차트 제목을 적으면 됩니다.',
-                           'width':400,
-                           'height':400};
-          // Create the data table.
-          var data = new google.visualization.DataTable();
-          data.addColumn('string', '부서명');
-          data.addColumn('number', '인원수');
-          //데이터를 ajax로 받기
-          $.ajax("../../ajax/getDeptCnt.do", { dataType:"json" })
-          .done(function (chartData) {
-          var arr = [];
-          for(i=0; i<chartData.length; i++) {
-          	arr.push([chartData[i].department_name, chartData[i].cnt]);
-          }
-          data.addRows(arr);
-          // Instantiate and draw our chart, passing in some options.
-          var chart = new google.visualization.PieChart(document.getElementById('col-5')); 
-          chart.draw(data, options);
-      	}); 
-        }
-  </script> 
+<!-- chart.js CDN -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.4.0/Chart.min.js"></script>
 </head>
 <body>
 	<br>
-	<h1 class="main" align="center">Charts</h1>  
+	<h1 class="main" align="center">${nid}(관리자)님 환영합니다. <br>YouShoes의 역대 총 매출내역</h1>
 	<br>
 	<div align="center">
-	<button type="button" id="Chartb-g">연도별</button>
-	<button type="button" id="Chartb-g">월별</button>
-	<button type="button" id="Chartb-g">주별</button>
-	<button type="button" id="Chartb-g">일별</button> 
-	<div class="container" >
-	<div class="row">   
-		<div id="col" class="col-md-1"></div>
-		<div id="col-1" class="col-lg-3"></div>
-		<div id="col" class="col-md-2"></div>
-		<div id="col-2" class="col-lg-3"></div>
-	</div>  
-	<br>    
-	<div class="row">    
-		<div id="col-3" class="col-lg-3"></div>
-		<div id="col" class="col-md-1"></div> 
-		<div id="col-4" class="col-lg-3"></div> 
-		<div id="col" class="col-md-1"></div>
-		<div id="col-5" class="col-lg-3"></div>
+		<div style="width: 800px">
+			<canvas id="myChartYouShoes"></canvas>
+		</div>
 	</div>
-	</div>
-	</div>
+	<!-- 년 매출 통계 -->
+	<script>
+		// 우선 컨텍스트를 가져옵니다. 
+		var ctx = document.getElementById("myChartYouShoes").getContext('2d');
+		/*
+		 - Chart를 생성하면서, 
+		 - ctx를 첫번째 argument로 넘겨주고, 
+		 - 두번째 argument로 그림을 그릴때 필요한 요소들을 모두 넘겨줍니다. 
+		 */
+		var myChart = new Chart(ctx,
+				{
+					type : 'bar',
+					data : {
+						labels : [ "2017", "2018", "2019", "2020", ],
+						datasets : [ {
+							label : '# Youshoes의 년도별 총 매출',
+							data : [ 70000, 80000, 90000, 150000 ],
+							backgroundColor : [ 
+									'rgba(255, 99, 132, 0.2)',
+									'rgba(54, 162, 235, 0.2)',
+									'rgba(255, 206, 86, 0.2)',
+									'rgba(75, 192, 192, 0.2)',
+									'rgba(153, 102, 255, 0.2)',
+									'rgba(255, 159, 64, 0.2)' ],
+							borderColor : [ 
+									'rgba(255,99,132,1)',
+									'rgba(54, 162, 235, 1)',
+									'rgba(255, 206, 86, 1)',
+									'rgba(75, 192, 192, 1)',
+									'rgba(153, 102, 255, 1)',
+									'rgba(255, 159, 64, 1)' ],
+							borderWidth : 1
+						} ]
+					},
+					options : {
+						maintainAspectRatio : true, // default value. false일 경우 포함된 div의 크기에 맞춰서 그려짐.
+						scales : {
+							yAxes : [ {
+								ticks : {
+									beginAtZero : true
+								}
+							} ]
+						}
+					}
+				});
+	</script>
+	<!-- // 년 매출 통계 -->
+	
 </body>
 </html>

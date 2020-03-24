@@ -17,17 +17,19 @@ public class DeleteSmemCommand implements Command {
 	public String execute(HttpServletRequest request, HttpServletResponse response) throws IOException, ServletException {
 		
 		HttpSession httpsession = request.getSession();
-		String nid = (String) httpsession.getServletContext().getContext("/youshoes").getAttribute("nid");
 		
 		smDAO sdao = new smDAO();
 		smDTO sdto = new smDTO();
 		
-		int smDelete = sdao.smDelete(sdto);
+		String smid = request.getParameter("sm_id");
+		System.out.println("삭제할 sm_id:"+smid);
+		sdto.setSm_id(smid);
 		
-		request.setAttribute("smDelete", smDelete);
-		request.setAttribute("nid", nid);
+		sdao.smDelete(sdto);
 		
-		return "/DeleteSmem.do";
+		request.setAttribute("smDelete", smid);
+		
+		return "/sMemManage.do";
 	}
 
 }

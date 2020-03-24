@@ -89,17 +89,22 @@ public class smDAO extends DAO {
 	public int smUpdate(smDTO smDTO, String smId) {
 		int p = 0;
 		try {
-			String sql = "update sales_member set shop_name = ?, sm_pw = ?, sm_tell = ?,"
-					   + " sm_post = ?, sm_addr1 = ?, sm_addr2 = ? where sm_id = ?";
-			System.out.print(sql);
+			String sql = "update sales_member set sm_pw=?, sm_name=?, shop_name=?, sm_tell=?, business_no=?, "
+					+ " sm_post=?, sm_addr1=?, sm_addr2=?, sm_addr3=?, sm_remark=?, sm_time=?, sm_rest=? where sm_id=?";
 			psmt = conn.prepareStatement(sql);
-			psmt.setString(1, smDTO.getShop_name());
-			psmt.setString(2, smDTO.getSm_pw());
-			psmt.setString(3, smDTO.getSm_tell());
-			psmt.setString(4, smDTO.getSm_post());
-			psmt.setString(5, smDTO.getSm_addr1());
-			psmt.setString(6, smDTO.getSm_addr2());
-			psmt.setString(7, smId);
+			psmt.setString(1, smDTO.getSm_pw());
+			psmt.setString(2, smDTO.getSm_name());
+			psmt.setString(3, smDTO.getShop_name());
+			psmt.setString(4, smDTO.getSm_tell());
+			psmt.setString(5, smDTO.getBusiness_no());
+			psmt.setString(6, smDTO.getSm_post());
+			psmt.setString(7, smDTO.getSm_addr1());
+			psmt.setString(8, smDTO.getSm_addr2());
+			psmt.setString(9, smDTO.getSm_addr3());
+			psmt.setString(10, smDTO.getSm_remark());
+			psmt.setString(11, smDTO.getSm_time());
+			psmt.setString(12, smDTO.getSm_rest());
+			psmt.setString(13, smId);
 			p = psmt.executeUpdate();
 		} catch (SQLException e) {
 			e.printStackTrace();
@@ -114,7 +119,6 @@ public class smDAO extends DAO {
 		int p = 0;
 		try {
 			String sql = "delete from sales_member where sm_id = ?";
-			System.out.println(sql);
 			psmt = conn.prepareStatement(sql);
 			psmt.setString(1, smDTO.getSm_id());
 			p = psmt.executeUpdate();

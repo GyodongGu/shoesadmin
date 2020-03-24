@@ -51,10 +51,10 @@
 										<td>${smem.business_no}</td>
 										<td>${smem.sm_post}</td>
 										<td>
-											<button type="button" id="uptBtn" class="btn btn-primary" onclick="location.href='${contextPath}/UpdateSmem.do?id=${nid}'">수정</button>
+											<button class="btn btn-primary" onclick="location.href='${contextPath}/UpdateSmemForm.do?sm_id=${smem.sm_id}'">수정</button>
 										</td>
 										<td>
-											<button type="button" id="delBtn" class="btn btn-primary" onclick="location.href='${contextPath}/DeleteSmem.do?id=${nid}'">삭제</button>
+											<button class="btn btn-primary" onclick="location.href='${contextPath}/DeleteSmem.do?sm_id=${smem.sm_id}'">삭제</button>
 										</td>
 									</tr>
 								</c:forEach>
@@ -68,4 +68,5 @@
 	</div>
 	<!-- // 조회 테이블 -->
 </body>
+
 </html>

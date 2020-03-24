@@ -40,6 +40,7 @@ import admin.shoes.app.command.SiteMeshCommand;
 import admin.shoes.app.command.UpdateEventCommand;
 import admin.shoes.app.command.UpdateEventFormCommand;
 import admin.shoes.app.command.UpdateSmemCommand;
+import admin.shoes.app.command.UpdateSmemFormCommand;
 import admin.shoes.app.command.allGuestCommand;
 import admin.shoes.app.command.backupCommand;
 import admin.shoes.app.command.codeManageCommand;
@@ -90,15 +91,12 @@ public class FrontController extends HttpServlet {
 		cont.put("/DeleteEvent.do", new DeleteEventCommand()); //공지사항 삭제
 
 		// 판매자 관리
-		cont.put("/sMemManage.do", new sMemManageCommand()); // 판매회원 조회
-		cont.put("/InsertSmem.do", new InsertSmemCommand()); // 판매회원 등록
-		cont.put("/UpdateSmem.do", new UpdateSmemCommand()); // 판매회원 수정
-		cont.put("/DeleteSmem.do", new DeleteSmemCommand()); // 판매회원 삭제
 		cont.put("/sMemManage.do", new sMemManageCommand()); //판매회원 조회
 		cont.put("/InsertSmem.do", new InsertSmemCommand()); //판매회원 등록
 		cont.put("/IdOverlap.do", new IdOverlapCommand()); //판매회원 아이디 중복검사
 		cont.put("/InsertOk.do", new InsertOkCommand()); //판매회원 등록 확인
 		cont.put("/UpdateSmem.do", new UpdateSmemCommand()); //판매회원 수정
+		cont.put("/UpdateSmemForm.do", new UpdateSmemFormCommand()); //판매회원 수정 폼
 		cont.put("/DeleteSmem.do", new DeleteSmemCommand()); //판매회원 삭제
 		cont.put("/logout.do", new logoutCommand()); // 로그아웃
 

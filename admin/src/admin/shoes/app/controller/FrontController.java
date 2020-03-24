@@ -29,6 +29,7 @@ import admin.shoes.app.command.InsertSmemCommand;
 import admin.shoes.app.command.MyGuestListCommand;
 import admin.shoes.app.command.ProductInsertFormCommand;
 import admin.shoes.app.command.SMemCommand;
+import admin.shoes.app.command.SMemYearStatisticsCommand;
 import admin.shoes.app.command.SetDeliveryCommand;
 import admin.shoes.app.command.SetHoliday;
 import admin.shoes.app.command.ShopImageDeleteCommand;
@@ -136,6 +137,9 @@ public class FrontController extends HttpServlet {
 		cont.put("/ajax/AdminStatistics.do", new AjaxAdminStatisticsCommand()); // 관리자의 YouShoes 총 매출 메인 페이지
 		
 		cont.put("/sMemStatistics.do", new sMemStatisticsCommand()); // 판매자별 매출 메인 페이지
+		cont.put("/ajax/SMemYearStatistics.do", new SMemYearStatisticsCommand()); // 판매자별 매출 메인 년 매출
+		
+		
 		
 		cont.put("/sYearStatistics.do", new sYearStatisticsCommand()); // 판매자별 년매출
 		cont.put("/sMonthStatistics.do", new sMonthStatisticsCommand()); // 판매자별 월매출

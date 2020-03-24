@@ -16,6 +16,7 @@ import admin.shoes.app.dto.pdtDTO;
  * @author 구교동, 유승우
  * 1.
  * 2. 관리자 YouShoes의 총 매출   YouShoesStatistics()
+ * 3. 판매 회원별 년 매출  sMemStatistics()
  */
 
 public class ordDAO extends DAO{
@@ -82,9 +83,7 @@ public class ordDAO extends DAO{
 	// 2. 관리자 YouShoes의 총 매출   YouShoesStatistics()
 	public List<StatisticsDTO> YouShoesStatistics() {
 		List<StatisticsDTO> list = new ArrayList<StatisticsDTO>();
-		
-		
-		String sql = "select to_char(ord_date, 'yyyy') y, sum(ord_point) as sumOrd " 
+		String sql = "select to_char(ord_date, 'yyyy') y, sum(ord_detail_point) as sumOrd " 
 				   + "from ord o join ord_detail od " 
 				   + "on o.ord_no = od.ord_no " 
 				   + "where add_months(sysdate, -60) < ord_date "
@@ -93,6 +92,37 @@ public class ordDAO extends DAO{
 		System.out.println(sql);
 		try {
 			psmt = conn.prepareStatement(sql);
+			rs = psmt.executeQuery();
+			
+			while(rs.next()) {
+				StatisticsDTO sdto = new StatisticsDTO();
+				sdto.setSumOrd(rs.getInt("sumOrd"));
+				sdto.setYear(rs.getString("y"));
+				
+				list.add(sdto);
+			}
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} finally {
+			close();
+		}
+		return list;
+	}
+	// 3. 판매 회원별 년 매출  sMemStatistics()
+	public List<StatisticsDTO> sMemStatistics(String id) {
+		List<StatisticsDTO> list = new ArrayList<StatisticsDTO>();
+		String sql = "select to_char(ord_date, 'yyyy') y, sum(ord_detail_point) as sumOrd " 
+				   + "from ord o, ord_detail od,  product p " 
+				   + "where sm_id = ? " 
+				   + "and o.ord_no = od.ord_no " 
+				   + "and o.pdt_no = p.pdt_no "
+				   + "and add_months(sysdate, -60) < ord_date " 
+				   + "group by to_char(ord_date, 'yyyy') "
+				   + "order by 1";
+		System.out.println(sql);
+		try {
+			psmt = conn.prepareStatement(sql);
+			psmt.setString(1, id);
 			rs = psmt.executeQuery();
 			
 			while(rs.next()) {

@@ -28,6 +28,7 @@ import admin.shoes.app.command.InsertProductCommand;
 import admin.shoes.app.command.InsertSmemCommand;
 import admin.shoes.app.command.MyGuestListCommand;
 import admin.shoes.app.command.ProductInsertFormCommand;
+import admin.shoes.app.command.RefundListCommand;
 import admin.shoes.app.command.SMemCommand;
 import admin.shoes.app.command.SMemYearStatisticsCommand;
 import admin.shoes.app.command.SetDeliveryCommand;
@@ -143,6 +144,8 @@ public class FrontController extends HttpServlet {
 		cont.put("/sMonthStatistics.do", new sMonthStatisticsCommand()); // 판매자별 월매출
 		cont.put("/sWeekStatistics.do", new sWeekStatisticsCommand()); // 판매자별 주매출
 		cont.put("/sDayStatistics.do", new sDayStatisticsCommand()); // 판매자별 월매출
+		
+		cont.put("/RefundList.do", new RefundListCommand());	//환불 목록
 
 	}
 

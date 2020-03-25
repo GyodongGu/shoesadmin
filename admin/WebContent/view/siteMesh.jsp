@@ -89,7 +89,7 @@
 							<a class="nav-link" href="${contextPath}/sMemStatistics.do"> 매출 </a>
 							<a class="nav-link" href="${contextPath}/myGuestList.do"> 고객관리 </a>
 							<a class="nav-link" href="${contextPath}/delivery.do"> 배송등록 </a>
-
+							<a class="nav-link" href="${contextPath}/RefundList.do"> 환불목록 </a>
 						<%} %>
 					</div>
 				</div>

@@ -28,10 +28,12 @@ import admin.shoes.app.command.InsertProductCommand;
 import admin.shoes.app.command.InsertSmemCommand;
 import admin.shoes.app.command.MyGuestListCommand;
 import admin.shoes.app.command.ProductInsertFormCommand;
+import admin.shoes.app.command.ProductStatisticsCommand;
 import admin.shoes.app.command.SMemCommand;
 import admin.shoes.app.command.SMemYearStatisticsCommand;
 import admin.shoes.app.command.SetDeliveryCommand;
 import admin.shoes.app.command.SetHoliday;
+import admin.shoes.app.command.SexStatisticsCommand;
 import admin.shoes.app.command.ShopImageDeleteCommand;
 import admin.shoes.app.command.ShopManageCommand;
 import admin.shoes.app.command.ShopUpdateCommand;
@@ -135,14 +137,14 @@ public class FrontController extends HttpServlet {
 		cont.put("/ajax/AdminStatistics.do", new AjaxAdminStatisticsCommand()); // 관리자의 YouShoes 총 매출 메인 페이지
 		
 		cont.put("/sMemStatistics.do", new sMemStatisticsCommand()); // 판매자별 매출 메인 페이지
-		cont.put("/ajax/SMemYearStatistics.do", new SMemYearStatisticsCommand()); // 판매자별 매출 메인 년 매출
+		cont.put("/ajax/SMemYearStatistics.do", new SMemYearStatisticsCommand()); // 판매자별 매출 연 매출
 		
+		cont.put("/ajax/sMonthStatistics.do", new sMonthStatisticsCommand()); // 판매자별 월매출
 		
-		
-		cont.put("/sYearStatistics.do", new sYearStatisticsCommand()); // 판매자별 년매출
-		cont.put("/sMonthStatistics.do", new sMonthStatisticsCommand()); // 판매자별 월매출
 		cont.put("/sWeekStatistics.do", new sWeekStatisticsCommand()); // 판매자별 주매출
 		cont.put("/sDayStatistics.do", new sDayStatisticsCommand()); // 판매자별 월매출
+		cont.put("/ProductStatistics.do", new ProductStatisticsCommand()); // 판매자별 판매한 상품 목록 
+		cont.put("/SexStatistics.do", new SexStatisticsCommand()); // 판매자별 제품 구매한 성비
 
 	}
 

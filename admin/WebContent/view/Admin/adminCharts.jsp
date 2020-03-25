@@ -9,8 +9,8 @@
 </head>
 <body>
 	<br>
-	<h1 class="main" align="center">${nid}(관리자)님
-		환영합니다. <br>YouShoes의 역대 총 매출내역
+	<h1 class="main" align="center">${nid}님
+		환영합니다. <br><br>YouShoes의 역대 총 매출내역
 	</h1>
 	<br>
 	<div align="center">
@@ -28,7 +28,7 @@
 			data : {
 				labels : [],
 				datasets : [ {
-					label : '# of Votes',
+					label : 'YouShoes 년도별 총 매출 통계',
 					data : [],
 					borderWidth : 1
 				} ]

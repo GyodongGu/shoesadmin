@@ -1,6 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <%@ taglib uri="http://www.opensymphony.com/sitemesh/decorator" prefix="decorator"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt" %>
 <!DOCTYPE html>
 <html>
 <head>
@@ -173,7 +174,9 @@ form {
 								</td>
 								<td>${pl.pdt_kind_name }</td>
 								<td>${pl.gender_cd }</td>
-								<td>${pl.pdt_price }</td>
+								<td>
+									<fmt:formatNumber value="${pl.pdt_price }" pattern="#,###"/>
+								</td>
 								<td class="pdtsize" id="${pl.pdt_size_cd }">
 									<c:if test="${pl.pdt_size_cd=='0' }">
 										사이즈

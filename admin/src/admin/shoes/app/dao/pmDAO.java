@@ -27,7 +27,9 @@ public class pmDAO extends DAO{
 				dto.setPm_id(rs.getString("pm_id"));
 				dto.setPm_pw(rs.getString("pm_pw"));
 				dto.setPm_name(rs.getString("pm_name"));
-				dto.setPm_stat_cd(rs.getString("pm_stat_cd"));
+				CodeDAO cdao = new CodeDAO();
+				String cd = cdao.CodeidToCodename(rs.getString("pm_stat_cd"));
+				dto.setPm_stat_cd(cd);
 				dto.setPm_birth(rs.getDate("pm_birth"));
 				dto.setPm_email(rs.getString("pm_email"));
 				dto.setPm_date(rs.getDate("pm_date"));

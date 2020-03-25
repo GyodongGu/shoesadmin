@@ -27,8 +27,6 @@
 							<th>연락처</th>
 							<th>우편번호</th>
 							<th>주 소</th>
-							<th>상세주소</th>
-							<th>주소참고</th>
 							<th>포인트</th>
 						</tr>
 					</thead>
@@ -44,9 +42,7 @@
 								<td>${dto.pm_date }</td>
 								<td>${dto.pm_tell }</td>
 								<td>${dto.pm_post }</td>
-								<td>${dto.pm_addr1 }</td>
-								<td>${dto.pm_addr2 }</td>
-								<td>${dto.pm_addr3 }</td>
+								<td>${dto.pm_addr1 } ${dto.pm_addr2 } ${dto.pm_addr3 }</td>
 								<td>${dto.point_now }</td>
 							</tr>
 						</c:forEach>

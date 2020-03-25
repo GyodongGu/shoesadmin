@@ -9,5 +9,7 @@
 	<excludes>
 		<pattern>siteMesh.jsp</pattern>
 		<pattern>/ajax/*</pattern>
+		<pattern>/view/sMem/ordlistOfsmem.jsp</pattern>
+		<pattern>/GuestOrdList.do*</pattern>
 	</excludes>
 </decorators>

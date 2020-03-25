@@ -3,16 +3,17 @@ package admin.shoes.app.dto;
 import java.sql.Date;
 
 public class refundDTO {
-	private int order_no;
+	private int ord_no;
 	private Date refund_date;
 	private int refund_point;
 	private String refund_reason;
 	
-	public int getOrder_no() {
-		return order_no;
+	
+	public int getOrd_no() {
+		return ord_no;
 	}
-	public void setOrder_no(int order_no) {
-		this.order_no = order_no;
+	public void setOrd_no(int ord_no) {
+		this.ord_no = ord_no;
 	}
 	public Date getRefund_date() {
 		return refund_date;
@@ -34,9 +35,10 @@ public class refundDTO {
 	}
 	@Override
 	public String toString() {
-		return "refundDTO [order_no=" + order_no + ", refund_date=" + refund_date + ", refund_point=" + refund_point
+		return "refundDTO [ord_no=" + ord_no + ", refund_date=" + refund_date + ", refund_point=" + refund_point
 				+ ", refund_reason=" + refund_reason + "]";
 	}
+
 	
 	
 }

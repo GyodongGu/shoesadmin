@@ -29,6 +29,8 @@ import admin.shoes.app.command.InsertSmemCommand;
 import admin.shoes.app.command.MyGuestListCommand;
 import admin.shoes.app.command.ProductInsertFormCommand;
 import admin.shoes.app.command.ProductStatisticsCommand;
+import admin.shoes.app.command.RefundListCommand;
+//github.com/GyodongGu/shoesadmin.git
 import admin.shoes.app.command.SMemCommand;
 import admin.shoes.app.command.SMemYearStatisticsCommand;
 import admin.shoes.app.command.SetDeliveryCommand;
@@ -54,7 +56,6 @@ import admin.shoes.app.command.sMemManageCommand;
 import admin.shoes.app.command.sMemStatisticsCommand;
 import admin.shoes.app.command.sMonthStatisticsCommand;
 import admin.shoes.app.command.sWeekStatisticsCommand;
-import admin.shoes.app.command.sYearStatisticsCommand;
 import admin.shoes.app.common.Command;
 
 @WebServlet("*.do")
@@ -145,6 +146,8 @@ public class FrontController extends HttpServlet {
 		cont.put("/sDayStatistics.do", new sDayStatisticsCommand()); // 판매자별 월매출
 		cont.put("/ProductStatistics.do", new ProductStatisticsCommand()); // 판매자별 판매한 상품 목록 
 		cont.put("/SexStatistics.do", new SexStatisticsCommand()); // 판매자별 제품 구매한 성비
+		
+		cont.put("/RefundList.do", new RefundListCommand());	//환불 목록
 
 	}
 

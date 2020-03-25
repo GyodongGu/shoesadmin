@@ -5,101 +5,186 @@
 <!DOCTYPE html>
 <html>
 <head>
-<!-- chart.js CDN -->
-<script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.4.0/Chart.min.js"></script>
 </head>
 <body>
 	<br>
-	<h1 class="main" align="center">${nid}(판매회원)님의매출내역</h1>
+	<h1 class="main" align="center">${nid}의 매출 내역</h1>
 	<br>
+	<!-- 내부 전체 감싸는 부분 -->
+	<div class="row">
+		<!-- 월별 영역 차트 부분  -->
+		<div class="col-xl-6">
+			<div class="card mb-4">
+				<div class="card-header">
+					<i class="fas fa-chart-area mr-1"></i>
+					연 매출 차트
+				</div>
+				<div class="card-body">
+					<div class="form-row">
+						<div class="form-group col-md-4">
+							<button class="btn btn-primary">확인</button>
+						</div>
+					</div>
+					<canvas id="myChartYear" width="100%" height="40"></canvas>
+				</div>
+			</div>
+		</div>
+		<!-- // 월별 영역 차트 부분  -->
+		<!-- 월별 바 차트 부분  -->
+		<div class="col-xl-6">
+			<div class="card mb-4">
+				<div class="card-header">
+					<i class="fas fa-chart-area mr-1"></i>
+					월 매출 차트
+				</div>
+				<div class="card-body">
+					<div class="form-row">
+						<div class="form-group col-md-2">
+							<select id="inputState" class="form-control">
+								<option selected>년도</option>
+								<option value="2016">2016</option>
+								<option value="2017">2017</option>
+								<option value="2018">2018</option>
+								<option value="2019">2019</option>
+								<option value="2020">2020</option>
+							</select>
+						</div>
+						<div class="form-group col-md-2">
+							<button class="btn btn-primary">확인</button>
+						</div>
+					</div>
+					<canvas id="myChartMonth" width="100%" height="40"></canvas>
+				</div>
+			</div>
+		</div>
+		<!-- // 월별 바 차트 부분  -->
+	</div>
+	<!-- // 내부 전체 감싸는 부분 -->
 	<div align="center">
-		<h3>${nid}(판매회원)님의년매출</h3>
-		<div style="width: 800px">
-			<canvas id="myChartYear"></canvas>
+		<!-- 내부 전체 감싸는 부분 -->
+		<div class="row">
+			<!-- 월별 영역 차트 부분  -->
+			<div class="col-xl-6">
+				<div class="card mb-4">
+					<div class="card-header">
+						<i class="fas fa-chart-area mr-1"></i>
+						주 매출 차트
+					</div>
+					<div class="card-body">
+						<div class="form-row">
+							<div class="form-group col-md-2">
+								<select id="inputState" class="form-control">
+									<option selected>년도</option>
+									<option value="2016">2016</option>
+									<option value="2017">2017</option>
+									<option value="2018">2018</option>
+									<option value="2019">2019</option>
+									<option value="2020">2020</option>
+								</select>
+							</div>
+							<div class="form-group col-md-2">
+								<select id="inputState" class="form-control">
+									<option selected>월</option>
+									<option value="1">1월</option>
+									<option value="2">2월</option>
+									<option value="3">3월</option>
+									<option value="4">4월</option>
+									<option value="5">5월</option>
+									<option value="6">6월</option>
+									<option value="7">7월</option>
+									<option value="8">8월</option>
+									<option value="9">9월</option>
+									<option value="10">10월</option>
+									<option value="11">11월</option>
+									<option value="12">12월</option>
+								</select>
+							</div>
+							<div class="form-group col-md-2">
+								<button class="btn btn-primary">확인</button>
+							</div>
+						</div>
+						<canvas id="myChartWeek" width="100%" height="40"></canvas>
+					</div>
+				</div>
+			</div>
+			<!-- // 월별 영역 차트 부분  -->
+			<!-- 월별 바 차트 부분  -->
+			<div class="col-xl-6">
+				<div class="card mb-4">
+					<div class="card-header">
+						<i class="fas fa-chart-bar mr-1"></i>
+						일 매출 차트
+					</div>
+					<div class="card-body">
+						<div class="form-row">
+							<div class="form-group col-md-2">
+								<select id="inputState" class="form-control">
+									<option selected>년도</option>
+									<option value="2016">2016</option>
+									<option value="2017">2017</option>
+									<option value="2018">2018</option>
+									<option value="2019">2019</option>
+									<option value="2020">2020</option>
+								</select>
+							</div>
+							<div class="form-group col-md-2">
+								<select id="inputState" class="form-control">
+									<option selected>월</option>
+									<option value="1">1월</option>
+									<option value="2">2월</option>
+									<option value="3">3월</option>
+									<option value="4">4월</option>
+									<option value="5">5월</option>
+									<option value="6">6월</option>
+									<option value="7">7월</option>
+									<option value="8">8월</option>
+									<option value="9">9월</option>
+									<option value="10">10월</option>
+									<option value="11">11월</option>
+									<option value="12">12월</option>
+								</select>
+							</div>
+							<div class="form-group col-md-2">
+								<button class="btn btn-primary">확인</button>
+							</div>
+						</div>
+						<canvas id="myChartDay" width="100%" height="40"></canvas>
+					</div>
+				</div>
+			</div>
+			<!-- // 월별 바 차트 부분  -->
 		</div>
-		<h3>${nid}(판매회원)님의월매출</h3>
-		<select>
-			<option value="notPick">조회할 년도를 선택해주세요.</option>
-			<option value="2016">2016</option>
-			<option value="2017">2017</option>
-			<option value="2018">2018</option>
-			<option value="2019">2019</option>
-			<option value="2020">2020</option>
-		</select>
-		<button>확인</button>
-		<div style="width: 800px">
-			<canvas id="myChartMonth"></canvas>
+		<!-- // 내부 전체 감싸는 부분 -->
+		<!-- 내부 전체 감싸는 부분 -->
+		<div class="row">
+			<!-- 월별 영역 차트 부분  -->
+			<div class="col-xl-6">
+				<div class="card mb-4">
+					<div class="card-header">
+						<i class="fas fa-chart-area mr-1"></i>
+						판매한 품목의 종류
+					</div>
+					<div class="card-body">
+						<canvas id="myChartProduct" width="100%" height="40"></canvas>
+					</div>
+				</div>
+			</div>
+			<!-- // 월별 영역 차트 부분  -->
+			<!-- 월별 바 차트 부분  -->
+			<div class="col-xl-6">
+				<div class="card mb-4">
+					<div class="card-header">
+						<i class="fas fa-chart-bar mr-1"></i>
+						구매한 성비
+					</div>
+					<div class="card-body">
+						<canvas id="myChartSex" width="100%" height="40"></canvas>
+					</div>
+				</div>
+			</div>
+			<!-- // 월별 바 차트 부분  -->
 		</div>
-		<h3>${nid}(판매회원)님의주매출</h3>
-		<select>
-			<option value="notPick">조회할 년도를 선택해주세요.</option>
-			<option value="2016">2016</option>
-			<option value="2017">2017</option>
-			<option value="2018">2018</option>
-			<option value="2019">2019</option>
-			<option value="2020">2020</option>
-		</select>
-		<select>
-			<option value="notPick">조회할 월를 선택해주세요.</option>
-			<option value="1">1월</option>
-			<option value="2">2월</option>
-			<option value="3">3월</option>
-			<option value="4">4월</option>
-			<option value="5">5월</option>
-			<option value="6">6월</option>
-			<option value="7">7월</option>
-			<option value="8">8월</option>
-			<option value="9">9월</option>
-			<option value="10">10월</option>
-			<option value="11">11월</option>
-			<option value="12">12월</option>
-		</select>
-		<button>확인</button>
-		<div style="width: 800px">
-			<canvas id="myChartWeek"></canvas>
-		</div>
-		<h3>${nid}(판매회원)님의일매출</h3>
-		<select>
-			<option value="notPick">조회할 년도를 선택해주세요.</option>
-			<option value="2016">2016</option>
-			<option value="2017">2017</option>
-			<option value="2018">2018</option>
-			<option value="2019">2019</option>
-			<option value="2020">2020</option>
-		</select>
-		<select>
-			<option value="notPick">조회할 월를 선택해주세요.</option>
-			<option value="1">1월</option>
-			<option value="2">2월</option>
-			<option value="3">3월</option>
-			<option value="4">4월</option>
-			<option value="5">5월</option>
-			<option value="6">6월</option>
-			<option value="7">7월</option>
-			<option value="8">8월</option>
-			<option value="9">9월</option>
-			<option value="10">10월</option>
-			<option value="11">11월</option>
-			<option value="12">12월</option>
-		</select>
-		<select>
-			<option value="notPick">조회할 주를 선택해주세요.</option>
-			<option value="1">1주</option>
-			<option value="2">2주</option>
-			<option value="3">3주</option>
-			<option value="4">4주</option>
-			<option value="5">5주</option>
-		</select>
-		<button>확인</button>
-		<div style="width: 800px">
-			<canvas id="myChartDay"></canvas>
-		</div>
-		<div style="width: 400px">
-			<canvas id="myChartProduct"></canvas>
-		</div>
-		<div style="width: 300px">
-			<canvas id="myChartSex"></canvas>
-		</div>
+		<!-- // 내부 전체 감싸는 부분 -->
 	</div>
 	<!-- 년 매출 통계 -->
 	<script>

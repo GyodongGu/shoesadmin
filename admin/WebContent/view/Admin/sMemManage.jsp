@@ -9,6 +9,19 @@
 <html>
 <head>
 <title>판매 회원 관리</title>
+<script type="text/javascript">
+	$(document).ready(function(){
+		$('.delete').on('click',function(){
+			var smid = $(this).attr('name');
+			var result = confirm('정말 삭제하시겠습니까?');
+			if(result){
+				location.href='${contextPath}/DeleteSmem.do?sm_id=' + smid;
+			}else{
+				return false;
+			}
+		})
+	})
+</script>
 </head>
 <body>
 	<br>
@@ -16,6 +29,9 @@
 	<div class="card mb-4">
 		<div class="card-header">
 			<i class="fas fa-table mr-1"></i>판매회원 테이블
+			<span style="float: right">
+				<button type="button" class="btn btn-primary" onclick="location.href='${contextPath}/InsertSmem.do'">판매 회원 등록</button>
+			</span>
 		</div>
 		<div class="card-body">
 			<div class="table-responsive">
@@ -54,7 +70,7 @@
 											<button class="btn btn-primary" onclick="location.href='${contextPath}/UpdateSmemForm.do?sm_id=${smem.sm_id}'">수정</button>
 										</td>
 										<td>
-											<button class="btn btn-primary" onclick="location.href='${contextPath}/DeleteSmem.do?sm_id=${smem.sm_id}'">삭제</button>
+											<button class="btn btn-primary delete" name="${smem.sm_id }">삭제</button>
 										</td>
 									</tr>
 								</c:forEach>
@@ -62,7 +78,7 @@
 						</c:choose>
 					</tbody>
 				</table>
-				<button type="button" class="btn btn-primary" onclick="location.href='${contextPath}/InsertSmem.do'">판매 회원 등록</button>
+				
 			</div>
 		</div>
 	</div>

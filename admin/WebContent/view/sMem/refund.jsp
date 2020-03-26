@@ -43,6 +43,7 @@
 					<thead>
 						<tr>
 							<th>번호</th>
+							<th>신청자</th>
 							<th>환불날짜</th>
 							<th>환불금액</th>
 							<th>환불사유</th>
@@ -52,6 +53,7 @@
 						<c:forEach items="${list }" var="refund">
 							<tr>
 								<td>${refund.ord_no }</td>
+								<td>${refund.pm_name }</td>
 								<td>${refund.refund_date }</td>
 								<td>${refund.refund_point }</td>
 								<td>

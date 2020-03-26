@@ -35,6 +35,7 @@ import admin.shoes.app.command.SMemCommand;
 import admin.shoes.app.command.SMemYearStatisticsCommand;
 import admin.shoes.app.command.SetDeliveryCommand;
 import admin.shoes.app.command.SetHoliday;
+import admin.shoes.app.command.SetOrdTypeCommand;
 import admin.shoes.app.command.SexStatisticsCommand;
 import admin.shoes.app.command.ShopImageDeleteCommand;
 import admin.shoes.app.command.ShopManageCommand;
@@ -121,6 +122,7 @@ public class FrontController extends HttpServlet {
 		// 배송 관리
 		cont.put("/delivery.do", new DeliveryCommand()); // 딜리버리 조회
 		cont.put("/SetDelivery.do", new SetDeliveryCommand()); // 송장번호 수정
+		cont.put("/SetOrdType.do", new SetOrdTypeCommand()); // 제장상태 수정
 
 		// 고객 관리
 		cont.put("/myGuestList.do", new MyGuestListCommand()); // 구매한 구매회원 조회

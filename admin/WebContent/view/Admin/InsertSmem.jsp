@@ -104,7 +104,7 @@
 			<div class="card-header">판매 회원 등록</div>
 			<div class="card-body">
 				<form id="frm" name="frm" action="${pageContext.request.contextPath}/InsertOk.do" method="post" onsubmit="return chkjoin()">
-					<div align="left">아이디</div>
+					<div align="left"><font color="red">*</font>아이디</div>
 					<div class="row">
 						<div class="col">
 							<input type="text" class="form-control" id="sm_id" name="sm_id" placeholder="아이디를 입력하세요.">
@@ -114,28 +114,28 @@
 						</div>
 					</div>
 					<br>
-					<div align="left">비밀번호</div>
+					<div align="left"><font color="red">*</font>비밀번호</div>
 					<input type="password" class="form-control" id="sm_pw" name="sm_pw" onchange="isSame()" required placeholder="비밀번호를 입력하세요.">
 					<br>
 					<div align="left">비밀번호 확인&nbsp;<span id="same"></span></div>
 					<input type="password" class="form-control" id="sm_pwChk" name="sm_pwChk" required onchange="isSame()" placeholder="비밀번호를 입력하세요.">
 					<br>
-					<div align="left">이름</div>
+					<div align="left"><font color="red">*</font>이름</div>
 					<input type="text" class="form-control" id="sm_name" name="sm_name" required placeholder="이름을 입력하세요.">
 					<br>
-					<div align="left">상호명</div>
+					<div align="left"><font color="red">*</font>상호명</div>
 					<input type="text" class="form-control" id="shop_name" name="shop_name" required placeholder="상호명을 입력하세요.">
 					<br>
-					<div align="left">전화번호</div>
+					<div align="left"><font color="red">*</font>전화번호</div>
 					<input type="tel" class="form-control" id="sm_tell" name="sm_tell" required maxlength="15" placeholder="전화번호를 입력하세요.">
 					<br>
-					<div align="left">사업자번호</div>
+					<div align="left"><font color="red">*</font>사업자번호</div>
 					<input type="tel" class="form-control" id="business_no" name="business_no" required placeholder="사업자 번호를 입력하세요.">
 					<br>
 					
 					<!-- 카카오 주소 API -->
 					<div class="form-group float-label active">
-						<div align="left">우편번호</div>
+						<div align="left"><font color="red">*</font>우편번호</div>
 						<div class="row">
 							<div class="col">
 								 <input type="text" id="sm_post" name="sm_post" class="form-control" placeholder="우편번호">
@@ -145,7 +145,7 @@
 							</div>
 						</div>
 						<br>
-						<div align="left">주소</div>
+						<div align="left"><font color="red">*</font>주소</div>
 						<input type="text" id="sm_addr1" name="sm_addr1" class="form-control" placeholder="주소">
 						<br>
 						<div align="left">상세주소</div>
@@ -165,7 +165,7 @@
 					<div align="left">휴무일</div>
 					<input type="text" class="form-control" id="sm_rest" name="sm_rest" placeholder="휴무일을 입력하세요.">
 					<br>
-					<button type="submit" class="btn btn-primary btn-lg btn-block">등록</button>
+					<button type="submit" class="btn btn-primary btn-lg btn-block">등 록</button>
 				</form>
 			</div>
 		</div>

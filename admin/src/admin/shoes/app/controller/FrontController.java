@@ -10,6 +10,8 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import admin.shoes.app.command.AdminStatisticsCommand;
+import admin.shoes.app.command.AjaxAdminStatisticsCommand;
 import admin.shoes.app.command.DelHoliday;
 import admin.shoes.app.command.DeleteEventCommand;
 import admin.shoes.app.command.DeleteProductCommand;
@@ -26,10 +28,14 @@ import admin.shoes.app.command.InsertProductCommand;
 import admin.shoes.app.command.InsertSmemCommand;
 import admin.shoes.app.command.MyGuestListCommand;
 import admin.shoes.app.command.ProductInsertFormCommand;
+import admin.shoes.app.command.ProductStatisticsCommand;
+import admin.shoes.app.command.RefundListCommand;
+//github.com/GyodongGu/shoesadmin.git
 import admin.shoes.app.command.SMemCommand;
+import admin.shoes.app.command.SMemYearStatisticsCommand;
 import admin.shoes.app.command.SetDeliveryCommand;
 import admin.shoes.app.command.SetHoliday;
-import admin.shoes.app.command.SetOrdTypeCommand;
+import admin.shoes.app.command.SexStatisticsCommand;
 import admin.shoes.app.command.ShopImageDeleteCommand;
 import admin.shoes.app.command.ShopManageCommand;
 import admin.shoes.app.command.ShopUpdateCommand;
@@ -38,6 +44,7 @@ import admin.shoes.app.command.SiteMeshCommand;
 import admin.shoes.app.command.UpdateEventCommand;
 import admin.shoes.app.command.UpdateEventFormCommand;
 import admin.shoes.app.command.UpdateSmemCommand;
+import admin.shoes.app.command.UpdateSmemFormCommand;
 import admin.shoes.app.command.allGuestCommand;
 import admin.shoes.app.command.backupCommand;
 import admin.shoes.app.command.codeManageCommand;
@@ -49,7 +56,6 @@ import admin.shoes.app.command.sMemManageCommand;
 import admin.shoes.app.command.sMemStatisticsCommand;
 import admin.shoes.app.command.sMonthStatisticsCommand;
 import admin.shoes.app.command.sWeekStatisticsCommand;
-import admin.shoes.app.command.sYearStatisticsCommand;
 import admin.shoes.app.common.Command;
 
 @WebServlet("*.do")
@@ -88,15 +94,12 @@ public class FrontController extends HttpServlet {
 		cont.put("/DeleteEvent.do", new DeleteEventCommand()); //공지사항 삭제
 
 		// 판매자 관리
-		cont.put("/sMemManage.do", new sMemManageCommand()); // 판매회원 조회
-		cont.put("/InsertSmem.do", new InsertSmemCommand()); // 판매회원 등록
-		cont.put("/UpdateSmem.do", new UpdateSmemCommand()); // 판매회원 수정
-		cont.put("/DeleteSmem.do", new DeleteSmemCommand()); // 판매회원 삭제
 		cont.put("/sMemManage.do", new sMemManageCommand()); //판매회원 조회
 		cont.put("/InsertSmem.do", new InsertSmemCommand()); //판매회원 등록
 		cont.put("/IdOverlap.do", new IdOverlapCommand()); //판매회원 아이디 중복검사
 		cont.put("/InsertOk.do", new InsertOkCommand()); //판매회원 등록 확인
 		cont.put("/UpdateSmem.do", new UpdateSmemCommand()); //판매회원 수정
+		cont.put("/UpdateSmemForm.do", new UpdateSmemFormCommand()); //판매회원 수정 폼
 		cont.put("/DeleteSmem.do", new DeleteSmemCommand()); //판매회원 삭제
 		cont.put("/logout.do", new logoutCommand()); // 로그아웃
 
@@ -132,13 +135,20 @@ public class FrontController extends HttpServlet {
 		cont.put("/ajax/getDeptCnt.do", new getDeptCnt()); // 차트데이터
 
 		// 매출 통계
-		cont.put("/AdminStatistics.do", new sMemStatisticsCommand()); // 관리자의 YouShoes 총 매출 메인 페이지
+		cont.put("/AdminStatistics.do", new AdminStatisticsCommand()); // 관리자의 YouShoes 총 매출 메인 페이지
+		cont.put("/ajax/AdminStatistics.do", new AjaxAdminStatisticsCommand()); // 관리자의 YouShoes 총 매출 메인 페이지
 		
 		cont.put("/sMemStatistics.do", new sMemStatisticsCommand()); // 판매자별 매출 메인 페이지
-		cont.put("/sYearStatistics.do", new sYearStatisticsCommand()); // 판매자별 년매출
-		cont.put("/sMonthStatistics.do", new sMonthStatisticsCommand()); // 판매자별 월매출
+		cont.put("/ajax/SMemYearStatistics.do", new SMemYearStatisticsCommand()); // 판매자별 매출 연 매출
+		
+		cont.put("/ajax/sMonthStatistics.do", new sMonthStatisticsCommand()); // 판매자별 월매출
+		
 		cont.put("/sWeekStatistics.do", new sWeekStatisticsCommand()); // 판매자별 주매출
 		cont.put("/sDayStatistics.do", new sDayStatisticsCommand()); // 판매자별 월매출
+		cont.put("/ProductStatistics.do", new ProductStatisticsCommand()); // 판매자별 판매한 상품 목록 
+		cont.put("/SexStatistics.do", new SexStatisticsCommand()); // 판매자별 제품 구매한 성비
+		
+		cont.put("/RefundList.do", new RefundListCommand());	//환불 목록
 
 	}
 

@@ -32,11 +32,7 @@
 </script>
 </head>
 <body>
-	<!-- <div id="dialog" title="modal">
-	<div><table id = "list" border = "1"></table></div>
-		dd
-	</div>
- -->
+	<br>
 	<div class="card mb-4">
 		<div class="card-header">
 			<i class="fas fa-table mr-1"></i>고객리스트

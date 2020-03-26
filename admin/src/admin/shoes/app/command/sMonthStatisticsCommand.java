@@ -10,11 +10,12 @@ import javax.servlet.http.HttpSession;
 
 import admin.shoes.app.common.Command;
 import admin.shoes.app.dao.ordDAO;
+import admin.shoes.app.dto.MonthStatisticsDTO;
 import admin.shoes.app.dto.StatisticsDTO;
 import net.sf.json.JSONArray;
 
 public class sMonthStatisticsCommand implements Command {
-
+	
 	@Override
 	public String execute(HttpServletRequest request, HttpServletResponse response) throws IOException, ServletException {
 		ordDAO odao = new ordDAO();
@@ -22,9 +23,17 @@ public class sMonthStatisticsCommand implements Command {
 		HttpSession httpsession = request.getSession();
 		String nid = (String) httpsession.getServletContext().getContext("/youshoes").getAttribute("nid");
 		
-		String varYearSelect = request.getParameter("yearSelect");
+		Integer varYearSelect = null; 
 		
-		List<StatisticsDTO> sMemMonthStat = odao.sMonthStatistics(nid, varYearSelect);
+		// 연도 파라미터가 없는 경우 현재 연도로 초기화
+		if (varYearSelect == null ) {
+			varYearSelect = 2020;
+		} else {
+			varYearSelect = Integer.parseInt(request.getParameter("yearSelect"));
+		}
+		
+		
+		List<MonthStatisticsDTO> sMemMonthStat = odao.sMonthStatistics(varYearSelect, nid);
 		
 		String jsonArray = JSONArray.fromObject(sMemMonthStat).toString();
 		

@@ -4,13 +4,16 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
-import java.util.Date;
 import java.util.List;
 
+import admin.shoes.app.dto.DayStatisticsDTO;
+import admin.shoes.app.dto.MonthStatisticsDTO;
+import admin.shoes.app.dto.SexRatioDTO;
 import admin.shoes.app.dto.StatisticsDTO;
 import admin.shoes.app.dto.imageDetailDTO;
 import admin.shoes.app.dto.ordDTO;
 import admin.shoes.app.dto.pdtDTO;
+import admin.shoes.app.dto.pdtStatisticsDTO;
 
 /**
  * 
@@ -115,7 +118,7 @@ public class ordDAO extends DAO{
 		}
 		return list;
 	}
-	// 3. 판매 회원별 년 매출  sMemStatistics()
+	// 3. 판매 회원별 연 매출  sMemStatistics()
 	public List<StatisticsDTO> sMemStatistics(String id) {
 		List<StatisticsDTO> list = new ArrayList<StatisticsDTO>();
 		String sql = "select to_char(ord_date, 'yyyy') y, sum(ord_detail_point) as sumOrd " 
@@ -146,20 +149,60 @@ public class ordDAO extends DAO{
 		return list;
 	}
 	// 4. 판매 회원별 월 매출  sMonthStatistics()
-	public List<StatisticsDTO> sMonthStatistics(String varYearSelect, String id) {
+	public List<MonthStatisticsDTO> sMonthStatistics(int varYearSelect, String id) {
+		List<MonthStatisticsDTO> list = new ArrayList<MonthStatisticsDTO>();
+		String sql = "select lmon, nvl(mon.sumord,0) as sumord " 
+				+ "from (select to_char(ord_date, 'yyyymm') as y, sum(ord_detail_point) as sumOrd " 
+				+ "        from ord o, ord_detail od,  product p " 
+				+ "        where add_months(sysdate, -60) < ord_date " 
+				+ "        and to_char(ord_date, 'yyyy') = ? " 
+				+ "        and sm_id = ? " 
+				+ "        and o.ord_no = od.ord_no " 
+				+ "        and o.pdt_no = p.pdt_no " 
+				+ "        group by to_char(ord_date, 'yyyymm') " 
+				+ "     ) mon " 
+				+ "     right outer join " 
+				+ "     (SELECT ? || LPAD(LEVEL, 2, '0') as lmon " 
+				+ " 	FROM DUAL CONNECT BY LEVEL <= 12 " 
+				+ " 	) LS " 
+				+ "on y = lmon " 
+				+ "order by lmon";
+		try {
+			psmt = conn.prepareStatement(sql);
+			psmt.setInt(1, varYearSelect);
+			psmt.setString(2, id);
+			psmt.setInt(3, varYearSelect);
+			rs = psmt.executeQuery();
+			
+			while(rs.next()) {
+				MonthStatisticsDTO msdto = new MonthStatisticsDTO();
+				msdto.setLmon(rs.getString("lmon"));
+				msdto.setSumord(rs.getInt("sumord"));
+				list.add(msdto);
+			}
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} finally {
+			close();
+		}
+		return list;
+	}
+	
+	// 5. 판매 회원별 주 매출  sWeekStatistics()
+	public List<StatisticsDTO> sWeekStatistics(String id, String varWeekSelect) {
 		List<StatisticsDTO> list = new ArrayList<StatisticsDTO>();
-		String sql = "select to_char(ord_date, 'yyyymm') y, sum(ord_detail_point) as sumOrd " 
+		String sql = "select to_char(ord_date, 'w') y, sum(ord_detail_point) as sumOrd " 
 					+ "from ord o, ord_detail od,  product p " 
 					+ "where add_months(sysdate, -60) < ord_date " 
-					+ "and to_char(ord_date, 'yyyy') = ? " 
+					+ "and to_char(ord_date, 'yyyymm') = ? " 
 					+ "and sm_id = ? " 
 					+ "and o.ord_no = od.ord_no " 
 					+ "and o.pdt_no = p.pdt_no " 
-					+ "group by to_char(ord_date, 'yyyymm') " 
+					+ "group by to_char(ord_date, 'w') " 
 					+ "order by 1";
 		try {
 			psmt = conn.prepareStatement(sql);
-			psmt.setString(1, varYearSelect);
+			psmt.setString(1, varWeekSelect);
 			psmt.setString(2, id);
 			rs = psmt.executeQuery();
 			
@@ -178,53 +221,37 @@ public class ordDAO extends DAO{
 		return list;
 	}
 	
-	// 5. 판매 회원별 주 매출  sWeekStatistics()
-	public List<StatisticsDTO> sWeekStatistics(String id) {
-		List<StatisticsDTO> list = new ArrayList<StatisticsDTO>();
-		String sql = " ";
-		try {
-			psmt = conn.prepareStatement(sql);
-			psmt.setString(1, id);
-			rs = psmt.executeQuery();
-			
-			while(rs.next()) {
-				StatisticsDTO sdto = new StatisticsDTO();
-				sdto.setSumOrd(rs.getInt("sumOrd"));
-				sdto.setYear(rs.getString("y"));
-				
-				list.add(sdto);
-			}
-		} catch (SQLException e) {
-			e.printStackTrace();
-		} finally {
-			close();
-		}
-		return list;
-	}
-	
 	// 6. 판매 회원별 일 매출  sDayStatistics()
-	public List<StatisticsDTO> sDayStatistics(String id) {
-		List<StatisticsDTO> list = new ArrayList<StatisticsDTO>();
-		String sql = "select to_char(ord_date, 'yyyymmdd') y, sum(ord_detail_point) as sumOrd " 
-					+ "from ord o, ord_detail od,  product p " 
-					+ "where add_months(sysdate, -60) < ord_date " 
-					+ "and to_char(ord_date, 'yyyy') = '2020' " 
-					+ "and sm_id = 'manshoes01' " 
-					+ "and o.ord_no = od.ord_no " 
-					+ "and o.pdt_no = p.pdt_no " 
-					+ "group by to_char(ord_date, 'yyyymmdd') " 
-					+ "order by 1; ";
+	public List<DayStatisticsDTO> sDayStatistics(String id, int varDaySelect) {
+		List<DayStatisticsDTO> list = new ArrayList<DayStatisticsDTO>();
+		String sql = "select lmon, nvl(mon.sumord,0) as sumord " 
+					+ "from (select to_char(ord_date, 'yyyymmdd') as y, sum(ord_detail_point) as sumOrd " 
+					+ "        from ord o, ord_detail od,  product p " 
+					+ "        where add_months(sysdate, -60) < ord_date " 
+					+ "        and to_char(ord_date, 'yyyymm') = ? " 
+					+ "        and sm_id = ? " 
+					+ "        and o.ord_no = od.ord_no " 
+					+ "        and o.pdt_no = p.pdt_no " 
+					+ "        group by to_char(ord_date, 'yyyymmdd') " 
+					+ "     ) mon " 
+					+ "     right outer join " 
+					+ "     (SELECT ? || LPAD(LEVEL, 2, '0') as lmon " 
+					+ "      FROM DUAL CONNECT BY LEVEL <= 31 " 
+					+ "     ) LS " 
+					+ "     on y = lmon " 
+					+ "     order by lmon";
 		try {
 			psmt = conn.prepareStatement(sql);
-			psmt.setString(1, id);
+			psmt.setInt(1, varDaySelect);
+			psmt.setString(2, id);
+			psmt.setInt(3, varDaySelect);
 			rs = psmt.executeQuery();
 			
 			while(rs.next()) {
-				StatisticsDTO sdto = new StatisticsDTO();
-				sdto.setSumOrd(rs.getInt("sumOrd"));
-				sdto.setYear(rs.getString("y"));
-				
-				list.add(sdto);
+				DayStatisticsDTO dsdto = new DayStatisticsDTO();
+				dsdto.setLmon(rs.getString("lmon"));
+				dsdto.setSumord(rs.getInt("sumord"));
+				list.add(dsdto);
 			}
 		} catch (SQLException e) {
 			e.printStackTrace();
@@ -235,13 +262,14 @@ public class ordDAO extends DAO{
 	}
 	
 	// 7. 판매 회원별 판매 품목 sProductStatistics()
-	public List<StatisticsDTO> sProductStatistics(String id) {
-		List<StatisticsDTO> list = new ArrayList<StatisticsDTO>();
-		String sql = "select p.pdt_kind_cd " 
+	public List<pdtStatisticsDTO> sProductStatistics(String id) {
+		List<pdtStatisticsDTO> list = new ArrayList<pdtStatisticsDTO>();
+		String sql = "select pdt_kind_cd pdtKind, count(*) as pdtSt " 
 					+ "from ord o, ord_detail od,  product p " 
 					+ "where sm_id = ? " 
 					+ "and o.ord_no = od.ord_no " 
-					+ "and o.pdt_no = p.pdt_no ";
+					+ "and o.pdt_no = p.pdt_no " 
+					+ "group by pdt_kind_cd ";
 		
 		try {
 			psmt = conn.prepareStatement(sql);
@@ -249,11 +277,11 @@ public class ordDAO extends DAO{
 			rs = psmt.executeQuery();
 			
 			while(rs.next()) {
-				StatisticsDTO sdto = new StatisticsDTO();
-				sdto.setSumOrd(rs.getInt("sumOrd"));
-				sdto.setYear(rs.getString("y"));
+				pdtStatisticsDTO psdto = new pdtStatisticsDTO();
+				psdto.setPdtKind(rs.getString("pdtKind"));
+				psdto.setPdtSt(rs.getInt("pdtSt"));
 				
-				list.add(sdto);
+				list.add(psdto);
 			}
 		} catch (SQLException e) {
 			e.printStackTrace();
@@ -264,25 +292,28 @@ public class ordDAO extends DAO{
 	}
 	
 	// 8. 판매 회원별 구매한 성비 sSexStatistics()
-	public List<StatisticsDTO> sSexStatistics(String id) {
-		List<StatisticsDTO> list = new ArrayList<StatisticsDTO>();
-		String sql = "select gender_cd " 
+	public List<SexRatioDTO> sSexStatistics(String id) {
+		List<SexRatioDTO> list = new ArrayList<SexRatioDTO>();
+		String sql = "select gender_cd g, count(*) as genSt " 
 					+ "from ord o, ord_detail od,  product p " 
 					+ "where sm_id = ? " 
 					+ "and o.ord_no = od.ord_no " 
-					+ "and o.pdt_no = p.pdt_no ";
+					+ "and o.pdt_no = p.pdt_no " 
+					+ "group by gender_cd ";
+		
 		try {
 			psmt = conn.prepareStatement(sql);
 			psmt.setString(1, id);
 			rs = psmt.executeQuery();
 			
 			while(rs.next()) {
-				StatisticsDTO sdto = new StatisticsDTO();
-				sdto.setSumOrd(rs.getInt("sumOrd"));
-				sdto.setYear(rs.getString("y"));
-				
-				list.add(sdto);
+				SexRatioDTO srdto = new SexRatioDTO();
+				srdto.setGenSt(rs.getInt("genSt"));
+				srdto.setGenderCd(rs.getString("g"));
+				list.add(srdto);
 			}
+			
+			
 		} catch (SQLException e) {
 			e.printStackTrace();
 		} finally {

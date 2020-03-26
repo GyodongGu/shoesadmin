@@ -35,6 +35,7 @@ import admin.shoes.app.command.SMemCommand;
 import admin.shoes.app.command.SMemYearStatisticsCommand;
 import admin.shoes.app.command.SetDeliveryCommand;
 import admin.shoes.app.command.SetHoliday;
+import admin.shoes.app.command.SetOrdTypeCommand;
 import admin.shoes.app.command.SexStatisticsCommand;
 import admin.shoes.app.command.ShopImageDeleteCommand;
 import admin.shoes.app.command.ShopManageCommand;

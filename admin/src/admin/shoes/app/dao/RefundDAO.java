@@ -11,7 +11,7 @@ public class RefundDAO extends DAO{
 	public List<refundDTO> RefundList(String smid){
 		List<refundDTO> list = new ArrayList<refundDTO>();
 		
-		String sql = "select * from refund r join ord o on r.ord_no = o.ord_no join product p on o.pdt_no = p.pdt_no where sm_id=?";
+		String sql = "select r.*, pm_name from refund r join ord o on r.ord_no = o.ord_no join purchase_member p on o.pm_no = p.pm_no join product d on o.pdt_no=d.pdt_no where sm_id=?";
 		
 		try {
 			psmt=conn.prepareStatement(sql);
@@ -23,6 +23,7 @@ public class RefundDAO extends DAO{
 				rdto.setRefund_date(rs.getDate("refund_date"));
 				rdto.setRefund_point(rs.getInt("refund_point"));
 				rdto.setRefund_reason(rs.getString("refund_reason"));
+				rdto.setPm_name(rs.getString("pm_name"));
 				list.add(rdto);
 			}
 			

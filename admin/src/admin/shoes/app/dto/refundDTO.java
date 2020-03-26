@@ -7,8 +7,17 @@ public class refundDTO {
 	private Date refund_date;
 	private int refund_point;
 	private String refund_reason;
+	private String pm_name;
 	
 	
+	
+	
+	public String getPm_name() {
+		return pm_name;
+	}
+	public void setPm_name(String pm_name) {
+		this.pm_name = pm_name;
+	}
 	public int getOrd_no() {
 		return ord_no;
 	}

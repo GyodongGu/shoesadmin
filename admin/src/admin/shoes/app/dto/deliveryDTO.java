@@ -6,6 +6,8 @@ public class deliveryDTO {
 	
 	private int ord_no;
 	private String invoice_no;
+	private String pdt_type_cd;
+	private String ord_stat_cd;
 	private Date dlvy_date;
 	private String dlvy_name;
 	private String dlvy_tell;
@@ -18,6 +20,12 @@ public class deliveryDTO {
 	
 
 	
+	public String getOrd_stat_cd() {
+		return ord_stat_cd;
+	}
+	public void setOrd_stat_cd(String ord_stat_cd) {
+		this.ord_stat_cd = ord_stat_cd;
+	}
 	public String getDlvy_cd() {
 		return dlvy_cd;
 	}
@@ -35,6 +43,12 @@ public class deliveryDTO {
 	}
 	public void setInvoice_no(String invoice_no) {
 		this.invoice_no = invoice_no;
+	}
+	public String getPdt_type_cd() {
+		return pdt_type_cd;
+	}
+	public void setPdt_type_cd(String pdt_type_cd) {
+		this.pdt_type_cd = pdt_type_cd;
 	}
 	public Date getDlvy_date() {
 		return dlvy_date;
@@ -84,16 +98,13 @@ public class deliveryDTO {
 	public void setDlvy_remark(String dlvy_remark) {
 		this.dlvy_remark = dlvy_remark;
 	}
-	
 	@Override
 	public String toString() {
-		return "deliveryDTO [ord_no=" + ord_no + ", invoice_no=" + invoice_no + ", dlvy_date=" + dlvy_date
-				+ ", dlvy_name=" + dlvy_name + ", dlvy_tell=" + dlvy_tell + ", dlvy_post=" + dlvy_post + ", dlvy_addr1="
-				+ dlvy_addr1 + ", dlvy_addr2=" + dlvy_addr2 + ", dlvy_addr3=" + dlvy_addr3 + ", dlvy_cd=" + dlvy_cd
+		return "deliveryDTO [ord_no=" + ord_no + ", invoice_no=" + invoice_no + ", pdt_type_cd=" + pdt_type_cd
+				+ ", ord_stat_cd=" + ord_stat_cd + ", dlvy_date=" + dlvy_date + ", dlvy_name=" + dlvy_name
+				+ ", dlvy_tell=" + dlvy_tell + ", dlvy_post=" + dlvy_post + ", dlvy_addr1=" + dlvy_addr1
+				+ ", dlvy_addr2=" + dlvy_addr2 + ", dlvy_addr3=" + dlvy_addr3 + ", dlvy_cd=" + dlvy_cd
 				+ ", dlvy_remark=" + dlvy_remark + "]";
 	}
-	
 
-	
-	
 }

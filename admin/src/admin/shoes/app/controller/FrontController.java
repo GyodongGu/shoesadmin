@@ -140,18 +140,16 @@ public class FrontController extends HttpServlet {
 		cont.put("/ajax/DelHolidayImport.do", new DelHolidayImportcommand()); //정기휴일 취소
 
 		// 매출 통계
-		cont.put("/AdminStatistics.do", new AdminStatisticsCommand()); // 관리자의 YouShoes 총 매출 메인 페이지
-		cont.put("/ajax/AdminStatistics.do", new AjaxAdminStatisticsCommand()); // 관리자의 YouShoes 총 매출 메인 페이지
+		cont.put("/AdminStatistics.do", new AdminStatisticsCommand()); // 관리자의 총 매출 메인 페이지
+		cont.put("/ajax/AdminStatistics.do", new AjaxAdminStatisticsCommand()); // 관리자의 총 매출 메인 페이지
 		
 		cont.put("/sMemStatistics.do", new sMemStatisticsCommand()); // 판매자별 매출 메인 페이지
 		cont.put("/ajax/SMemYearStatistics.do", new SMemYearStatisticsCommand()); // 판매자별 매출 연 매출
-		
-		cont.put("/ajax/sMonthStatistics.do", new sMonthStatisticsCommand()); // 판매자별 월매출
-		
-		cont.put("/sWeekStatistics.do", new sWeekStatisticsCommand()); // 판매자별 주매출
-		cont.put("/sDayStatistics.do", new sDayStatisticsCommand()); // 판매자별 월매출
-		cont.put("/ProductStatistics.do", new ProductStatisticsCommand()); // 판매자별 판매한 상품 목록 
-		cont.put("/SexStatistics.do", new SexStatisticsCommand()); // 판매자별 제품 구매한 성비
+		cont.put("/ajax/sMonthStatistics.do", new sMonthStatisticsCommand()); // 판매자별 월 매출
+		cont.put("/ajax/sWeekStatistics.do", new sWeekStatisticsCommand()); // 판매자별 주 매출
+		cont.put("/ajax/sDayStatistics.do", new sDayStatisticsCommand()); // 판매자별 일 매출
+		cont.put("/ajax/ProductStatistics.do", new ProductStatisticsCommand()); // 판매자별 판매한 상품 목록 
+		cont.put("/ajax/SexStatistics.do", new SexStatisticsCommand()); // 판매자별 제품 구매한 성비
 		
 		cont.put("/RefundList.do", new RefundListCommand());	//환불 목록
 

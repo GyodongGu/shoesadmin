@@ -89,4 +89,40 @@ public class CallenderDAO extends DAO{
 			}
 			return list;
 		}
+		
+		//정기 휴일 등록
+		public int insertholdiay(int week, int day, String id) {
+			int result = 0;
+			try {
+				psmt = conn.prepareCall("{call holiday_import(?, ?, ?, ?)}");
+				psmt.setInt(1,  week);
+				psmt.setInt(2, day);
+				psmt.setString(3, id);
+				psmt.setString(4, "1");
+				psmt.executeUpdate();
+			} catch (Exception e) {
+				e.printStackTrace();
+			}finally {
+				close();
+			}
+			return result;
+		}
+		
+		public int deleteholiday(int week, int day, String id) {
+			int result = 0;
+			try {
+				psmt = conn.prepareCall("{call holiday_import(?, ?, ?, ?)}");
+				psmt.setInt(1,  week);
+				psmt.setInt(2, day);
+				psmt.setString(3, id);
+				psmt.setString(4, "2");
+				psmt.executeUpdate();
+			} catch (Exception e) {
+				e.printStackTrace();
+			}finally {
+				close();
+			}
+			return result;
+		}
+		
 }

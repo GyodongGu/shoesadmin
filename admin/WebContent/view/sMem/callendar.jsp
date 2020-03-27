@@ -1,4 +1,5 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <%@ taglib uri="http://www.opensymphony.com/sitemesh/decorator" prefix="decorator"%>
 <!DOCTYPE html>
 <html>
@@ -8,8 +9,11 @@
 <script src='${pageContext.request.contextPath}/view/callendar/packages/core/main.js'></script>
 <script src='${pageContext.request.contextPath}/view/callendar/packages/daygrid/main.js'></script>
 <script src='${pageContext.request.contextPath}/view/callendar/packages/interaction/main.js'></script>
+<script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+<link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
+<script src="${pageContext.request.contextPath}/view/js/moment.js"></script>
 <script>
-function Tdate1(start) {
+function Tdate1(start) { 
 	  year = "" + start.getFullYear();
 	  month = "" + (start.getMonth() + 1); if (month.length == 1) { month = "0" + month; }
 	  day = "" + start.getDate(); if (day.length == 1) { day = "0" + day; }
@@ -34,6 +38,20 @@ var event;
 
 	document.addEventListener('DOMContentLoaded', function() {
 		var calendarEl = document.getElementById('calendar');
+		var dialog;
+		
+		dialog = $('#modal-form').dialog({
+			autoOpen: false,
+			height: 500,
+			width:500,
+			modal: true,
+			buttons : { 
+				'휴일지정' : holiday, '휴일지정취소' : delholiday,
+				Cancel: function () { 
+					dialog.dialog("close"); 
+				}
+			} 
+		}) 
 
 		var calendar = new FullCalendar.Calendar(calendarEl, {
 			plugins : [ 'interaction' ,'dayGrid' ],
@@ -114,9 +132,58 @@ var event;
 						}
 					})
 				}
-			}
-			
+			},
+
+			footer : { 
+				left: 'custom',
+				right : '',
+				right : 'prev,next'
+				
+			},
+			customButtons: {
+				custom : {
+					text: '정기휴일등록',
+					click : function () {
+						dialog.dialog("open");
+						$('#holidayclick').html();
+					} 
+				}
+			}	
 		}); 
+		
+		function holiday() { 
+			var week = $('input[name="radio"]:checked').val();
+			var day = $('input[name="radio1"]:checked').val();
+ 			var holi = {'week' : week, 'day' : day};
+ 			$.ajax({  
+ 				url: "${pageContext.request.contextPath}/ajax/SetHolidayImport.do",
+ 				type : 'GET',
+ 				data : holi,
+ 				success : function () {
+ 					alert("정기 휴일 등록이 완료 되었습니다.");
+ 					location.reload();
+				}
+ 			})
+			
+		}
+		
+		function	 delholiday() {
+			var week = $('input[name="radio"]:checked').val();
+			var day = $('input[name="radio1"]:checked').val();
+ 			var holi = {'week' : week, 'day' : day};
+ 			$.ajax({  
+ 				url: "${pageContext.request.contextPath}/ajax/DelHolidayImport.do", 
+ 				type : 'GET',
+ 				data : holi,
+ 				success : function () {
+ 					alert("정기 휴일 등록이 취소 되었습니다.");
+ 					location.reload();
+				}
+ 			})
+			
+		
+		}
+		
 		calendar.render();
 	});
 
@@ -125,11 +192,36 @@ var event;
 <body>
 <br>
 	<div class="card mb-4">
-		<div class="card-header">
+		<div class="card-header"> 
 			<i class="fas fa-table mr-1"></i>휴일일정 등록 및 고객 예약일정 내역 페이지
 		</div>
-		<div class="card-body">
-			<div id="calendar" align="center">원하시는 날짜를 클릭하시면 휴일을 지정 할 수 있습니다.</div>
+		<div class="card-body"> 
+		<div id="calendar" style="height: 580px"></div>
+			<div align="center">원하시는 날짜를 클릭하시면 휴일을 지정 할 수 있습니다.</div>
+		
+		<!--  modal  -->
+		<div id="modal-form" style="display: none">
+		<form>
+		<h4><div id="holidayclick">원하시는 주차, 요일을 선택해주세요.</div></h4> 
+		<br>  
+		<fieldset> 
+		<label>주차 선택</label><br>
+			<input type="radio" name="radio" id="radio1" value=1 >첫째 주<br>
+			<input type="radio" name="radio" id="radio2" value=2 >둘째 주<br>
+			<input type="radio" name="radio" id="radio3" value=3 >셋째 주<br>
+			<input type="radio" name="radio" id="radio4" value=4>넷째 주<br>
+			<br>
+		<label>요일 선택</label><br>
+			<input type="radio" name="radio1" id="radio1" value=2 >월요일<br>
+			<input type="radio" name="radio1" id="radio2" value=3 >화요일<br>
+			<input type="radio" name="radio1" id="radio3" value=4>수요일<br>
+			<input type="radio" name="radio1" id="radio4" value=5 >목요일<br>
+			<input type="radio" name="radio1" id="radio5" value=6 >금요일<br>
+			<input type="radio" name="radio1" id="radio6" value=7 >토요일<br>
+			<input type="radio" name="radio1" id="radio7" value=1 >일요일<br>
+			</fieldset>
+		</form>
+		</div>
 		</div>
 	</div>
 </body>

@@ -13,6 +13,7 @@ import javax.servlet.http.HttpServletResponse;
 import admin.shoes.app.command.AdminStatisticsCommand;
 import admin.shoes.app.command.AjaxAdminStatisticsCommand;
 import admin.shoes.app.command.DelHoliday;
+import admin.shoes.app.command.DelHolidayImportcommand;
 import admin.shoes.app.command.DeleteEventCommand;
 import admin.shoes.app.command.DeleteProductCommand;
 import admin.shoes.app.command.DeleteSmemCommand;
@@ -35,6 +36,7 @@ import admin.shoes.app.command.SMemCommand;
 import admin.shoes.app.command.SMemYearStatisticsCommand;
 import admin.shoes.app.command.SetDeliveryCommand;
 import admin.shoes.app.command.SetHoliday;
+import admin.shoes.app.command.SetHolidayImportCommand;
 import admin.shoes.app.command.SetOrdTypeCommand;
 import admin.shoes.app.command.SexStatisticsCommand;
 import admin.shoes.app.command.ShopImageDeleteCommand;
@@ -88,7 +90,6 @@ public class FrontController extends HttpServlet {
 		
 		cont.put("/InsertEvent.do", new InsertEventCommand()); //공지사항 등록
 		cont.put("/InsertEventForm.do", new InsertEventFormCommand()); //공지사항 등록 폼
-		
 		cont.put("/UpdateEvent.do", new UpdateEventCommand()); //공지사항 수정
 		cont.put("/UpdateEventForm.do", new UpdateEventFormCommand()); //공지사항 수정 폼
 		
@@ -134,6 +135,8 @@ public class FrontController extends HttpServlet {
 		cont.put("/ajax/DelHoliday.do", new DelHoliday()); // 휴일 삭제
 		cont.put("/ajax/GetReserv.do", new GetReservCommand()); // 예약일정 가져오기
 		cont.put("/ajax/getDeptCnt.do", new getDeptCnt()); // 차트데이터
+		cont.put("/ajax/SetHolidayImport.do", new SetHolidayImportCommand()); //정기휴일 등록
+		cont.put("/ajax/DelHolidayImport.do", new DelHolidayImportcommand()); //정기휴일 취소
 
 		// 매출 통계
 		cont.put("/AdminStatistics.do", new AdminStatisticsCommand()); // 관리자의 총 매출 메인 페이지

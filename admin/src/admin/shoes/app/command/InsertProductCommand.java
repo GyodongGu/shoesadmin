@@ -43,6 +43,7 @@ public class InsertProductCommand implements Command {
 		request.setAttribute("nid", nid);
 		
 		int pdtno = pdao.pdtno(multi.getParameter("pdt_name"));
+		ProductDAO ppdao = new ProductDAO();
 		if(pdtno==0) {
 			//제품등록
 			String price = multi.getParameter("pdt_price");
@@ -55,7 +56,7 @@ public class InsertProductCommand implements Command {
 			pdto.setPdt_price(Integer.parseInt(price));
 			pdto.setPdt_remark(multi.getParameter("pdt_remark"));
 
-			pdao.insertProduct(pdto);
+			ppdao.insertProduct(pdto);
 		}
 		
 		//제품옵션추가

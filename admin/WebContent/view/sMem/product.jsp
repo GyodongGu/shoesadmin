@@ -30,6 +30,26 @@
 			frm.pdt_price.focus();
 			return false;
 		}
+		/* if($('.pdt_size_cd').val()==""){
+			alert("사이즈를 선택해주세요");
+			return false;
+		} */
+		for(var i =0; i<$('.pdt_size_cd').length; i++){
+			if($('.pdt_size_cd')[i].value==''){
+				alert("사이즈를 선택해주세요");
+				return false;
+			}
+		}
+		for(var j=1; j<=$('.selectsize').length; j++){
+			if($('input:checkbox[name=pdt_color_cd'+j+']').is(':checked')==false){
+				alert("색상을 정해주세요");
+				return false;
+			}
+		}
+		/* if($('input:checkbox[class=checkSelect]').is(':checked')==false){
+			alert("색상을 정해주세요.");
+			return false;
+		} */
 		window.alert("제품 등록되었습니다.");
 	}
 </script>
@@ -87,7 +107,7 @@
 								<input type="hidden" name="count" id="count"/>
 								<div class="selectsize">
 								<label class="small mb-1" for="pdt_size_cd">사이즈</label>
-								<select id="pdt_size_cd" name="pdt_size_cd">
+								<select id="pdt_size_cd" name="pdt_size_cd" class="pdt_size_cd">
 									<option value="">사이즈선택</option>
 									<c:forEach var="size" items="${slist }">
 										<option value="${size.code_id }">${size.code_name }</option>

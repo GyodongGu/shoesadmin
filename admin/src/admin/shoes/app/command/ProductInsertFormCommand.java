@@ -28,8 +28,9 @@ public class ProductInsertFormCommand implements Command {
 		List<codeDTO> colorlist = new ArrayList<codeDTO>();
 		colorlist = cdao.SelectOneType("색상");
 		
+		CodeDAO ccdao = new CodeDAO();
 		List<codeDTO> sizelist = new ArrayList<codeDTO>();
-		sizelist = cdao.SelectOneType("사이즈");
+		sizelist = ccdao.SelectOneType("사이즈");
 		
 		request.setAttribute("nid", nid);
 		request.setAttribute("clist", colorlist);

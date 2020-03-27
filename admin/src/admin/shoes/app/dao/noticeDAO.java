@@ -115,6 +115,8 @@ public class noticeDAO extends DAO {
 			}
 		} catch (SQLException e) {
 			e.printStackTrace();
+		} finally {
+			close();
 		}
 		return ndto;
 	}

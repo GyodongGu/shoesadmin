@@ -59,6 +59,8 @@ public class CodeDAO extends DAO {
 		} catch (SQLException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
+		} finally {
+			close();
 		}
 		return list;
 	}
@@ -80,6 +82,8 @@ public class CodeDAO extends DAO {
 		} catch (SQLException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
+		} finally {
+			close();
 		}
 		
 		

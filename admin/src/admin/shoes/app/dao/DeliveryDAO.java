@@ -25,7 +25,8 @@ public class DeliveryDAO extends DAO{
 			CodeDAO dao = new  CodeDAO();
 			String typecd = dao.CodeidToCodename(rs.getString("pdt_type_cd"));
 			dto.setPdt_type_cd(typecd);
-			String statcd = dao.CodeidToCodename(rs.getString("ord_stat_cd"));
+			CodeDAO cdao = new  CodeDAO();
+			String statcd = cdao.CodeidToCodename(rs.getString("ord_stat_cd"));
 			dto.setOrd_stat_cd(statcd);
 			dto.setDlvy_date(rs.getDate("dlvy_date"));
 			dto.setDlvy_name(rs.getString("dlvy_name"));
@@ -63,6 +64,8 @@ public class DeliveryDAO extends DAO{
 			result1 = psmt1.executeUpdate();
 		} catch (Exception e) {
 			e.printStackTrace();
+		} finally {
+			close();
 		}
 		return result;
 	}
@@ -76,6 +79,8 @@ public class DeliveryDAO extends DAO{
 			result = psmt.executeUpdate();
 		} catch (Exception e) {
 			e.printStackTrace();
+		} finally {
+			close();
 		}
 		return result;
 	}

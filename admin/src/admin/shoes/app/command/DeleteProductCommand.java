@@ -33,13 +33,14 @@ public class DeleteProductCommand implements Command {
 		
 		int count = odao.countOpt(Integer.parseInt(pdtno));
 		
+		optDAO oodao = new optDAO();
 		if(count==1) {	//opt가 1개일 경우 제품과 옵션을 둘다 삭제
-			int opt = odao.deleteOpt(Integer.parseInt(pdtno),Integer.parseInt(pdtsize));	//opt테이블 내용삭제
+			int opt = oodao.deleteOpt(Integer.parseInt(pdtno),Integer.parseInt(pdtsize));	//opt테이블 내용삭제
 			int result = pdao.deleteProduct(Integer.parseInt(pdtno));						//제품삭제
 			
 			//------------------------------------------------------------------------------//
 			//이미지폴더내의 이미지파일 삭제
-			String path="C:/Users/교동/git/youshoes/youshoes/WebContent/view/img/";
+			String path=request.getSession().getServletContext().getContext("/youshoes").getRealPath("/view/img");
 			List<imageDetailDTO> iname = new ArrayList<imageDetailDTO>();
 			iname = deldao.prodImageName(Integer.parseInt(pdtno));
 			
@@ -49,7 +50,7 @@ public class DeleteProductCommand implements Command {
 				System.out.println(path);
 				File file = new File(path);
 				file.delete();
-				path ="C:/Users/교동/git/youshoes/youshoes/WebContent/view/img/";
+				path =request.getSession().getServletContext().getContext("/youshoes").getRealPath("/view/img");
 			}
 			//------------------------------------------------------------------------------//
 			
@@ -60,7 +61,7 @@ public class DeleteProductCommand implements Command {
 			int result = pdao.deleteProduct(Integer.parseInt(pdtno));	//제품삭제
 			
 			//------------------------------------------------------------------------------//
-			String path="C:/Users/교동/git/youshoes/youshoes/WebContent/view/img/";
+			String path=request.getSession().getServletContext().getContext("/youshoes").getRealPath("/view/img");
 			List<imageDetailDTO> iname = new ArrayList<imageDetailDTO>();
 			iname = deldao.prodImageName(Integer.parseInt(pdtno));
 			
@@ -70,7 +71,7 @@ public class DeleteProductCommand implements Command {
 				File file = new File(path);
 				System.out.println(path);
 				file.delete();
-				path ="C:/Users/교동/git/youshoes/youshoes/WebContent/view/img/";
+				path =request.getSession().getServletContext().getContext("/youshoes").getRealPath("/view/img");
 			}
 			//------------------------------------------------------------------------------//
 			
@@ -78,7 +79,7 @@ public class DeleteProductCommand implements Command {
 			
 			return "ajax:"+result;
 		}else {	//opt가 다수의 숫자일 경우 해당 opt정보 삭제
-			int opt = odao.deleteOpt(Integer.parseInt(pdtno),Integer.parseInt(pdtsize));
+			int opt = oodao.deleteOpt(Integer.parseInt(pdtno),Integer.parseInt(pdtsize));
 			return "ajax:"+opt;
 		}
 		

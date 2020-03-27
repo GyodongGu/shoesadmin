@@ -179,6 +179,8 @@ public class smDAO extends DAO {
 		} catch (SQLException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
+		} finally {
+			close();
 		}
 		
 		return smdto;
@@ -236,6 +238,8 @@ public class smDAO extends DAO {
 			}
 		} catch (SQLException e) {
 			e.printStackTrace();
+		} finally {
+			close();
 		}
 		return bol;
 	}

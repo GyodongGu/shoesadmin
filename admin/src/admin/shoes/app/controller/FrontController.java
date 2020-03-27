@@ -90,7 +90,6 @@ public class FrontController extends HttpServlet {
 		
 		cont.put("/InsertEvent.do", new InsertEventCommand()); //공지사항 등록
 		cont.put("/InsertEventForm.do", new InsertEventFormCommand()); //공지사항 등록 폼
-		
 		cont.put("/UpdateEvent.do", new UpdateEventCommand()); //공지사항 수정
 		cont.put("/UpdateEventForm.do", new UpdateEventFormCommand()); //공지사항 수정 폼
 		

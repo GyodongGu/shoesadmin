@@ -31,7 +31,7 @@
 					</thead>
 					<tbody>
 						<c:forEach var="dto" items="${list}">
-							<tr>
+							<tr onmouseover="this.style.backgroundColor='#FFFF00'" onmouseout="this.style.backgroundColor=''">
 								<td>${dto.ord_no }</td> 
 								<td>
 									<input type="text" id="${dto.ord_no }" size="8" style="" value="${dto.invoice_no }" />

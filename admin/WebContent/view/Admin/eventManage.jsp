@@ -6,6 +6,11 @@
 <head>
 <meta charset="UTF-8">
 <title>관리자 공지사항 등록</title>
+<%
+     //치환 변수 선언합니다.
+      pageContext.setAttribute("crcn", "\r\n"); //Space, Enter
+      pageContext.setAttribute("br", "<br/>"); //br 태그
+%> 
 <c:choose>
 	<c:when test='${msg == "noticeInsert"}'>
 		<script>
@@ -29,6 +34,16 @@
 		</script>
 	</c:when>
 </c:choose>
+<script>
+	function eventDelete(noticeNo) {
+		if (confirm("정말 삭제하시겠습니까??") == true){    //확인
+	        location.href ="${contextPath}/DeleteEvent.do?notice_no="+noticeNo
+		}else{   //취소
+		    return;
+		}
+	}
+</script>
+
 </head>
 <body>
 	<br>
@@ -71,7 +86,7 @@
 											<button class="btn btn-primary" onclick="location.href='${contextPath}/UpdateEventForm.do?notice_no=${smNotice.notice_no}'">수정</button>
 										</td>
 										<td>
-											<button class="btn btn-primary" onclick="location.href='${contextPath}/DeleteEvent.do?notice_no=${smNotice.notice_no}'">삭제</button>
+											<button class="btn btn-primary" id="delBtn" name="delBtn" onclick="eventDelete(${smNotice.notice_no})">삭제</button>
 										</td>
 									</tr>
 								</c:forEach>

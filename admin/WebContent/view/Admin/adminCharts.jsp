@@ -10,15 +10,19 @@
 <body>
 	<br>
 	<h1 class="main" align="center">${nid}님
-		환영합니다. <br><br>YouShoes의 역대 총 매출내역
+		환영합니다. <br>
 	</h1>
 	<br>
 	<div align="center">
-		<div style="width: 800px">
-			<canvas id="myChartYouShoes"></canvas>
-		</div>
+				<div class="card mb-4">
+					<div class="card-header">
+						<i class="fas fa-chart-area mr-1"></i>YouShoes의 역대 총 매출내역
+					</div>
+					<div class="card-body">
+						<canvas id="myChartYouShoes" width="600" height="200"></canvas>
+					</div>
+				</div>
 	</div>
-	
 	<!-- YouShoes 년도별 총 매출 통계 -->
 	<script>
 		var ctx = document.getElementById("myChartYouShoes").getContext('2d');

@@ -14,10 +14,18 @@ public class DAO {
 	protected ResultSet rs;
 	protected DataSource ds;
 	
-	private String driver = "oracle.jdbc.driver.OracleDriver";
-	private String url = "jdbc:oracle:thin:@localhost:1521:xe";
-	private String user = "you";
-	private String pw = "you";
+	
+	 private String driver = "oracle.jdbc.driver.OracleDriver"; 
+	 private String url= "jdbc:oracle:thin:@localhost:1521:xe"; 
+	 private String user = "you";
+	 private String pw = "you";
+	 
+	
+	/*
+	 * private String driver = "com.mysql.jdbc.Driver"; private String url =
+	 * "jdbc:mysql://shoesdb.crrif2a5kpo3.ap-northeast-2.rds.amazonaws.com/youshoes";
+	 * private String user = "admin"; private String pw = "youshoesdb";
+	 */
 	
 	public DAO() {
 		try {

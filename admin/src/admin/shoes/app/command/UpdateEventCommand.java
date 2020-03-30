@@ -28,6 +28,6 @@ public class UpdateEventCommand implements Command {
 		ndao.noticeUpdate(ndto);
 		request.setAttribute("msg", "noticeUpdate");
 
-		return "/eventManage.do";
+		return "redirect:/admin/eventManage.do";
 	}
 }

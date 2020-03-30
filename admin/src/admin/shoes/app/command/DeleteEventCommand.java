@@ -23,7 +23,7 @@ public class DeleteEventCommand implements Command {
 		ndao.noticeDelete(ndto);
 		request.setAttribute("msg", "noticeDelete");
 		
-		return "/eventManage.do";
+		return "redirect:/admin/eventManage.do";
 	}
 
 }

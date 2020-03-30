@@ -5,14 +5,9 @@
 <!DOCTYPE html>
 <html>
 <head>
-<script>
-	
-</script>
 </head>
 <body>
-	<br>
-	<h1 class="main" align="center">${nid}의매출내역</h1>
-	<br>
+	<br><h1 class="main" align="center">${nid}의매출내역</h1><br>
 	<!-- 매출 부분 첫번째 줄 전체 감싸는 부분 -->
 	<div align="center">
 		<div class="row">

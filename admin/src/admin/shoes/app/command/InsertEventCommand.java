@@ -28,7 +28,7 @@ public class InsertEventCommand implements Command {
 		ndao.noticeInsert(ndto);
 		request.setAttribute("msg", "noticeInsert");
 		
-		return "/eventManage.do";
+		return "redirect:/admin/eventManage.do";
 	}
 
 }

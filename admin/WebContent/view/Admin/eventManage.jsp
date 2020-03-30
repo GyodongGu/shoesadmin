@@ -4,13 +4,50 @@
 <!DOCTYPE html>
 <html>
 <head>
+<link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
+<script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
 <meta charset="UTF-8">
 <title>관리자 공지사항 등록</title>
-<%
-     //치환 변수 선언합니다.
-      pageContext.setAttribute("crcn", "\r\n"); //Space, Enter
-      pageContext.setAttribute("br", "<br/>"); //br 태그
-%> 
+
+<script type="text/javascript">
+	$(document).ready(function(){
+		var dialog=$('#modal').dialog({
+			autoOpen: false,
+			height:600,
+			width:900,
+			modal:true
+		}); 
+		$('.contents').on('click',function(){
+			var i = $(this).prev().val();
+			$('#modal').html('<p>'+i+'</p>');
+			dialog.dialog('open');
+		})
+		
+		
+		$('.update').on('click',function(){
+			var no = $(this).attr('name');
+			var result = confirm('수정하시겠습니까?');
+			if(result){
+				location.href='${contextPath}/UpdateEventForm.do?notice_no='+no;
+			}
+			else{
+				return false;
+			}
+		})
+		$('.delete').on('click',function(){
+			var no = $(this).attr('name');
+			var result = confirm('공지사항을 삭제하시겠습니까?');
+			if(result){
+				location.href='${contextPath}/DeleteEvent.do?notice_no='+no;
+			}
+			else{
+				return false;
+			}
+		})
+		
+	})
+</script>
+
 <c:choose>
 	<c:when test='${msg == "noticeInsert"}'>
 		<script>
@@ -34,18 +71,12 @@
 		</script>
 	</c:when>
 </c:choose>
-<script>
-	function eventDelete(noticeNo) {
-		if (confirm("정말 삭제하시겠습니까??") == true){    //확인
-	        location.href ="${contextPath}/DeleteEvent.do?notice_no="+noticeNo
-		}else{   //취소
-		    return;
-		}
-	}
-</script>
 
 </head>
 <body>
+	<div id = "modal" title="공지사항 ">
+	
+	</div>
 	<br>
 	<div class="card mb-4">
 		<div class="card-header">
@@ -81,12 +112,16 @@
 										<td>${smNotice.notice_no}</td>
 										<td>${smNotice.notice_title}</td>
 										<td>${smNotice.notice_date}</td>
-										<td>${smNotice.notice_content}</td>
 										<td>
-											<button class="btn btn-primary" onclick="location.href='${contextPath}/UpdateEventForm.do?notice_no=${smNotice.notice_no}'">수정</button>
+											<input type="hidden" class="nc" name="nc" value="${smNotice.notice_content }"/>
+											<button class="btn btn-primary contents" >내용보기</button>
 										</td>
 										<td>
-											<button class="btn btn-primary" id="delBtn" name="delBtn" onclick="eventDelete(${smNotice.notice_no})">삭제</button>
+
+											<button class="btn btn-primary update" name="${smNotice.notice_no}" >수정</button>
+										</td>
+										<td>
+											<button class="btn btn-primary delete" name="${smNotice.notice_no}" >삭제</button>
 										</td>
 									</tr>
 								</c:forEach>

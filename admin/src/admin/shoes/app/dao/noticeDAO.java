@@ -20,7 +20,7 @@ public class noticeDAO extends DAO {
 	// 1. 공지사항 조회 noticeSelect()
 	public List<noticeDTO> noticeSelect() {
 		List<noticeDTO> list = new ArrayList<noticeDTO>();
-		String sql = "select * from notice";
+		String sql = "select * from notice order by notice_no desc";
 		
 		try {
 			psmt = conn.prepareStatement(sql);

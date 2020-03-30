@@ -10,6 +10,7 @@ import admin.shoes.app.dto.DayStatisticsDTO;
 import admin.shoes.app.dto.MonthStatisticsDTO;
 import admin.shoes.app.dto.SexRatioDTO;
 import admin.shoes.app.dto.StatisticsDTO;
+import admin.shoes.app.dto.WeekStatisticsDTO;
 import admin.shoes.app.dto.imageDetailDTO;
 import admin.shoes.app.dto.ordDTO;
 import admin.shoes.app.dto.pdtDTO;
@@ -152,21 +153,21 @@ public class ordDAO extends DAO{
 	public List<MonthStatisticsDTO> sMonthStatistics(int varYearSelect, String id) {
 		List<MonthStatisticsDTO> list = new ArrayList<MonthStatisticsDTO>();
 		String sql = "select lmon, nvl(mon.sumord,0) as sumord " 
-				+ "from (select to_char(ord_date, 'yyyymm') as y, sum(ord_detail_point) as sumOrd " 
-				+ "        from ord o, ord_detail od,  product p " 
-				+ "        where add_months(sysdate, -60) < ord_date " 
-				+ "        and to_char(ord_date, 'yyyy') = ? " 
-				+ "        and sm_id = ? " 
-				+ "        and o.ord_no = od.ord_no " 
-				+ "        and o.pdt_no = p.pdt_no " 
-				+ "        group by to_char(ord_date, 'yyyymm') " 
-				+ "     ) mon " 
-				+ "     right outer join " 
-				+ "     (SELECT ? || LPAD(LEVEL, 2, '0') as lmon " 
-				+ " 	FROM DUAL CONNECT BY LEVEL <= 12 " 
-				+ " 	) LS " 
-				+ "on y = lmon " 
-				+ "order by lmon";
+					+ "from (select to_char(ord_date, 'yyyymm') as y, sum(ord_detail_point) as sumOrd " 
+					+ "        from ord o, ord_detail od,  product p " 
+					+ "        where add_months(sysdate, -60) < ord_date " 
+					+ "        and to_char(ord_date, 'yyyy') = ? " 
+					+ "        and sm_id = ? " 
+					+ "        and o.ord_no = od.ord_no " 
+					+ "        and o.pdt_no = p.pdt_no " 
+					+ "        group by to_char(ord_date, 'yyyymm') " 
+					+ "     ) mon " 
+					+ "     right outer join " 
+					+ "     (SELECT ? || LPAD(LEVEL, 2, '0') as lmon " 
+					+ " 	FROM DUAL CONNECT BY LEVEL <= 12 " 
+					+ " 	) LS " 
+					+ "on y = lmon " 
+					+ "order by lmon";
 		try {
 			psmt = conn.prepareStatement(sql);
 			psmt.setInt(1, varYearSelect);
@@ -189,28 +190,34 @@ public class ordDAO extends DAO{
 	}
 	
 	// 5. 판매 회원별 주 매출  sWeekStatistics()
-	public List<StatisticsDTO> sWeekStatistics(String id, String varWeekSelect) {
-		List<StatisticsDTO> list = new ArrayList<StatisticsDTO>();
-		String sql = "select to_char(ord_date, 'w') y, sum(ord_detail_point) as sumOrd " 
-					+ "from ord o, ord_detail od,  product p " 
-					+ "where add_months(sysdate, -60) < ord_date " 
-					+ "and to_char(ord_date, 'yyyymm') = ? " 
-					+ "and sm_id = ? " 
-					+ "and o.ord_no = od.ord_no " 
-					+ "and o.pdt_no = p.pdt_no " 
-					+ "group by to_char(ord_date, 'w') " 
-					+ "order by 1";
+	public List<WeekStatisticsDTO> sWeekStatistics(String id, int varWeekSelect) {
+		List<WeekStatisticsDTO> list = new ArrayList<WeekStatisticsDTO>();
+		String sql = "select lmon || '주' as lmon, nvl(mon.sumord,0) as sumord " 
+					+ "from (select to_char(ord_date, 'w') as y, sum(ord_detail_point) as sumOrd " 
+					+ "        from ord o, ord_detail od,  product p " 
+					+ "        where " 
+					+ "        to_char(ord_date, 'yyyymm') = ? " 
+					+ "        and sm_id = ? " 
+					+ "        and o.ord_no = od.ord_no " 
+					+ "        and o.pdt_no = p.pdt_no " 
+					+ "        group by to_char(ord_date, 'w') " 
+					+ "     ) mon " 
+					+ "     right outer join " 
+					+ "     (SELECT LEVEL as lmon " 
+					+ "      FROM DUAL CONNECT BY LEVEL <= 5 " 
+					+ "     ) LS " 
+					+ "     on y = lmon " 
+					+ "     order by lmon";
 		try {
 			psmt = conn.prepareStatement(sql);
-			psmt.setString(1, varWeekSelect);
+			psmt.setInt(1, varWeekSelect);
 			psmt.setString(2, id);
 			rs = psmt.executeQuery();
 			
 			while(rs.next()) {
-				StatisticsDTO sdto = new StatisticsDTO();
-				sdto.setSumOrd(rs.getInt("sumOrd"));
-				sdto.setYear(rs.getString("y"));
-				
+				WeekStatisticsDTO sdto = new WeekStatisticsDTO();
+				sdto.setLmon(rs.getString("lmon"));
+				sdto.setSumord(rs.getInt("sumord"));
 				list.add(sdto);
 			}
 		} catch (SQLException e) {
@@ -224,18 +231,18 @@ public class ordDAO extends DAO{
 	// 6. 판매 회원별 일 매출  sDayStatistics()
 	public List<DayStatisticsDTO> sDayStatistics(String id, int varDaySelect) {
 		List<DayStatisticsDTO> list = new ArrayList<DayStatisticsDTO>();
-		String sql = "select lmon, nvl(mon.sumord,0) as sumord " 
-					+ "from (select to_char(ord_date, 'yyyymmdd') as y, sum(ord_detail_point) as sumOrd " 
+		String sql = "select lmon  || '일' as lmon, nvl(mon.sumord,0) as sumord " 
+					+ "from (select to_char(ord_date, 'dd') as y, sum(ord_detail_point) as sumOrd " 
 					+ "        from ord o, ord_detail od,  product p " 
 					+ "        where add_months(sysdate, -60) < ord_date " 
 					+ "        and to_char(ord_date, 'yyyymm') = ? " 
 					+ "        and sm_id = ? " 
 					+ "        and o.ord_no = od.ord_no " 
 					+ "        and o.pdt_no = p.pdt_no " 
-					+ "        group by to_char(ord_date, 'yyyymmdd') " 
+					+ "        group by to_char(ord_date, 'dd') " 
 					+ "     ) mon " 
 					+ "     right outer join " 
-					+ "     (SELECT ? || LPAD(LEVEL, 2, '0') as lmon " 
+					+ "     (SELECT LPAD(LEVEL, 2, '0') as lmon " 
 					+ "      FROM DUAL CONNECT BY LEVEL <= 31 " 
 					+ "     ) LS " 
 					+ "     on y = lmon " 
@@ -244,7 +251,6 @@ public class ordDAO extends DAO{
 			psmt = conn.prepareStatement(sql);
 			psmt.setInt(1, varDaySelect);
 			psmt.setString(2, id);
-			psmt.setInt(3, varDaySelect);
 			rs = psmt.executeQuery();
 			
 			while(rs.next()) {

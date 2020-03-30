@@ -6,6 +6,18 @@
 <head>
 <meta charset="UTF-8">
 <title>이벤트 및 공지사항 업데이트</title>
+<script type="text/javascript">
+	// 비밀번호 미입력시 경고창
+	function checkValue() {
+		if (!document.updateForm.UpdateNoticeTitle.value) {
+			alert("제목을 입력하지 않았습니다.");
+			return false;
+		} else if (!document.updateForm.UpdateNoticeContent.value) {
+			alert("내용을 입력하지 않았습니다.");
+			return false;
+		} 
+	}
+</script>
 </head>
 <body>
 	<br>
@@ -13,7 +25,7 @@
 		<div class="card text-center" style="width: 500px; margin: 0 auto;">
 			<div class="card-header">이벤트 및 공지사항 수정</div>
 			<div class="card-body">
-				<form method="post" action="${contextPath}/UpdateEvent.do">
+				<form name="updateForm" method="post" action="${contextPath}/UpdateEvent.do" onsubmit="return checkValue()">
 					<table style="width: 450px;">
 						<tr>
 							<td>공지사항 번호</td>

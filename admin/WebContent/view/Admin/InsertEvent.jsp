@@ -7,6 +7,7 @@
 <head>
 <script type="text/javascript">
 
+
 $(document).ready(function(){
 	$('.enroll').on('click',function(){
 		var result = confirm('등록하시겠습니까?');
@@ -31,6 +32,7 @@ function insertEvent(){
 		return false;
 	}
 }
+
 
 </script>
 </head>

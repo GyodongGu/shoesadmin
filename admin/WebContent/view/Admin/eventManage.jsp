@@ -8,6 +8,7 @@
 <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
 <meta charset="UTF-8">
 <title>관리자 공지사항 등록</title>
+
 <script type="text/javascript">
 	$(document).ready(function(){
 		var dialog=$('#modal').dialog({
@@ -70,6 +71,7 @@
 		</script>
 	</c:when>
 </c:choose>
+
 </head>
 <body>
 	<div id = "modal" title="공지사항 ">
@@ -115,6 +117,7 @@
 											<button class="btn btn-primary contents" >내용보기</button>
 										</td>
 										<td>
+
 											<button class="btn btn-primary update" name="${smNotice.notice_no}" >수정</button>
 										</td>
 										<td>

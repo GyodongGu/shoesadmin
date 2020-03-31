@@ -52,7 +52,6 @@ import admin.shoes.app.command.allGuestCommand;
 import admin.shoes.app.command.backupCommand;
 import admin.shoes.app.command.codeManageCommand;
 import admin.shoes.app.command.eventManageCommand;
-import admin.shoes.app.command.getDeptCnt;
 import admin.shoes.app.command.logoutCommand;
 import admin.shoes.app.command.sDayStatisticsCommand;
 import admin.shoes.app.command.sMemManageCommand;
@@ -134,7 +133,6 @@ public class FrontController extends HttpServlet {
 		cont.put("/ajax/GetHoliday.do", new GetHoliday()); // 휴일 가져오기
 		cont.put("/ajax/DelHoliday.do", new DelHoliday()); // 휴일 삭제
 		cont.put("/ajax/GetReserv.do", new GetReservCommand()); // 예약일정 가져오기
-		cont.put("/ajax/getDeptCnt.do", new getDeptCnt()); // 차트데이터
 		cont.put("/ajax/SetHolidayImport.do", new SetHolidayImportCommand()); //정기휴일 등록
 		cont.put("/ajax/DelHolidayImport.do", new DelHolidayImportcommand()); //정기휴일 취소
 

@@ -12,7 +12,8 @@ import admin.shoes.app.dao.DAO;
 import admin.shoes.app.dto.dailyWorkDTO;
 
 public class CallenderDAO extends DAO{
-
+	
+	//휴일 입력
 	public int insertform(String id, Date date) {
 		int result = 0;
 		try {
@@ -28,7 +29,7 @@ public class CallenderDAO extends DAO{
 		}
 		return result;
 	}
-	
+	//휴일 리스트 불러오기
 	public List<Map<String, Object>> selectform(String id) {
 		List<Map<String, Object>> list = new ArrayList<Map<String, Object>>();
 		try {
@@ -49,7 +50,7 @@ public class CallenderDAO extends DAO{
 		} 
 		return list;
 	}
-	
+	// 휴일 삭제
 	public int deleteform(dailyWorkDTO dto) {
 		int result = 0;
 		try {
@@ -107,7 +108,7 @@ public class CallenderDAO extends DAO{
 			}
 			return result;
 		}
-		
+		//정기 휴일 삭제
 		public int deleteholiday(int week, int day, String id) {
 			int result = 0;
 			try {

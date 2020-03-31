@@ -82,7 +82,7 @@
 <body>
 	<br>
 	<div>
-		<div class="card text-center">
+		<div class="card text-center" style="width: 900px; margin: 0 auto;">
 			<div class="card-header">${sdto.sm_id } 판매회원 정보 수정 등록</div>
 			<div class="card-body">
 				<form id="frm" name="frm" method="post" action="${contextPath}/UpdateSmem.do" onsubmit="return chkUpdate()">
